@@ -25,10 +25,11 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-def create_recipe(title, description):
+def create_recipe(author, title, description):
     """Create and return a new recipe."""
 
     recipe = Recipe (
+        author=author,
         title=title,
         description=description,
         )
@@ -48,10 +49,10 @@ def get_recipe_by_id(recipe_id):
     return Recipe.query.get(recipe_id)
 
 
-def create_ingredients(name, quantiti, unit):
+def create_ingredient(recipe, name, quantity, unit):
     """Create and return new ingredient"""
     
-    ingredient = Ingredient(name=name, quantiti=quantiti, unit=unit)
+    ingredient = Ingredient(recipe=recipe, name=name, quantity=quantity, unit=unit)
 
     return ingredient
 
@@ -70,4 +71,5 @@ def update_rating(rating_id, new_score):
     
     rating = Rating.query.get(rating_id)
     rating.score = new_score
+
 

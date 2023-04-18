@@ -31,7 +31,7 @@ class Recipe(db.Model):
     description = db.Column(db.Text)
 
     def __repr__(self):
-        return f"<Recipe recipe_id={self.recipe_id} title={self.title}>"
+        return f"<Recipe recipe_id={self.recipe_id} author_id={self.author_id} title={self.title} description={self.description}>"
     
     author = db.relationship("User", back_populates="recipes")
     favorites = db.relationship("Favorite", back_populates="recipe")
@@ -40,7 +40,7 @@ class Recipe(db.Model):
 
 class Rating(db.Model):
 
-    __tabelename__ = "ratings"
+    __tablename__ = "ratings"
 
     rating_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.recipe_id'), nullable=False)
