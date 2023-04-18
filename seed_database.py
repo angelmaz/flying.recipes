@@ -12,7 +12,7 @@ app = Flask(__name__)
 os.system("dropdb kitchen_helper")
 os.system('createdb kitchen_helper')
 #connect to the database by calling db.create_all
-connect_to_db(app)
+connect_to_db(app, echo=False)
 db.create_all()
 
 
@@ -25,7 +25,9 @@ db.session.add(user)
 recipe = crud.create_recipe(author=user, title='buleczki', description='do pieca')
 db.session.add(recipe)
 
-ingredient1 = crud.create_ingredient(recipe= recipe, name="milk", quantity=500, unit='ml')
-db.session.add(ingredient1)
-db.session.commit()
+ingredient1 = crud.create_ingredient(recipe= recipe, name="milk", quantity=660, unit='ml')
+ingredient2 = crud.create_ingredient(recipe = recipe, name ='flour', quantity=320, unit='g')
+ingredient3 = crud.create_ingredient(recipe = recipe, name ='eggs', quantity=4, unit='ct')
 
+db.session.add_all([ingredient1, ingredient2, ingredient3])
+db.session.commit()

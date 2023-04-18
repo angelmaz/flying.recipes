@@ -80,7 +80,7 @@ class Ingredient(db.Model):
     unit = db.Column(db.String, nullable=False)
 
     def __repr__(self):
-        return f"<Ingredient ingredient_id: {self.ingredient_id} name: {self.name} quantity: {self.quantity} unit: {self.unit}>"
+        return f"<Ingredient ingredient_id: {self.ingredient_id} name: {self.name} quantity: {self.quantity:.1f} unit: {self.unit}>"
     
     recipe = db.relationship("Recipe", back_populates="ingredients")
 
