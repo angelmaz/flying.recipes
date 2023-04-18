@@ -1,7 +1,6 @@
 """Script to seed database."""
 
 import os
-import json
 from random import choice, randint
 from model import db, User, Recipe, Rating, Ingredient, connect_to_db
 import crud
