@@ -1,10 +1,9 @@
-from model import db, User, Recipe, Rating, Ingredient, connect_to_db
+from model import db, User, Recipe, Rating, Ingredient, Favorite, connect_to_db
 
 def create_user(email, password):
     """Create and return a new user."""
 
     user = User(email=email, password=password)
-
     return user
 
 
@@ -33,7 +32,6 @@ def create_recipe(author, title, description):
         title=title,
         description=description,
         )
-    
     return recipe
 
 
@@ -53,16 +51,25 @@ def create_ingredient(recipe, name, quantity, unit):
     """Create and return new ingredient"""
     
     ingredient = Ingredient(recipe=recipe, name=name, quantity=quantity, unit=unit)
-
     return ingredient
 
+
+def create_favorite(recipe, user):
+    """Create and return favorite recipe"""
+    
+    favorite = Favorite(recipe=recipe, user=user)
+    return favorite
+
+def get_favorite_by_id(favorite_id):
+    """Get favorite recipe by id"""
+
+    return Favorite.query.get(favorite_id)
 
 
 def create_rating(user, recipe, score):
     """Create and return a new rating."""
 
     rating = Rating(user=user, recipe=recipe, score=score)
-
     return rating
 
 

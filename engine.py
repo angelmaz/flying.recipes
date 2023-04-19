@@ -41,3 +41,23 @@ def convert_ingredient(ingredient, new_unit):
         return None
 
     return new_ingredient
+
+
+def scale_ingredient(ingredient, scale):
+    new_ingredient = Ingredient(name=ingredient.name, quantity=ingredient.quantity, unit=ingredient.unit,
+                                ingredient_id=ingredient.ingredient_id, recipe_id=ingredient.recipe_id)
+    new_ingredient.quantity = ingredient.quantity * scale
+    return new_ingredient
+
+
+def scale_recipe(recipe, scale):
+    new_recipe = Recipe(ingredients=[], recipe_id=recipe.recipe_id,
+                        author_id=recipe.author_id, title=recipe.title, description=recipe.description)
+    for ingredient in recipe.ingredients:
+        new_ingredient = scale_ingredient(ingredient, scale)
+
+        new_recipe.ingredients.append(new_ingredient)
+
+    return new_recipe
+
+

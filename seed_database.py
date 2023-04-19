@@ -2,7 +2,7 @@
 
 import os
 from random import choice, randint
-from model import db, User, Recipe, Rating, Ingredient, connect_to_db
+from model import db, User, Recipe, Rating, Ingredient, Favorite, connect_to_db
 import crud
 from flask import Flask
 app = Flask(__name__)
@@ -28,6 +28,9 @@ db.session.add(recipe)
 ingredient1 = crud.create_ingredient(recipe= recipe, name="milk", quantity=660, unit='ml')
 ingredient2 = crud.create_ingredient(recipe = recipe, name ='flour', quantity=320, unit='g')
 ingredient3 = crud.create_ingredient(recipe = recipe, name ='eggs', quantity=4, unit='ct')
+
+favorite1 = crud.create_favorite(recipe=recipe , user=user)
+rating1 = crud.create_rating(user=user, recipe=recipe, score=3)
 
 db.session.add_all([ingredient1, ingredient2, ingredient3])
 db.session.commit()
