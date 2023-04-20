@@ -107,7 +107,7 @@ def connect_to_db(flask_app, db_uri="postgresql:///kitchen_helper", echo=True):
 
 
 if __name__ == "__main__":
-    from flask import Flask
+    from server import app
 
-    app = Flask(__name__)
+  
     connect_to_db(app)

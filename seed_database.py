@@ -4,6 +4,7 @@ import os
 from random import choice, randint
 from model import db, User, Recipe, Rating, Ingredient, Favorite, connect_to_db
 import crud
+import server
 from flask import Flask
 app = Flask(__name__)
 
@@ -12,7 +13,7 @@ app = Flask(__name__)
 os.system("dropdb kitchen_helper")
 os.system('createdb kitchen_helper')
 #connect to the database by calling db.create_all
-connect_to_db(app, echo=False)
+connect_to_db(server.app, echo=False)
 db.create_all()
 
 

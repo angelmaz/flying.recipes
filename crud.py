@@ -80,3 +80,7 @@ def update_rating(rating_id, new_score):
     rating.score = new_score
 
 
+if __name__ == "__main__":
+    from server import app
+
+    connect_to_db(app)
