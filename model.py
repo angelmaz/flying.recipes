@@ -30,6 +30,7 @@ class Recipe(db.Model):
         'users.user_id'), nullable=False)
     title = db.Column(db.String, nullable=False)
     description = db.Column(db.Text)
+    image_url = db.Column(db.String)
 
     def __repr__(self):
         output = f"<Recipe recipe_id: {self.recipe_id}, author_id: {self.author_id}, title: {self.title}, description: {self.description}>"
@@ -51,11 +52,15 @@ class Ingredient(db.Model):
     recipe_id = db.Column(db.Integer, db.ForeignKey(
         "recipes.recipe_id"), nullable=False)
     name = db.Column(db.String, nullable=False)
-    quantity = db.Column(db.Float, nullable=False)
+    quantity = db.Column(db.Float, nullable=True)
     unit = db.Column(db.String, nullable=False)
 
     def __repr__(self):
-        return f"<Ingredient recipe_id: {self.recipe_id}, ingredient_id: {self.ingredient_id}, name: {self.name}, quantity: {self.quantity:.1f}, unit: {self.unit}>"
+        if self.quantity:
+            quantity_str = f"{self.quantity:.1f}"
+        else:
+            quantity_str = ""
+        return f"<Ingredient recipe_id: {self.recipe_id}, ingredient_id: {self.ingredient_id}, name: {self.name}, quantity: {quantity_str}, unit: {self.unit}>"
 
     recipe = db.relationship("Recipe", back_populates="ingredients")
 

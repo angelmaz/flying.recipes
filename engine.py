@@ -20,7 +20,7 @@ volumes_in_ml = {
 
 weight_units = list(weights_in_g.keys())
 volume_units = list(volumes_in_ml.keys())
-other_units = ['pinch', 'ct']
+other_units = ['pinch', 'ct', '', 'bunch', 'slice','slices', ]
 
 
 def convert_ingredient(ingredient, new_unit):

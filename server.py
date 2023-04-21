@@ -12,8 +12,8 @@ app.jinja_env.undefined = StrictUndefined
 @app.route("/")
 def index():
     """Return homepage."""
-
-    return render_template("homepage.html")
+    recipes = crud.get_recipes()
+    return render_template("homepage.html", recipes=recipes)
 
 @app.route("/login", methods=["GET"])
 def show_login():
@@ -79,10 +79,10 @@ def create_recipe():
 
     return render_template("create_recipe.html")
 
-@app.route("/recipe")
-def recipe():
-
-    return render_template("recipe.html")
+@app.route("/recipe/<recipe_id>")
+def recipe(recipe_id):
+    recipe = crud.get_recipe_by_id(recipe_id)
+    return render_template("recipe.html", recipe=recipe)
 
 @app.route("/logout")
 def process_logout():

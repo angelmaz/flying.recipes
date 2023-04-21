@@ -1,0 +1,24 @@
+[
+    {
+        "author_id": 1,
+        "title": "Read paprica with rice",
+        "ingredients":[
+            {"quantity": "", "unit": "", "name": "Kosher salt"},
+            {"quantity": "1", "unit": "ct", "name":"lemon"},
+            {"quantity": "4", "unit": "ct", "name":"cloves garlic "},
+            {"quantity": "4", "unit": "ct", "name":"bell peppers,assorted colors"},
+            {"quantity": "2", "unit": "Tbsp", "name":"extra-virgin olive oil"}, 
+            {"quantity": "4", "unit": "oz", "name":"lSpanish cured chorizo, casings removed, small dice"}, 
+            {"quantity": "4", "unit": "slices", "name":"slices bread, torn into bite-size pieces"},
+            {"quantity": "1", "unit": "bunch", "name":"Tuscan kale, thinly sliced "},
+            {"quantity": "1", "unit": "Tbsp", "name":"sherry vinegar"},
+            {"quantity": "1/4", "unit": "cup", "name":"pitted dates, chopped "},
+            {"quantity": "1/4", "unit": "cup", "name":"pitted Castelvetrano olives, halved "},
+            {"quantity": "1/4", "unit": "cup", "name":"fresh flat-leaf parsley leaves"},
+            {"quantity": "2", "unit": "oz", "name":"manchego cheese, freshly grated"},
+            {"quantity": "1/4", "unit": "cup", "name":"Marcona almonds, finely chopped"}
+        ],
+        "description": "Place a large pot filled halfway with water over high heat and season generously with salt. Halve the lemon, then juice it and set aside 1 tablespoon juice. Add the lemon halves and the remaining lemon juice to the water. Crush 3 of the garlic cloves and add to the water. Cover and bring to a boil. Fill a large bowl with ice water.<br /><br />Prepare the peppers by slicing off just enough of the tops to reveal the seeds. Remove and discard the seed pockets and stems. Trim the bottom of the peppers as needed so they stand up on their own. Finely chop the pepper tops and add to a large bowl.\n\nGently lower the pepper boats into the boiling water until fully submerged. Cook until just crisp tender, 4 to 6 minutes. The peppers should hold their shape and stand up straight. Once cooked, place the peppers in the ice bath to prevent further cooking, about 1 minute. Drain the peppers upside-down on a paper towel-lined plate to catch any water that remains inside.<br /><br />Meanwhile, place a large nonstick skillet over medium-high heat. Add the oil and chorizo and cook until the chorizo is just fragrant and the oil has a red hue, 1 to 2 minutes. Remove from the heat and use a slotted spoon to add the chorizo to the bowl with the chopped peppers. Add 2 teaspoons of the hot oil from the skillet to the bowl, reserving the rest. The chorizo will crisp as it cools.<br /><br />Place the skillet with the reserved oil over medium heat. Add the bread to the skillet in an even layer. Cook, tossing occasionally, until the bread is browned and toasted, about 5 minutes. Finely chop the remaining garlic clove. When the bread is nearly toasted, add the garlic to the skillet and toss until it is distributed through the toasted bread. Set aside.<br /><br />Add the kale, vinegar and the reserved 1 tablespoon lemon juice to the bowl. Massage until the kale is slightly softened and coated. Add the dates, olives, parsley and toasted bread and gently toss to combine.<br /><br />Place the peppers upright on a serving platter. Mound the salad into each pepper. Generously grate the cheese over the salad. Sprinkle with the chopped almonds and serve immediately.",
+        "image_url": "/static/img/photo_recipes/1.jpeg"
+    }
+]

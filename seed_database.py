@@ -1,37 +1,71 @@
 """Script to seed database."""
-
+import json
 import os
 from random import choice, randint
 from model import db, User, Recipe, Rating, Ingredient, Favorite, connect_to_db
 import crud
 import server
 from flask import Flask
+
+def str_to_float(quantity_str):
+    if quantity_str == "":
+        return None
+    elif '/' in quantity_str:
+        nom, denom = quantity_str.split('/')
+        return float(nom) / float(denom)
+    else:
+        return float(quantity_str)
+
 app = Flask(__name__)
 
 
-# We are using os.system to automatically dropdb for us
+# os.system to automatically dropdb for us
 os.system("dropdb kitchen_helper")
 os.system('createdb kitchen_helper')
-#connect to the database by calling db.create_all
+# connect to the database by calling db.create_all
 connect_to_db(server.app, echo=False)
 db.create_all()
 
 
-email = 'user@test.com'
-password = 'test'
+# take one user in loop with his parameters from json, and add to db
+with open('data/users.json') as f:
+    user_data = json.loads(f.read())
 
-user = crud.create_user(email, password)
-db.session.add(user)
+users_in_db = []
+for user in user_data:
+    email, password = (
+        user["email"],
+        user["password"],
+    )
+    db_user = crud.create_user(email=email, password=password)
+    users_in_db.append(db_user)
 
-recipe = crud.create_recipe(author=user, title='buleczki', description='do pieca')
-db.session.add(recipe)
+db.session.add_all(users_in_db) # add all users to db
 
-ingredient1 = crud.create_ingredient(recipe= recipe, name="milk", quantity=660, unit='ml')
-ingredient2 = crud.create_ingredient(recipe = recipe, name ='flour', quantity=320, unit='g')
-ingredient3 = crud.create_ingredient(recipe = recipe, name ='eggs', quantity=4, unit='ct')
+# take recipe in a loop from json and add to db
+with open('data/recipes.json') as f:
+    recipe_data = json.loads(f.read())
 
-favorite1 = crud.create_favorite(recipe=recipe , user=user)
-rating1 = crud.create_rating(user=user, recipe=recipe, score=3)
+for recipe in recipe_data:
+    author_id, title, ingredients_dicts, description, image_url = (
+        recipe["author_id"],
+        recipe["title"],
+        recipe["ingredients"],
+        recipe["description"],
+        recipe["image_url"],
+    )
+    db_recipe = crud.create_recipe_from_author_id(
+        author_id=author_id, title=title, description=description, image_url=image_url)
+    db.session.add(db_recipe)
+    for ingredient_dict in ingredients_dicts:
+        quantity_str, unit, name = (
+            ingredient_dict["quantity"],
+            ingredient_dict["unit"],
+            ingredient_dict["name"],
+        )
+        quantity = str_to_float(quantity_str)
+        db_ingredient = crud.create_ingredient(recipe=db_recipe, name=name, quantity=quantity, unit=unit)
+        db.session.add(db_ingredient)
 
-db.session.add_all([ingredient1, ingredient2, ingredient3])
 db.session.commit()
+
