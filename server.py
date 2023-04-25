@@ -39,7 +39,7 @@ def process_login():
         flash("Incorrect password, try again.")
         return redirect("/login")
 
-    session["logged_in_user_email"] = user.email
+    session["logged_in_user_id"] = user.user_id
     flash("Logged in")
     return redirect("/user_dashboard")
 
@@ -70,9 +70,11 @@ def register_user():
 @app.route("/user_dashboard")
 def user_dashboard():
     """Return page showing all the created and favorites recipes"""
-    
+
+    recipes_author = crud.get_recipes_by_author_id(session["logged_in_user_id"])
     recipe_list = crud.get_favorite_by_id
-    return render_template("user_dashboard.html", recipe_list=recipe_list)
+    return render_template("user_dashboard.html", recipe_list=recipe_list,recipes=recipes_author)
+
 
 @app.route("/create_recipe")
 def create_recipe():
@@ -82,13 +84,18 @@ def create_recipe():
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
     recipe = crud.get_recipe_by_id(recipe_id)
-    return render_template("recipe.html", recipe=recipe)
+    return render_template("recipe.html", recipe=recipe, weight_units=engine.weight_units, volume_units=engine.volume_units)
+
+# @app.route('/user_dashboard/<favorite_by_id>')
+# def favorite_by_id(favorite_id):
+#     favorite_by_id = crud.get_favorite_by_id(favorite_id)
+#     return render_template('user_dashboard.html', favorite_by_id=favorite_by_id)
 
 @app.route("/logout")
 def process_logout():
     """Log user out."""
 
-    del session["logged_in_user_email"]
+    del session["logged_in_user_id"]
     flash("Logged out.")
     return redirect("/")
 

@@ -36,7 +36,7 @@ def create_recipe(author, title, description, image_url):
         )
     return recipe
 
-def create_recipe_from_author_id(author_id, title, description, image_url):
+def create_recipes_from_author_id(author_id, title, description, image_url):
 
     recipe = Recipe (
             author_id=author_id,
@@ -57,6 +57,11 @@ def get_recipe_by_id(recipe_id):
     """Return a recipe by primary key"""
     
     return Recipe.query.get(recipe_id)
+
+
+def get_recipes_by_author_id(author_id):
+
+    return Recipe.query.filter(Recipe.author_id==author_id)
 
 
 def create_ingredient(recipe, name, quantity, unit):

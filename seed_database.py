@@ -6,16 +6,7 @@ from model import db, User, Recipe, Rating, Ingredient, Favorite, connect_to_db
 import crud
 import server
 from flask import Flask
-
-def str_to_float(quantity_str):
-    if quantity_str == "":
-        return None
-    elif '/' in quantity_str:
-        nom, denom = quantity_str.split('/')
-        return float(nom) / float(denom)
-    else:
-        return float(quantity_str)
-
+from engine import str_to_float
 app = Flask(__name__)
 
 

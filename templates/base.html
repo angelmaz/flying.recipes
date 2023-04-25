@@ -20,10 +20,19 @@
     {{ msg }}
   </p>
   {% endfor %}
+  {% if 'logged_in_user_id' in session %}
+  <a href="/">
+    <img src="/static/img/logo.png"></a>
+  <a href="/user_dashboard">My account</a>
+  <a href="/logout">Logout</a>
+  <a href="/user_dashboard">My favorites</a>
+  {% else %}
   <a href="/">
     <img src="/static/img/logo.png"></a>
   <a href="/create_account">Create account</a>
   <a href="/login">Login</a>
+  
+  {% endif %}
 
   {% block body %}{% endblock %}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"

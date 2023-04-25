@@ -9,6 +9,7 @@
 
     <div class="col-6">
         <img src="{{ recipe.image_url }}" class="img-responsive">
+
     </div>
 </div>
 
@@ -22,13 +23,31 @@
         <div>
             <ul>
                 {% for ingredient in recipe.ingredients %}
+
                 <li>
                     <p>
                         {% if ingredient.quantity %}
-                        {{ "%.0f"|format(ingredient.quantity) }}
+                        {{ "%.1f"|format(ingredient.quantity) }}
                         {% endif %}
-                        {{ ingredient.unit }}
-                        {{ ingredient.name }}</p>
+
+                        {% if ingredient.unit in weight_units %}
+                        <select name="unit">
+                            {% for unit in weight_units %}
+                            <option value={{unit}}>{{unit}} </option>
+                            {% endfor %}
+                        </select>
+                        {% elif ingredient.unit in volume_units %}
+                        <select name="unit">
+                            {% for unit in volume_units %}
+                            <option value={{unit}}>{{unit}} </option>
+                            {% endfor %}
+                        </select>
+                        {% else %}
+                        {{ingredient.unit}}
+                        {% endif %}
+                        {{ ingredient.name }}
+                    </p>
+
                 </li>
                 {% endfor %}
             </ul>
