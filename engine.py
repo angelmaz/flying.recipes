@@ -20,7 +20,8 @@ volumes_in_ml = {
 # create lists of different types of units
 weight_units = list(weights_in_g.keys())
 volume_units = list(volumes_in_ml.keys())
-other_units = ['pinch', 'ct', '', 'bunch', 'slice','slices', 'stick', 'can' ]
+other_units = ['', 'pinch', 'ct', 'bunch', 'slice','slices', 'stick', 'can' ]
+all_units = other_units + weight_units + volume_units
 # 1/2 cup = 1 stick
 
 def convert_ingredient(ingredient, new_unit): 

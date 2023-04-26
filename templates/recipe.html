@@ -17,8 +17,13 @@
     <input type="button" id="scale_button" value="Scale">
 </div>
 <div class="container" id="scale_container" style="display: none">
+    <div>
+        <h2>By baking pan</h2>
+    </div>
     <div class="col-xs-12 col-sm-6 col-md-4 column column-1 provision">
+
         <div class="item-1 clearfix">
+
             <span class="title">In recipe is:</span>
             <span class="content">
                 <input type="radio" name="field-is" id="field-is-cake-tin" value="cake_tin" checked="checked"> <label
@@ -51,8 +56,8 @@
             <span class="title">Dimensions:</span>
             <span class="content">
                 <input type="number" min="0" name="home-size" id="home_size" size="4" value="">
-                <span class="size_cake_home_tin"> x <input type="number" min="0" name="home-size-y" id="home_size_y" size="4"
-                        value=""></span> cm
+                <span class="size_cake_home_tin"> x <input type="number" min="0" name="home-size-y" id="home_size_y"
+                        size="4" value=""></span> cm
             </span>
         </div>
     </div>
@@ -62,6 +67,19 @@
             <input type="button" id="calculation" value="Compute">
         </div>
     </div>
+    <div>
+        <div class="item-2 clearfix"></div>
+        <h2> By person</h2>
+        <span class="title">From:</span>
+        <span class="content">
+            <input type="number" min="1" name="from_person" id="from_person" size="2" value="">
+            <span class="size_cake_home_tin"> to <input type="number" min="2" name="to_person" id="to_person" size="2"
+                    value=""></span> persons
+        </span>
+    </div>
+
+
+</div>
 </div>
 <h3><span>Ingredients</span></h3>
 <div>

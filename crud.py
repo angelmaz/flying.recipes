@@ -36,7 +36,7 @@ def create_recipe(author, title, description, image_url):
         )
     return recipe
 
-def create_recipes_from_author_id(author_id, title, description, image_url):
+def create_recipe_from_author_id(author_id, title, description, image_url):
 
     recipe = Recipe (
             author_id=author_id,

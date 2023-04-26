@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Create recipe| Wherever you are!{% endblock %}
+
+{% block body %}
+
+<div class="col-xs-6 col-sm-6 col-md-6" id="ingredient_list">
+    <div>
+        quantity <input type="text" id="quantity" value=" " size="8">
+        unit <select id="unit">
+            {% for unit in all_units%}
+            <option value={{unit}}>{{unit}} </option>
+
+            {% endfor %}
+        </select>
+        name <input type="text" id="name" value=" " size="8">
+
+    </div>
+
+</div>
+<div>
+    <input type="button" id="add_ingredient" value="add_ingredient">
+    <input type="button" id="save" value="save">
+</div>
+
+<script src="/static/js/create_recipe.js"></script>
+{% endblock %}
