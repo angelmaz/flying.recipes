@@ -41,7 +41,7 @@ class Recipe(db.Model):
     author = db.relationship("User", back_populates="recipes")
     favorites = db.relationship("Favorite", back_populates="recipe")
     ratings = db.relationship("Rating", back_populates="recipe")
-    ingredients = db.relationship("Ingredient", back_populates="recipe")
+    ingredients = db.relationship("Ingredient", back_populates="recipe", passive_deletes=True)
 
 
 class Ingredient(db.Model):
@@ -49,8 +49,7 @@ class Ingredient(db.Model):
     __tablename__ = "ingredients"
 
     ingredient_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    recipe_id = db.Column(db.Integer, db.ForeignKey(
-        "recipes.recipe_id"), nullable=False)
+    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.recipe_id", ondelete="CASCADE"), nullable=False)
     name = db.Column(db.String, nullable=False)
     quantity = db.Column(db.Float, nullable=True)
     unit = db.Column(db.String, nullable=False)

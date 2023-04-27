@@ -16,26 +16,60 @@ addIngredient.addEventListener('click', () => {
         });
 });
 
-const saveButton = document.querySelector('#save');
-saveButton.addEventListener('click', () => {
-    
+const upload_form = document.querySelector('#upload_form');
+
+upload_form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
     formInputs = []
-    for (let child of ingredientList.children){
-        let quantity = child.querySelector('#quantity').value; 
+    for (let child of ingredientList.children) {
+        let quantity = child.querySelector('#quantity').value;
         let unit = child.querySelector('#unit').value;
         let name = child.querySelector('#name').value;
-        formInputs.push({'quantity':quantity, 'unit':unit, 'name':name});
-
+        formInputs.push({ 'quantity': quantity, 'unit': unit, 'name': name });
     }
+    let title = document.querySelector('#title').value;
+    let description = document.querySelector('#description').value;
     fetch('/save', {
         method: 'POST',
-        body: JSON.stringify({'ingredients':formInputs}),
+        body: JSON.stringify({ 'ingredients': formInputs, 'title': title, 'description': description }),
         headers: {
             'Content-Type': 'application/json',
         },
     })
         .then((response) => response.json())
         .then((responseJson) => {
-            alert(responseJson.status);
+            const new_file_path = responseJson['new_file_path'];
+            const formData = new FormData(upload_form);
+            formData.append('new_file_path', new_file_path);
+            fetch('/uploader', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    fetch('/rename', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ 'new_file_path': new_file_path })
+                    })
+                        .then(response => {
+                            if (response.status === 200) {
+                                window.location.href = '/user_dashboard';
+                            } else {
+                                console.log('Error submitting data');
+                            }
+                        })
+                        .catch(error => {
+                            console.log('Network error', error);
+                        });
+
+
+                })
+                .catch(error => {
+                    console.error('Error occured:', error);
+                });
+
         });
 });

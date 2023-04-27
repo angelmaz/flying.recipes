@@ -26,3 +26,17 @@ fieldHomeStand.addEventListener('click', () => {
 fieldHomeTin.addEventListener('click', () => {
     document.querySelector('.size_cake_home_tin').style.display ='block';
 });
+
+removeButton=document.querySelector('#remove');
+
+removeButton.addEventListener('click', () => {
+    const recipe_id = document.querySelector('#recipe_id_hidden').value;
+    const url = `/remove?recipe_id=${recipe_id}`;
+  
+    fetch(url)
+      .then((response) => response.text())
+      .then((status) => {
+        alert(status);
+        window.location.href='/user_dashboard';
+      });
+  });

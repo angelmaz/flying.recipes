@@ -4,10 +4,17 @@ from model import User, Recipe, Ingredient, Rating, Favorite, connect_to_db, db
 import crud
 import engine
 from jinja2 import StrictUndefined
+from sqlalchemy import delete
+import os
+
 
 app = Flask(__name__)
 app.secret_key = "pascal"
 app.jinja_env.undefined = StrictUndefined
+
+app.config['UPLOAD_FOLDER'] = 'static/img/photo_recipes'
+TEMP_IMG_NAME = 'temp.jpeg'
+app.config['MAX_CONTENT_PATH'] = 10000000
 
 
 @app.route("/")
@@ -101,8 +108,10 @@ def get_all_units():
 @app.route('/save', methods=["POST"])
 def save():
     ingredients = request.json.get("ingredients")
+    title = request.json.get('title')
+    description = request.json.get('description')
     db_recipe = crud.create_recipe_from_author_id(
-        author_id=session['logged_in_user_id'], title='title', description='description', image_url='/static/img/photo_recipes/1.jpeg')
+        author_id=session['logged_in_user_id'], title=title, description=description, image_url='/static/img/photo_recipes/1.jpeg')
     db.session.add(db_recipe)
     for ingredient_dict in ingredients:
         quantity_str, unit, name = (
@@ -111,11 +120,60 @@ def save():
             ingredient_dict["name"],
         )
         quantity = engine.str_to_float(quantity_str)
-        db_ingredient = crud.create_ingredient(recipe=db_recipe, name=name, quantity=quantity, unit=unit)
+        db_ingredient = crud.create_ingredient(
+            recipe=db_recipe, name=name, quantity=quantity, unit=unit)
         db.session.add(db_ingredient)
 
-    db.session.commit() 
-    return jsonify({"status": "Recipe succesfully added"})
+    db.session.commit()
+
+    recipe_id = db_recipe.recipe_id
+
+    new_file_path = f'{app.config["UPLOAD_FOLDER"]}/{recipe_id}.jpeg'
+    db_recipe.image_url = f'/{new_file_path}'
+    db.session.commit()
+
+    return jsonify({"new_file_path": new_file_path})
+
+
+@app.route('/remove')
+def remove():
+
+    remove_recipe_id = request.args.get('recipe_id')
+    recipe = Recipe.query.filter_by(recipe_id=remove_recipe_id).first()
+    if recipe:
+        db.session.delete(recipe)
+        db.session.commit()
+        return f'Succesfully removed recipe {remove_recipe_id}'
+    else:
+        return f'Cannot find recipe {remove_recipe_id} in database.'
+
+
+@app.route('/uploader', methods=['POST'])
+def upload_file():
+    if request.method == 'POST':
+        temp_file_path = f"{app.config['UPLOAD_FOLDER']}/{TEMP_IMG_NAME}"
+
+        f = request.files['file']
+
+        f.save(temp_file_path)
+        return "STATUS: OK"
+    else:
+        print(f'request.method = {request.method} (not POST)')
+
+
+@app.route('/rename', methods=['POST'])
+def rename_file():
+    if request.method == 'POST':
+        current_file_path = f"{app.config['UPLOAD_FOLDER']}/{TEMP_IMG_NAME}"
+        new_file_path = request.json.get('new_file_path')
+
+        os.rename(current_file_path, new_file_path)
+
+        flash('Great, you created and succesfully saved your recipe!')
+        return "STATUS: OK"
+    else:
+        print(f'request.method = {request.method} (not POST)')
+
 
 @app.route("/logout")
 def process_logout():
@@ -124,6 +182,7 @@ def process_logout():
     del session["logged_in_user_id"]
     flash("Logged out.")
     return redirect("/")
+
 
 if __name__ == "__main__":
     connect_to_db(app)

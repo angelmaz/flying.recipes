@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}Create recipe| Wherever you are!{% endblock %}
-
 {% block body %}
 
+<div>
+    <input type="text" id="title">Title
+</div>
 <div class="col-xs-6 col-sm-6 col-md-6" id="ingredient_list">
     <div>
         quantity <input type="text" id="quantity" value=" " size="8">
@@ -17,10 +19,19 @@
     </div>
 
 </div>
+
 <div>
     <input type="button" id="add_ingredient" value="add_ingredient">
-    <input type="button" id="save" value="save">
-</div>
 
+</div>
+<div>
+    <textarea rows="10" cols="60" id="description"></textarea>
+</div>
+<div>
+    <form action="/uploader" method="POST" enctype="multipart/form-data" id="upload_form">
+        <input type="file" name="file" />
+        <input type="submit" id="create_recipe_submit" value="Save recipe" />
+    </form>
+</div>
 <script src="/static/js/create_recipe.js"></script>
 {% endblock %}
