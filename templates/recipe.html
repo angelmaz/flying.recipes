@@ -37,8 +37,13 @@
             <span class="content">
                 <input type="number" min="0" name="size" id="size" size="4" value="">
                 <span class="size_cake_tin"> x <input type="number" min="0" name="size-y" id="size_y" size="4"
-                        value=""></span> cm
+                        value=""></span>
+
             </span>
+            <select name="measurement" id="measurement">
+                <option value="cm">cm</option>
+                <option value="inch">in</option>
+            </select>
         </div>
     </div>
 
@@ -57,7 +62,14 @@
             <span class="content">
                 <input type="number" min="0" name="home-size" id="home_size" size="4" value="">
                 <span class="size_cake_home_tin"> x <input type="number" min="0" name="home-size-y" id="home_size_y"
-                        size="4" value=""></span> cm
+                        size="4" value="">
+
+                    </option>
+                </span>
+                <select name="measurement" id="home_measurement">
+                    <option value="cm">cm</option>
+                    <option value="inch">in</option>
+                </select>
             </span>
         </div>
     </div>
@@ -73,9 +85,11 @@
         <span class="title">From:</span>
         <span class="content">
             <input type="number" min="1" name="from_person" id="from_person" size="2" value="">
-            <span class="size_cake_home_tin"> to <input type="number" min="2" name="to_person" id="to_person" size="2"
-                    value=""></span> persons
+            to <input type="number" min="2" name="to_person" id="to_person" size="2" value="">persons
         </span>
+        <div id="results_by_person">
+            <input type="button" id="calculation_by_person" value="Compute">
+        </div>
     </div>
 
 
@@ -93,32 +107,35 @@
     <ul>
         {% for ingredient in recipe.ingredients %}
 
-        <li>
-            <p>
-                {% if ingredient.quantity %}
-                {{ "%.1f"|format(ingredient.quantity) }}
-                {% endif %}
+        <li class="ingredient_row">
 
-                {% if ingredient.unit in weight_units %}
+            <span class='quantity_field'>{% if ingredient.quantity %}
+                {{ "%.1f"|format(ingredient.quantity) }}
+                {% endif %}</span>
+
+            <span class='unit_field'>{% if ingredient.unit in weight_units %}
                 <select name="unit">
                     {% for unit in weight_units %}
-                    <option value={{unit}}>{{unit}} </option>
+                    <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
                     {% endfor %}
                 </select>
                 {% elif ingredient.unit in volume_units %}
                 <select name="unit">
                     {% for unit in volume_units %}
-                    <option value={{unit}}>{{unit}} </option>
+                    <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
                     {% endfor %}
                 </select>
                 {% else %}
                 {{ingredient.unit}}
-                {% endif %}
-                {{ ingredient.name }}
-            </p>
+                {% endif %} </span>
+            <span class='name_field'>{{ ingredient.name }}</span>
+            <input type="hidden" class='ingredient_id_field' value="{{ingredient.ingredient_id}}">
+
 
         </li>
         {% endfor %}
+
+
     </ul>
 </div>
 

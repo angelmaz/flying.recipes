@@ -1,5 +1,6 @@
 from model import db, User, Recipe, Rating, Ingredient, Favorite, connect_to_db
 
+
 def create_user(email, password):
     """Create and return a new user."""
 
@@ -11,6 +12,7 @@ def get_users():
     """Return all users."""
 
     return User.query.all()
+
 
 def get_user_by_id(user_id):
     """Return a user by primary key."""
@@ -27,25 +29,27 @@ def get_user_by_email(email):
 def create_recipe(author, title, description, image_url):
     """Create and return a new recipe."""
 
-    recipe = Recipe (
+    recipe = Recipe(
         author=author,
         title=title,
         description=description,
         image_url=image_url,
-    
-        )
+
+    )
     return recipe
+
 
 def create_recipe_from_author_id(author_id, title, description, image_url):
 
-    recipe = Recipe (
-            author_id=author_id,
-            title=title,
-            description=description,
-            image_url=image_url,
-        
-            )
+    recipe = Recipe(
+        author_id=author_id,
+        title=title,
+        description=description,
+        image_url=image_url,
+
+    )
     return recipe
+
 
 def get_recipes():
     """Return all recipes"""
@@ -55,27 +59,32 @@ def get_recipes():
 
 def get_recipe_by_id(recipe_id):
     """Return a recipe by primary key"""
-    
+
     return Recipe.query.get(recipe_id)
 
 
 def get_recipes_by_author_id(author_id):
-
-    return Recipe.query.filter(Recipe.author_id==author_id)
+    return Recipe.query.filter(Recipe.author_id == author_id)
 
 
 def create_ingredient(recipe, name, quantity, unit):
     """Create and return new ingredient"""
-    
-    ingredient = Ingredient(recipe=recipe, name=name, quantity=quantity, unit=unit)
+
+    ingredient = Ingredient(recipe=recipe, name=name,
+                            quantity=quantity, unit=unit)
     return ingredient
+
+
+def get_ingredient_by_id(ingredient_id):
+    return Ingredient.query.get(ingredient_id)
 
 
 def create_favorite(recipe, user):
     """Create and return favorite recipe"""
-    
+
     favorite = Favorite(recipe=recipe, user=user)
     return favorite
+
 
 def get_favorite_by_id(favorite_id):
     """Get favorite recipe by id"""
@@ -92,7 +101,7 @@ def create_rating(user, recipe, score):
 
 def update_rating(rating_id, new_score):
     """ Update a rating given rating_id and the updated score. """
-    
+
     rating = Rating.query.get(rating_id)
     rating.score = new_score
 

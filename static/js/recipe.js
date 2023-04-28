@@ -3,7 +3,7 @@ const scaleContainer = document.querySelector('#scale_container');
 
 scaleButton.addEventListener('click', () => {
     if (scaleContainer.style.display === "none") {
-        scaleContainer.style.display ="block";
+        scaleContainer.style.display = "block";
     } else {
         scaleContainer.style.display = "none";
     }
@@ -13,30 +13,121 @@ const fieldStand = document.querySelector('#field-is-cake-stand');
 const fieldTin = document.querySelector('#field-is-cake-tin');
 const fieldHomeStand = document.querySelector('#field-home-is-cake-stand');
 const fieldHomeTin = document.querySelector('#field-home-is-cake-tin');
+const measurement = document.querySelector('#measurement');
+const homeMeasurement = document.querySelector('#home_measurement');
+
 
 fieldStand.addEventListener('click', () => {
-    document.querySelector('.size_cake_tin').style.display ='none';
+    document.querySelector('.size_cake_tin').style.display = 'none';
 })
 fieldTin.addEventListener('click', () => {
     document.querySelector('.size_cake_tin').style.display = 'block';
 })
 fieldHomeStand.addEventListener('click', () => {
-    document.querySelector('.size_cake_home_tin').style.display ='none';
+    document.querySelector('.size_cake_home_tin').style.display = 'none';
 })
 fieldHomeTin.addEventListener('click', () => {
-    document.querySelector('.size_cake_home_tin').style.display ='block';
+    document.querySelector('.size_cake_home_tin').style.display = 'block';
 });
 
-removeButton=document.querySelector('#remove');
+removeButton = document.querySelector('#remove');
 
 removeButton.addEventListener('click', () => {
     const recipe_id = document.querySelector('#recipe_id_hidden').value;
     const url = `/remove?recipe_id=${recipe_id}`;
-  
+
     fetch(url)
-      .then((response) => response.text())
-      .then((status) => {
-        alert(status);
-        window.location.href='/user_dashboard';
-      });
-  });
+        .then((response) => response.text())
+        .then((status) => {
+            alert(status);
+            window.location.href = '/user_dashboard';
+        });
+});
+const calculByPerson = document.querySelector('#calculation_by_person');
+const fromPerson = document.querySelector('#from_person');
+const toPerson = document.querySelector('#to_person');
+
+calculByPerson.addEventListener('click', () => {
+    let scale = parseFloat(toPerson.value) / parseFloat(fromPerson.value)
+    for (const row of document.querySelectorAll(".ingredient_row")) {
+        const quantity_span = row.querySelector(".quantity_field");
+        if (quantity_span.innerHTML != "") {
+            const old_value = parseFloat(quantity_span.innerHTML);
+            const new_value = (old_value * scale).toFixed(2);
+            quantity_span.innerHTML = new_value;
+        }
+    }
+});
+
+const calculByPan = document.querySelector('#calculation');
+
+calculByPan.addEventListener('click', () => {
+    const size = document.querySelector('#size').value;
+    const sizeY = document.querySelector('#size_y').value;
+    const homeSize = document.querySelector('#home_size').value;
+    const homeSizeY = document.querySelector('#home_size_y').value;
+
+    let recipeArea, recipeHomeArea, radius, x, y, scale;
+
+    if (fieldStand.checked == true) {
+        radius = parseFloat(size) / 2;
+        recipeArea = Math.PI * radius * radius;
+    } else {
+        x = parseFloat(size);
+        y = parseFloat(sizeY);
+        recipeArea = x * y;
+    }
+
+    if (fieldHomeStand.checked == true) {
+        radius = parseFloat(homeSize) / 2;
+        recipeHomeArea = Math.PI * radius * radius;
+    } else {
+        x = parseFloat(homeSize);
+        y = parseFloat(homeSizeY);
+        recipeHomeArea = x * y;
+    }
+
+    scale = recipeHomeArea / recipeArea
+
+    if (measurement.value != homeMeasurement.value) {
+        if (measurement.value == 'cm') {
+            scale = scale * 2.54 * 2.54
+        } else {
+            scale = scale / 2.54 / 2.54
+        }
+    }
+
+    for (const row of document.querySelectorAll(".ingredient_row")) {
+        const quantity_span = row.querySelector(".quantity_field");
+        if (quantity_span.innerHTML != "") {
+            const old_value = parseFloat(quantity_span.innerHTML);
+            const new_value = (old_value * scale).toFixed(2);
+            quantity_span.innerHTML = new_value;
+        }
+    }
+});
+
+for (const row of document.querySelectorAll(".ingredient_row")) {
+    const unit_span = row.querySelector(".unit_field");
+    const select = unit_span.querySelector('select');
+    if (select) {
+        select.addEventListener('change', (event) => {
+            const unitField = event.target.parentNode;
+            const ingredientRow = unitField.parentNode;
+            const quantityField = ingredientRow.querySelector('.quantity_field');
+            const ingredientId = ingredientRow.querySelector('.ingredient_id_field').value;
+            fetch('/convert', {
+                method: 'POST',
+                body: JSON.stringify({ 'ingredient_id': ingredientId, 'unit': event.target.value }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    const quantity = responseJson['quantity'];
+                    quantityField.innerHTML = parseFloat(quantity).toFixed(2);
+                });
+        });
+    }
+}

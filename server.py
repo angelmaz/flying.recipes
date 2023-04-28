@@ -134,6 +134,14 @@ def save():
 
     return jsonify({"new_file_path": new_file_path})
 
+@app.route('/convert', methods=["POST"])
+def convert():
+    ingredient_id = request.json.get("ingredient_id")
+    unit = request.json.get('unit')
+    ingredient = crud.get_ingredient_by_id(ingredient_id=ingredient_id)
+   
+    new_ingredient = engine.convert_ingredient(ingredient, unit)
+    return jsonify({'quantity':new_ingredient.quantity})
 
 @app.route('/remove')
 def remove():
