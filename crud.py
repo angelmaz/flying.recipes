@@ -79,10 +79,10 @@ def get_ingredient_by_id(ingredient_id):
     return Ingredient.query.get(ingredient_id)
 
 
-def create_favorite(recipe, user):
+def create_favorite(user_id, recipe_id):
     """Create and return favorite recipe"""
 
-    favorite = Favorite(recipe=recipe, user=user)
+    favorite = Favorite(user_id=user_id, recipe_id=recipe_id)
     return favorite
 
 
@@ -91,6 +91,12 @@ def get_favorite_by_id(favorite_id):
 
     return Favorite.query.get(favorite_id)
 
+def get_favorites_by_user_id(user_id):
+    """return list of favorite recipes"""
+    return Favorite.query.filter(Favorite.user_id == user_id)
+
+def get_favorite_by_user_id_and_recipe_id(user_id, recipe_id):
+    return Favorite.query.filter(Favorite.user_id == user_id, Favorite.recipe_id == recipe_id)
 
 def create_rating(user, recipe, score):
     """Create and return a new rating."""

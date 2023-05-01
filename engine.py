@@ -51,34 +51,24 @@ def convert_ingredient(ingredient, new_unit):
 
     return new_ingredient
 
-
-def scale_ingredient(ingredient, scale):
-    """scale ingredient by multiplying the quantity by scale"""
-
-    # create the copy of the ingredient
-    new_ingredient = Ingredient(name=ingredient.name, quantity=ingredient.quantity, unit=ingredient.unit,
-                                ingredient_id=ingredient.ingredient_id, recipe_id=ingredient.recipe_id)
-    # multiply the quantity
-    new_ingredient.quantity = ingredient.quantity * scale
-    return new_ingredient
-
-
-def scale_recipe(recipe, scale):
-    """scale each ingredient in the recipe"""
-
-    # create a copy of the recipe without ingredients
-    new_recipe = Recipe(ingredients=[], recipe_id=recipe.recipe_id,
-                        author_id=recipe.author_id, title=recipe.title, description=recipe.description)
-    
-    # scale each ingredient and accumulate in new_recipe.ingredients
-    for ingredient in recipe.ingredients:
-        scaled_ingredient = scale_ingredient(ingredient, scale)
-
-        new_recipe.ingredients.append(scaled_ingredient) 
-
-    return new_recipe
-
-
+def quick_convert(quantity, unit, new_unit):
+    new_quantity = None
+    if unit in weight_units and new_unit in weight_units:
+        # convert from old unit to grams
+        grams = float(quantity) * weights_in_g[unit] 
+        # convert from grams to the new unit
+        new_quantity = grams / weights_in_g[new_unit]   
+    # the same with volumes
+    elif unit in volume_units and new_unit in volume_units:
+        milliliters = float(quantity) * volumes_in_ml[unit]
+        new_quantity = milliliters / volumes_in_ml[new_unit]
+    # if unit is the same do nothing
+    elif unit == new_unit:
+        pass 
+    else:
+        print(f'Cannot convert from {unit} to {new_unit}')
+        return None
+    return new_quantity
 def str_to_float(quantity_str):
     """converts quantity from str to float"""
     
@@ -97,6 +87,3 @@ def str_to_float(quantity_str):
             return float(nom) / float(denom)
     else:
         return float(quantity_str)
-
-
-

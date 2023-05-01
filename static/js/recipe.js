@@ -93,7 +93,7 @@ calculByPan.addEventListener('click', () => {
         if (measurement.value == 'cm') {
             scale = scale * 2.54 * 2.54
         } else {
-            scale = scale / 2.54 / 2.54
+            scale = scale * 2.54 / 2.54
         }
     }
 

@@ -17,11 +17,19 @@ TEMP_IMG_NAME = 'temp.jpeg'
 app.config['MAX_CONTENT_PATH'] = 10000000
 
 
+@app.context_processor
+def inject_global_vars():
+    return dict(all_units=engine.all_units, weight_units=engine.weight_units, volume_units=engine.volume_units)
+
+
 @app.route("/")
 def index():
     """Return homepage."""
     recipes = crud.get_recipes()
-    return render_template("homepage.html", recipes=recipes)
+    my_favorites = crud.get_favorites_by_user_id(
+        session['logged_in_user_id'])
+    my_favorite_recipe_ids = [favorite.recipe_id for favorite in my_favorites]
+    return render_template("homepage.html", recipes=recipes, my_favorite_recipe_ids=my_favorite_recipe_ids)
 
 
 @app.route("/login", methods=["GET"])
@@ -81,23 +89,25 @@ def register_user():
 @app.route("/user_dashboard")
 def user_dashboard():
     """Return page showing all the created and favorites recipes"""
+    favorites = crud.get_favorites_by_user_id(
+        user_id=session["logged_in_user_id"])
+    favorite_recipes = [favorite.recipe for favorite in favorites]
+    own_recipes = crud.get_recipes_by_author_id(session["logged_in_user_id"])
+    my_favorite_recipe_ids = [favorite.recipe_id for favorite in favorites]
 
-    recipes_author = crud.get_recipes_by_author_id(
-        session["logged_in_user_id"])
-    recipe_list = crud.get_favorite_by_id
-    return render_template("user_dashboard.html", recipe_list=recipe_list, recipes=recipes_author)
+    return render_template("user_dashboard.html", favorite_recipes=favorite_recipes, own_recipes=own_recipes, my_favorite_recipe_ids=my_favorite_recipe_ids)
 
 
 @app.route("/create_recipe")
 def create_recipe():
 
-    return render_template("create_recipe.html", all_units=engine.all_units)
+    return render_template("create_recipe.html")
 
 
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
     recipe = crud.get_recipe_by_id(recipe_id)
-    return render_template("recipe.html", recipe=recipe, weight_units=engine.weight_units, volume_units=engine.volume_units)
+    return render_template("recipe.html", recipe=recipe)
 
 
 @app.route('/get_all_units')
@@ -134,14 +144,26 @@ def save():
 
     return jsonify({"new_file_path": new_file_path})
 
+
 @app.route('/convert', methods=["POST"])
 def convert():
     ingredient_id = request.json.get("ingredient_id")
     unit = request.json.get('unit')
     ingredient = crud.get_ingredient_by_id(ingredient_id=ingredient_id)
-   
+
     new_ingredient = engine.convert_ingredient(ingredient, unit)
-    return jsonify({'quantity':new_ingredient.quantity})
+    return jsonify({'quantity': new_ingredient.quantity})
+
+
+@app.route('/quick_convert', methods=['POST'])
+def quick_convert():
+    quantity = request.json.get("quantity")
+    unit = request.json.get("unit")
+    new_unit = request.json.get("new_unit")
+
+    new_quantity = engine.quick_convert(quantity, unit, new_unit)
+    return jsonify({"new_quantity": new_quantity})
+
 
 @app.route('/remove')
 def remove():
@@ -181,6 +203,37 @@ def rename_file():
         return "STATUS: OK"
     else:
         print(f'request.method = {request.method} (not POST)')
+
+
+@app.route('/favorite_recipe')
+def favorite_recipe():
+    """Add recipe to favorites"""
+
+    recipe_id = request.args.get('recipe_id')
+    logged_in_user_id = session.get('logged_in_user_id')
+    if logged_in_user_id is None:
+        flash('You have to be logged in')
+        return jsonify({'status': False})
+    else:
+        favorite = crud.create_favorite(logged_in_user_id, recipe_id)
+        db.session.add(favorite)
+        db.session.commit()
+        return jsonify({'status': True})
+
+
+@app.route('/remove_favorite_recipe')
+def remove_favorite_recipe():
+    recipe_id = request.args.get('recipe_id')
+    logged_in_user_id = session.get('logged_in_user_id')
+    if logged_in_user_id is None:
+        flash('You have to be logged in')
+        return jsonify({'status': False})
+    else:
+        favorites_to_delete = crud.get_favorite_by_user_id_and_recipe_id(
+            logged_in_user_id, recipe_id)
+        db.session.delete(favorites_to_delete.first())
+        db.session.commit()
+        return jsonify({'status': True})
 
 
 @app.route("/logout")
