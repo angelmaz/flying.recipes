@@ -6,6 +6,7 @@ import engine
 from jinja2 import StrictUndefined
 from sqlalchemy import delete
 import os
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
@@ -236,6 +237,18 @@ def remove_favorite_recipe():
         return jsonify({'status': True})
 
 
+@app.route('/search')
+def search():
+    ingredient_name = request.args.get('ingredient_name')
+    if ingredient_name:
+        filtered_recipes = Recipe.query.join(Recipe.ingredients).filter(
+            Ingredient.name.like(f'%{ingredient_name}%')).all()
+        return render_template('search.html', recipes=filtered_recipes)
+    else:
+        all_recipes = Recipe.query.all()
+        return render_template('search.html', recipes=all_recipes)
+
+
 @app.route("/logout")
 def process_logout():
     """Log user out."""
@@ -248,8 +261,3 @@ def process_logout():
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True)
-
-# @app.route('/user_dashboard/<favorite_by_id>')
-# def favorite_by_id(favorite_id):
-#     favorite_by_id = crud.get_favorite_by_id(favorite_id)
-#     return render_template('user_dashboard.html', favorite_by_id=favorite_by_id)

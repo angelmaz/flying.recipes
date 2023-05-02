@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Kitchen Helper | Wherever you are!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <section class="col-sx-12 col-sm-12 col-md-9 ">
+            <div>
+                <section>
+                    <img src="static/img/center.png">
+                </section>
+            </div>
+            <div id="recipes" class="row">
+                {% for recipe in recipes %}
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 mt-3">
+                    <a href="/recipe/{{ recipe.recipe_id }}">
+                        <div class="card text-center bg-light">
+                            <img class="card-img-top img-circle" src="{{ recipe.image_url }}">
+
+                            <div class="card-body">
+                                <h5 class="card-title">{{ recipe.title }}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
