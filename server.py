@@ -27,9 +27,10 @@ def inject_global_vars():
 def index():
     """Return homepage."""
     recipes = crud.get_recipes()
-    my_favorites = crud.get_favorites_by_user_id(
-        session['logged_in_user_id'])
-    my_favorite_recipe_ids = [favorite.recipe_id for favorite in my_favorites]
+    my_favorite_recipe_ids = []
+    if "logged_in_user_id" in session:
+        my_favorites = crud.get_favorites_by_user_id(session['logged_in_user_id'])
+        my_favorite_recipe_ids = [favorite.recipe_id for favorite in my_favorites]
     return render_template("homepage.html", recipes=recipes, my_favorite_recipe_ids=my_favorite_recipe_ids)
 
 

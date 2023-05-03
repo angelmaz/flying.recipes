@@ -13,12 +13,14 @@
             <div id="recipes" class="row">
                 {% for recipe in recipes %}
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 mt-3">
+                    {% if 'logged_in_user_id' in session %}
                     <img class="full_hearth" id="hearth_full_{{recipe.recipe_id}}" width=25
                         src="static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}
                         style="display:none" {% endif %}>
                     <img class="empty_hearth" id="hearth_empty_{{recipe.recipe_id}}" width=25
                         src="static/img/hearth_empty_100.png" {% if recipe.recipe_id in my_favorite_recipe_ids %}
                         style="display:none" {% endif %}>
+                    {% endif %}
                     <a href="/recipe/{{ recipe.recipe_id }}">
                         <div class="card text-center bg-light">
                             <img class="card-img-top img-circle" src="{{ recipe.image_url }}">
