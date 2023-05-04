@@ -106,7 +106,12 @@ def user_dashboard():
 @app.route("/create_recipe")
 def create_recipe():
 
-    return render_template("create_recipe.html")
+    return render_template("create_recipe.html", recipe=None)
+
+@app.route("/edit_recipe/<recipe_id>")
+def edit_recipe(recipe_id):
+    recipe = crud.get_recipe_by_id(recipe_id)
+    return render_template("create_recipe.html", recipe=recipe)
 
 
 @app.route("/recipe/<recipe_id>")
@@ -125,9 +130,25 @@ def save():
     ingredients = request.json.get("ingredients")
     title = request.json.get('title')
     description = request.json.get('description')
-    db_recipe = crud.create_recipe_from_author_id(
-        author_id=session['logged_in_user_id'], title=title, description=description, image_url='/static/img/photo_recipes/1.jpeg')
-    db.session.add(db_recipe)
+    recipe_id = request.json.get('recipe_id')
+    
+    create_new = False
+    if recipe_id == "":
+        create_new = True
+
+    db_recipe = None
+    if create_new:
+        # create a new recipe
+        db_recipe = crud.create_recipe_from_author_id(
+            author_id=session['logged_in_user_id'], title=title, description=description, image_url='/static/img/photo_recipes/1.jpeg')
+        db.session.add(db_recipe)
+    else:
+        # update existing recipe
+        db_recipe = crud.get_recipe_by_id(recipe_id)
+        db_recipe.title = title
+        db_recipe.description = description
+        Ingredient.query.filter_by(recipe_id=recipe_id).delete()
+    
     for ingredient_dict in ingredients:
         quantity_str, unit, name = (
             ingredient_dict["quantity"],
@@ -142,11 +163,9 @@ def save():
     db.session.commit()
 
     recipe_id = db_recipe.recipe_id
-
     new_file_path = f'{app.config["UPLOAD_FOLDER"]}/{recipe_id}.jpeg'
     db_recipe.image_url = f'/{new_file_path}'
     db.session.commit()
-
     return jsonify({"new_file_path": new_file_path})
 
 

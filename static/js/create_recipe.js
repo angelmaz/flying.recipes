@@ -6,12 +6,12 @@ addIngredient.addEventListener('click', () => {
         .then((response) => response.json())
         .then((responseData) => {
             let all_units = responseData['all_units'];
-            let unitList = '<div> quantity <input type="text" id="quantity" value=" " size="8"> unit <select id="unit">';
+            let unitList = '<div> quantity <input type="text" id="quantity" value="" size="8"> unit <select id="unit">';
             for (let unit of all_units) {
                 unitList += '<option value=' + unit + '>' + unit + '</option>'
 
             }
-            unitList += '</select>name <input type="text" id="name" value=" " size="8"></div>';
+            unitList += '</select> name <input type="text" id="name" value="" size="60"></div>';
             ingredientList.insertAdjacentHTML('beforeend', unitList);
         });
 });
@@ -30,46 +30,52 @@ upload_form.addEventListener('submit', (event) => {
     }
     let title = document.querySelector('#title').value;
     let description = document.querySelector('#description').value;
+    let recipe_id = document.querySelector('#recipe_id_hidden').value;
     fetch('/save', {
         method: 'POST',
-        body: JSON.stringify({ 'ingredients': formInputs, 'title': title, 'description': description }),
+        body: JSON.stringify({ 'ingredients': formInputs, 'title': title, 'description': description, 'recipe_id': recipe_id }),
         headers: {
             'Content-Type': 'application/json',
         },
     })
         .then((response) => response.json())
         .then((responseJson) => {
-            const new_file_path = responseJson['new_file_path'];
-            const formData = new FormData(upload_form);
-            formData.append('new_file_path', new_file_path);
-            fetch('/uploader', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => {
-                    fetch('/rename', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ 'new_file_path': new_file_path })
-                    })
-                        .then(response => {
-                            if (response.status === 200) {
-                                window.location.href = '/user_dashboard';
-                            } else {
-                                console.log('Error submitting data');
-                            }
-                        })
-                        .catch(error => {
-                            console.log('Network error', error);
-                        });
-
-
+            let file_input = document.querySelector("#file_input")
+            if (!file_input.value) {
+                // keep existing image
+                window.location.href = '/user_dashboard';
+            } else {
+                // new image uploaded
+                const new_file_path = responseJson['new_file_path'];
+                const formData = new FormData(upload_form);
+                formData.append('new_file_path', new_file_path);
+                fetch('/uploader', {
+                    method: 'POST',
+                    body: formData
                 })
-                .catch(error => {
-                    console.error('Error occured:', error);
-                });
+                    .then(response => {
+                        fetch('/rename', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ 'new_file_path': new_file_path })
+                        })
+                            .then(response => {
+                                if (response.status === 200) {
+                                    window.location.href = '/user_dashboard';
+                                } else {
+                                    console.log('Error submitting data');
+                                }
+                            })
+                            .catch(error => {
+                                console.log('Network error', error);
+                            });
+                    })
+                    .catch(error => {
+                        console.error('Error occured:', error);
+                    });
+            }
 
         });
 });

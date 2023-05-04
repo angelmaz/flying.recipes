@@ -94,6 +94,8 @@ def quick_convert(quantity, unit, new_unit):
         print(f'Cannot convert from {unit} to {new_unit}')
         return None
     return new_quantity
+
+
 def str_to_float(quantity_str):
     """converts quantity from str to float"""
     
