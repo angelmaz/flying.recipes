@@ -14,6 +14,10 @@
             <div>
                 <a href="/create_recipe">Here you can create your best recipe!</a>
             </div>
+            <div> If you like, copy a link to your favorite recipe from foodnetwork.com and paste here
+                <input text="text" id="link_web_scrapping" value="">
+                <input type="button" id='link_button' value="Take">
+            </div>
             <div id="own_recipes" class="row">
                 <h1>My recipes:</h1>
                 {% for recipe in own_recipes %}

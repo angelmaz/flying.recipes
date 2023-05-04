@@ -19,3 +19,20 @@ for (const hearth_full of hearths_full) {
             });
     })
 }
+
+const takeRecipe = document.querySelector('#link_button')
+const linkWeb = document.querySelector('#link_web_scrapping')
+
+takeRecipe.addEventListener('click', () => {
+    fetch(`/web_scrapping?url=${linkWeb.value}`)
+        .then((response) => response.json())
+        .then((responseJson) => {
+            const status = responseJson['status'];
+            if (status) {
+                alert("recipe succesfully added to your list");
+                location.reload()
+            } else {
+                alert("cannot fetch the recipe");
+            }
+        })
+})

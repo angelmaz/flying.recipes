@@ -7,6 +7,7 @@ from jinja2 import StrictUndefined
 from sqlalchemy import delete
 import os
 from flask_sqlalchemy import SQLAlchemy
+import fetch
 
 
 app = Flask(__name__)
@@ -29,8 +30,10 @@ def index():
     recipes = crud.get_recipes()
     my_favorite_recipe_ids = []
     if "logged_in_user_id" in session:
-        my_favorites = crud.get_favorites_by_user_id(session['logged_in_user_id'])
-        my_favorite_recipe_ids = [favorite.recipe_id for favorite in my_favorites]
+        my_favorites = crud.get_favorites_by_user_id(
+            session['logged_in_user_id'])
+        my_favorite_recipe_ids = [
+            favorite.recipe_id for favorite in my_favorites]
     return render_template("homepage.html", recipes=recipes, my_favorite_recipe_ids=my_favorite_recipe_ids)
 
 
@@ -248,6 +251,14 @@ def search():
     else:
         all_recipes = Recipe.query.all()
         return render_template('search.html', recipes=all_recipes)
+
+
+@app.route('/web_scrapping')
+def web_scrapping():
+    author_id = session['logged_in_user_id']
+    url = request.args.get('url')
+    fetch.download_recipe(author_id, url)
+    return jsonify({'status': True})
 
 
 @app.route("/logout")

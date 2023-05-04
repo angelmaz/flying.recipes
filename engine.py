@@ -16,7 +16,32 @@ volumes_in_ml = {
     'cup': 236.6,
     'gal': 3785,
 }
-
+def to_canonical(text):
+    if text in ['g','gram','grams','gramy','gramów','grama']:
+        return 'g'
+    elif text in ['kg','kilogram','kilograms','kilogramów','kilograma']:
+        return 'kg'
+    elif text in ['oz','ounce','ounces']:
+        return 'oz'
+    elif text in ['lb', 'lbs','pound','pounds']:
+        return 'lb'
+    elif text in ['ml','milliliter','milliliters','mililitr','mililitów','mililitra',]:
+        return 'ml'
+    elif text in ['l','liters','liter','litrów','litra']:
+        return 'l'
+    elif text in ['tsp','tspn','teaspoon','teaspoons','łyżeczka','łyżeczki','łyżeczek']:
+        return 'tsp'
+    elif text in ['tbsp','tbspn', 'tablespoon','tablespoons','łyżka','łyżki','łyżek']:
+        return 'Tbsp'
+    elif text in ['fl','fluid','floz',]:
+        return 'fl oz'
+    elif text in ['cup', 'cups', 'szklanka', 'szklanki', 'szklanek']:
+        return 'cup'
+    elif text in ['gal', 'gallon', 'gallons']:
+        return 'gal'
+    else:
+        return None
+    
 # create lists of different types of units
 weight_units = list(weights_in_g.keys())
 volume_units = list(volumes_in_ml.keys())
