@@ -54,25 +54,25 @@ for (let element_volume of [v_quantity, v_unit, new_v_unit]) {
 
     });
 }
-quick_temperature_c.addEventListener("change", () => {
+// quick_temperature_c.addEventListener("change", () => {
 
-    let celsius_string = quick_temperature_c.value;
-    if (celsius_string == "") {
-        quick_temperature_f.value = "";
-    } else {
-        quick_temperature_f.value = ((parseFloat(celsius_string) * 1.8) + 32).toFixed(0);
-    }
-});
-quick_temperature_f.addEventListener('change', () => {
-    let fahrenheit_string = quick_temperature_f.value;
-    if (fahrenheit_string == "") {
-        quick_temperature_c.value = "";
-    } else {
-        quick_temperature_c.value = ((parseFloat(fahrenheit_string) - 32) / 1.8).toFixed(0);
-    }
+//     let celsius_string = quick_temperature_c.value;
+//     if (celsius_string == "") {
+//         quick_temperature_f.value = "";
+//     } else {
+//         quick_temperature_f.value = ((parseFloat(celsius_string) * 1.8) + 32).toFixed(0);
+//     }
+// });
+// quick_temperature_f.addEventListener('change', () => {
+//     let fahrenheit_string = quick_temperature_f.value;
+//     if (fahrenheit_string == "") {
+//         quick_temperature_c.value = "";
+//     } else {
+//         quick_temperature_c.value = ((parseFloat(fahrenheit_string) - 32) / 1.8).toFixed(0);
+//     }
 
 
-});
+// });
 
 
 const searchButton = document.querySelector('#search')
