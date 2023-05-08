@@ -122,8 +122,7 @@ def recipe(recipe_id):
 
 @app.route('/get_all_units')
 def get_all_units():
-    return jsonify({'all_units': engine.all_units})
-
+    return jsonify({'all_units': engine.all_units, 'weight_units': engine.weight_units, 'volume_units': engine.volume_units})
 
 @app.route('/save', methods=["POST"])
 def save():

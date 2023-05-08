@@ -46,51 +46,10 @@
   </form>
   <div>
     <h1>Quick convert</h1>
-    <div>
-      <div>Weight</div>
-      <div>
-        From: <input type="text" id="quick_weight_eu">
-        <select id="unit_weight_eu">
-          {% for unit in weight_units %}
-          <option value="{{unit}}">{{unit}}</option>
-          {% endfor %}
-        </select>
-      </div>
-    </div>
-    <div>
-      To: <span id="quick_weight_us"></span>
-      <select id="unit_weight_us">
-        {% for unit in weight_units %}
-        <option value="{{unit}}">{{unit}}</option>
-        {% endfor %}
-      </select>
-    </div>
-  </div>
-  <div>
-    <div>
-      <div>Volume</div>
-      From: <input type="text" id="quick_volume_eu">
-      <select id="unit_volume_eu">
-        {% for unit in volume_units %}
-        <option value="{{unit}}">{{unit}}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div>
-      To: <span id="quick_volume_us"></span>
-      <select id="unit_volume_us">
-        {% for unit in volume_units %}
-        <option value="{{unit}}">{{unit}}</option>
-        {% endfor %}
-      </select>
-    </div>
-  </div>
-  <div>
+    <div id="Qweight"></div>
+    <div id="Qvolume"></div>
     <div id="temperature"></div>
   </div>
-  </div>
-
-
 
   {% block body %}{% endblock %}
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
