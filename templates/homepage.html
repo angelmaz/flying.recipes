@@ -2,15 +2,18 @@
 {% block title %}Kitchen Helper | Wherever you are!{% endblock %}
 
 {% block body %}
+
 <div class="container">
+    <div class="spacer" style="height: 30px;"></div>
+    <div class="slider-container">
+        <div class="slider-item" style="background-image: url(static/img/photo_recipes/5.jpeg)"></div>
+        <div class="slider-item" style="background-image: url(static/img/photo_recipes/4.jpeg)"></div>
+        <div class="slider-item" style="background-image: url(static/img/photo_recipes/8.jpeg)"></div>
+    </div>
+    <div class="spacer" style="height: 300px;"></div>
     <div class="row">
-        <section class="col-sx-12 col-sm-12 col-md-9 ">
-            <div>
-                <section>
-                    <img src="static/img/center.png">
-                </section>
-            </div>
-            <div id="recipes" class="row">
+        <section class="col-sx-12 col-sm-12 col-md-12">
+            <div id="recipes" class="row d-flex justify-content-center">
                 {% for recipe in recipes %}
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 mt-3">
                     {% if 'logged_in_user_id' in session %}
@@ -24,7 +27,6 @@
                     <a href="/recipe/{{ recipe.recipe_id }}">
                         <div class="card text-center bg-light">
                             <img class="card-img-top img-circle" src="{{ recipe.image_url }}">
-
                             <div class="card-body">
                                 <h5 class="card-title">{{ recipe.title }}</h5>
                             </div>
@@ -35,6 +37,7 @@
             </div>
         </section>
     </div>
+
 </div>
-<script src="/static/js/homepage.js"></script>
+<script src='/static/js/homepage.js'></script>
 {% endblock %}
