@@ -94,6 +94,7 @@
 
 
 </div>
+{% if "logged_in_user_id" in session and session["logged_in_user_id"] == recipe.author_id %}
 <div>
     <input type="hidden" id="recipe_id_hidden" value="{{recipe.recipe_id}}">
     <input type="button" id="remove" value="Remove recipe">
@@ -101,6 +102,7 @@
         <input type="button" id="edit_recipe" value="Edit recipe">
     </a>
 </div>
+{% endif %}
 
 <div class="my-recipe-card">
     <h3><span>Ingredients</span></h3>

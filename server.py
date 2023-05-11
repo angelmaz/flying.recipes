@@ -194,6 +194,7 @@ def remove():
 
     remove_recipe_id = request.args.get('recipe_id')
     recipe = Recipe.query.filter_by(recipe_id=remove_recipe_id).first()
+
     if recipe:
         db.session.delete(recipe)
         db.session.commit()

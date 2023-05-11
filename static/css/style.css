@@ -1,7 +1,7 @@
 .slider-container {
   position: relative;
-  width: 200%;
-  height: 400px;
+  width: 100%;
+  height: 200px;
 }
 
 .slider-item {
@@ -9,7 +9,7 @@
   top: 60;
   left: 0;
   width: 100%;
-  height: 20%;
+  height: 100%;
   background-position: center;
   background-size: cover;
   opacity: 0;
@@ -18,12 +18,7 @@
 
 .slider-item.active {
   opacity: 1;
-}
 
-@media (max-width: 768px) {
-  .slider-container {
-    height: 200px;
-  }
 }
 
 form.search-form {
@@ -66,6 +61,7 @@ form.search-form {
   vertical-align: top;
   border-radius: 5px;
   height: 100%;
+  background-color: white;
 }
 .card:last-child {
   margin-right: 0;
@@ -77,14 +73,14 @@ h1 {
   position: relative;
   width: 100%;
   max-width: 300px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgb(255, 255, 255);
   border: none;
 }
 
 #recipes .full_hearth, #recipes .empty_hearth {
-  position:sticky;
-  top: 5px;
-  right: 5px;
+  
+  top: 0px;
+  right: 0px;
   z-index: 1;
 }
 .login {
@@ -430,7 +426,7 @@ h3 {
 }
 
 .card-img-top {
-  width: 100%;
+  width: 70%;
   height: auto;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -448,8 +444,8 @@ h3 {
 
 .full_hearth {
   position:sticky;
-  top: 5px;
-  right: 5px;
+  top: 0px;
+  right: 0px;
   z-index: 1;
 }
 

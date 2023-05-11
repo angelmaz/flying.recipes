@@ -3,58 +3,60 @@
 
 {% block body %}
 
+
+
+<div class="container">
+  <section>
+    <img src="static/img/center.png">
+  </section>
+</div>
+<div class="container">
+  <a href="/create_recipe">Here you can create your best recipe!</a>
+</div>
+<div class="container">
+  If you like, copy a link to your favorite recipe from foodnetwork.com and paste here
+  <input text="text" id="link_web_scrapping" value="">
+  <input type="button" id='link_button' value="Take">
+</div>
+<div class="spacer" style="height: 50px;"></div>
 <div class="row">
-    <section class="col-sx-12 col-sm-12 col-md-9">
-      <div>
-        <section>
-          <img src="static/img/center.png">
-        </section>
-      </div>
-      <div>
-        <a href="/create_recipe">Here you can create your best recipe!</a>
-      </div>
-      <div>
-        If you like, copy a link to your favorite recipe from foodnetwork.com and paste here
-        <input text="text" id="link_web_scrapping" value="">
-        <input type="button" id='link_button' value="Take">
-      </div>
-      <div class="container">
-        <div id="own_recipes" class="row">
-          <h1>My recipes:</h1>
-          {% for recipe in own_recipes %}
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 mt-3">
-            <div class="card-mf text-center bg-light">
-              <a href="/recipe/{{ recipe.recipe_id }}">
-                <img class="card-img-top img-circle" src="{{ recipe.image_url }}">
-              </a>
-              <div class="row d-flex justify-content-center">
-                <h5 class="card-title"><a href="/recipe/{{ recipe.recipe_id }}">{{ recipe.title }}</a></h5>
-              </div>
+  <section class="col-sx-12 col-sm-12 col-md-12">
+    <div id="own_recipes" class="row d-flex justify-content-center">
+      <h1>My recipes:</h1>
+      {% for recipe in own_recipes %}
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 mt-3">
+        <a href="/recipe/{{ recipe.recipe_id }}">
+          <div>
+            <img class="card-img-top img-circle" src="{{ recipe.image_url }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ recipe.title }}</h5>
             </div>
           </div>
-          {% endfor %}
-        </div>
+        </a>
       </div>
-      
-      <div class="container">
-        <div id="favorite_recipes" class="row">
-          <h1>My favorite recipes:</h1>
-          {% for recipe in favorite_recipes %}
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 mt-3">
-            <div class="card-mf text-center bg-light">
-              <a href="/recipe/{{ recipe.recipe_id }}">
-                <img class="card-img-top img-circle" src="{{ recipe.image_url }}">
-              </a>
-              <div class="card-body">
-                <h5 class="card-title"><a href="/recipe/{{ recipe.recipe_id }}">{{ recipe.title }}</a></h5>
-              </div>
-              <img class="full_hearth-ud" id="hearth_full_{{recipe.recipe_id}}" width=25 src="static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}style="display:none" {% endif %}>
-            </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+<div class="row">
+  <section class="col-sx-12 col-sm-12 col-md-12">
+    <div id="favorite_recipes" class="row d-flex justify-content-center">
+      <h1>My favorite recipes:</h1>
+      {% for recipe in favorite_recipes %}
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 mt-3">
+        <img class="full_hearth" id="hearth_full_{{recipe.recipe_id}}" width=25 src="static/img/hearth_full_100.png" {%
+          if not recipe.recipe_id in my_favorite_recipe_ids %} style="display:none" {% endif %}>
+        <a href="/recipe/{{ recipe.recipe_id }}">
+          <img class="card-img-top img-circle" src="{{ recipe.image_url }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ recipe.title }}</h5>
+            <div class=" bg-light"></div>
           </div>
-          {% endfor %}
-        </div>
+        </a>
       </div>
-    </section>
-  </div>
-  <script src="/static/js/user_dashboard.js"></script>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+<script src="/static/js/user_dashboard.js"></script>
 {% endblock %}

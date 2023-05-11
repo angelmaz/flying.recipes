@@ -31,7 +31,7 @@ fieldHomeTin.addEventListener('click', () => {
 });
 
 removeButton = document.querySelector('#remove');
-
+if (removeButton){
 removeButton.addEventListener('click', () => {
     const recipe_id = document.querySelector('#recipe_id_hidden').value;
     const url = `/remove?recipe_id=${recipe_id}`;
@@ -43,6 +43,7 @@ removeButton.addEventListener('click', () => {
             window.location.href = '/user_dashboard';
         });
 });
+}
 const calculByPerson = document.querySelector('#calculation_by_person');
 const fromPerson = document.querySelector('#from_person');
 const toPerson = document.querySelector('#to_person');
