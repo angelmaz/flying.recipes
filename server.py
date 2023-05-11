@@ -8,6 +8,7 @@ from sqlalchemy import delete
 import os
 from flask_sqlalchemy import SQLAlchemy
 import fetch
+from passlib.hash import argon2
 
 
 app = Flask(__name__)
@@ -57,7 +58,7 @@ def process_login():
         flash("No such email address, please create account")
         return redirect('/create_account')
 
-    if user.password != password:
+    if not argon2.verify(password, user.password):
         flash("Incorrect password, try again.")
         return redirect("/login")
 
@@ -83,7 +84,7 @@ def register_user():
     if user:
         flash("Cannot create an account with that email. Try again.")
     else:
-        user = crud.create_user(email, password)
+        user = crud.create_user(email, argon2.hash(password))
         db.session.add(user)
         db.session.commit()
         flash("Account created! Please log in.")

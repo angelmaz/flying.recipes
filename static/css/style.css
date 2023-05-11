@@ -447,11 +447,10 @@ h3 {
 }
 
 .full_hearth {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0.5rem;
-  cursor: pointer;
+  position:sticky;
+  top: 5px;
+  right: 5px;
+  z-index: 1;
 }
 
 .img-circle {

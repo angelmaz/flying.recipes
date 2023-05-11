@@ -48,7 +48,7 @@
               <div class="card-body">
                 <h5 class="card-title"><a href="/recipe/{{ recipe.recipe_id }}">{{ recipe.title }}</a></h5>
               </div>
-              <img class="full_hearth" id="hearth_full_{{recipe.recipe_id}}" width=25 src="static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}style="display:none" {% endif %}>
+              <img class="full_hearth-ud" id="hearth_full_{{recipe.recipe_id}}" width=25 src="static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}style="display:none" {% endif %}>
             </div>
           </div>
           {% endfor %}

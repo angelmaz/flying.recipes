@@ -7,8 +7,8 @@ import crud
 import server
 from flask import Flask
 from engine import str_to_float
+from passlib.hash import argon2
 app = Flask(__name__)
-
 
 # os.system to automatically dropdb for us
 os.system("dropdb kitchen_helper")
@@ -28,7 +28,7 @@ for user in user_data:
         user["email"],
         user["password"],
     )
-    db_user = crud.create_user(email=email, password=password)
+    db_user = crud.create_user(email=email, password=argon2.hash(password))
     users_in_db.append(db_user)
 
 db.session.add_all(users_in_db) # add all users to db
