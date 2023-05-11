@@ -2,21 +2,21 @@
 {% block title %}Recipe | Wherever you are!{% endblock %}
 
 {% block body %}
+<div class="spacer" style="height: 70px;"></div>
+<div style="text-align: center;">
+    <h2 class="mt-3" style="font-size: 4em">{{ recipe.title }}</h2>
 
-<h2 class="mt-3">{{ recipe.title }}</h2>
-
-<div class="row">
-
-    <div class="col-6">
-        <img src="{{ recipe.image_url }}" class="img-responsive">
-
+    <div class="row">
+        <div>
+            <img src="{{ recipe.image_url }}" width="500px" class="img-responsive">
+        </div>
     </div>
 </div>
 
 <div>
     <input type="button" id="scale_button" value="Scale">
 </div>
-<div class="container" id="scale_container" style="display: none">
+<div class="container-ojej" id="scale_container" style="display: none">
     <div>
         <h2>By baking pan</h2>
     </div>
@@ -102,52 +102,48 @@
     </a>
 </div>
 
-<h3><span>Ingredients</span></h3>
-<div>
-    x portions </div>
-
-<div>
-    <ul>
-        {% for ingredient in recipe.ingredients %}
-
-        <li class="ingredient_row">
-
-            <span class='quantity_field'>{% if ingredient.quantity %}
-                {{ "%.1f"|format(ingredient.quantity) }}
-                {% endif %}</span>
-
-            <span class='unit_field'>{% if ingredient.unit in weight_units %}
-                <select name="unit">
-                    {% for unit in weight_units %}
-                    <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
-                    {% endfor %}
-                </select>
-                {% elif ingredient.unit in volume_units %}
-                <select name="unit">
-                    {% for unit in volume_units %}
-                    <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
-                    {% endfor %}
-                </select>
-                {% else %}
-                {{ingredient.unit}}
-                {% endif %} </span>
-            <span class='name_field'>{{ ingredient.name }}</span>
-            <input type="hidden" class='ingredient_id_field' value="{{ingredient.ingredient_id}}">
-
-
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-
-</div>
-</div>
-<div class="col-xs-12 col-sm-8 col-md-8">
-    <h3>
-        Prepare </h3>
+<div class="my-recipe-card">
+    <h3><span>Ingredients</span></h3>
+    <div>x portions</div>
     <div>
-        <p> {{ recipe.description }} </p>
+        <ul>
+            {% for ingredient in recipe.ingredients %}
+            <li class="ingredient_row">
+                <span class="quantity_field">
+                    {% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{% endif %}
+                </span>
+                <span class="unit_field">
+                    {% if ingredient.unit in weight_units %}
+                    <select name="unit">
+                        {% for unit in weight_units %}
+                        <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
+                        {% endfor %}
+                    </select>
+                    {% elif ingredient.unit in volume_units %}
+                    <select name="unit">
+                        {% for unit in volume_units %}
+                        <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
+                        {% endfor %}
+                    </select>
+                    {% else %}
+                    {{ingredient.unit}}
+                    {% endif %}
+                </span>
+                <span class="name_field">{{ ingredient.name }}</span>
+                <input type="hidden" class="ingredient_id_field" value="{{ingredient.ingredient_id}}">
+            </li>
+            {% endfor %}
+        </ul>
     </div>
+
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <h3>Prepare</h3>
+        <div>
+            <p>{{ recipe.description }}</p>
+        </div>
+    </div>
+
+    <script src="/static/js/recipe.js"></script>
 </div>
-<script src="/static/js/recipe.js"></script>
+
 {% endblock %}

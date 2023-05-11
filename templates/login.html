@@ -2,14 +2,23 @@
 {% block title %}Login | Kitchen helper{% endblock %}
 
 {% block body %}
-<form action="/login" method="post" accept-charset="UTF-8">
-    <div> <label for="email">Adress e-mail <span title="This field is required.">*</span></label>
-        <input title="" type="text" name="email" value="" size="60" maxlength="60">
+<div class="spacer" style="height: 100px;"></div>
+<div class="container" id="login">
+    <form action="/login" method="post" accept-charset="UTF-8">
+        <div>
+            <label for="email">Adress e-mail <span title="This field is required.">*</span></label>
+            <input title="" type="text" name="email" value="" size="60" maxlength="60">
+        </div>
+        <div> <label for="password">Password <span title="This field is required.">*</span></label>
+            <input title="" type="password" name="password" size="60" maxlength="128">
+        </div>
+        <div><button type="submit" value="login">Login</button>
+        </div>
+    </form>
+    
+    <div class="welcome-back">
+        <h2>Welcome Back!</h2>
+        <img src="static/img/cupcake.jpeg" alt="Cupcake">
     </div>
-    <div> <label for="password">Password <span title="This field is required.">*</span></label>
-        <input title="" type="password" name="password" size="60" maxlength="128">
-    </div>
-    <div><button type="submit" value="login">Login</button>
-    </div>
-</form>
+</div>
 {% endblock %}

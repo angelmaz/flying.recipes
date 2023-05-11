@@ -29,21 +29,20 @@
     </p>
     {% endfor %}
   </div>
-  <div class="spacer" style="height: 30px;"></div>
-  <div class="container text-center" id="main-base">
-    <div class="row align-items-center">
-      <div class="col-md-4" id="logo">
-        <a href="/">
-          <img class="img-fluid" width='300' src="/static/img/logo.png"></a>
-      </div>
-      <div class="col-md-6 search_container" id="search">
-        <form id="search-form" class="search-form">
-          <label for="ingredientInput">Enter an Ingredient:</label>
-          <input type="search" class="search-field" id="ingredientInput" placeholder="e.g. chicken">
-          <button class="search-button">
-            <img src="/static/img/search.png">
-          </button>
-      </div>
+  <div class="spacer" style="height: 60px;"></div>
+<div class="container text-center" id="main-base">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-4" id="logo">
+      <a href="/">
+        <img class="img-fluid" width='300' src="/static/img/logo.png"></a>
+    </div>
+    <div class="col-md-6 search_container" id="search">
+      <form id="search-form" class="search-form">
+        <input type="search" class="search-field" id="ingredientInput" placeholder="e.g. chicken">
+        
+        <button class="search-button">
+          <img src="/static/img/search.png">
+        </button>
       </form>
     </div>
     <div class="col-md-2" id="logging">
@@ -56,12 +55,13 @@
       {% endif %}
     </div>
   </div>
-  </div>
-  <div id="quick">
+</div>
+<div class="spacer" style="height: 60px;"></div>
+  <div id="quick" class="">
     <h1>Quick convert</h1>
-    <div id="Qweight"></div>
-    <div id="Qvolume"></div>
-    <div id="temperature"></div>
+    <div id="Qweight" class="card"></div>
+    <div id="Qvolume" class="card"></div>
+    <div id="temperature" class="card"></div>
   </div>
 
 

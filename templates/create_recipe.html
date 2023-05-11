@@ -1,50 +1,53 @@
 {% extends 'base.html' %}
 {% block title %}Create recipe| Wherever you are!{% endblock %}
 {% block body %}
-
-<div>
-    Title
-    <input type="text" id="title" value="{% if recipe %}{{ recipe.title }}{% endif %}">
-</div>
-<div class="col-xs-6 col-sm-12 col-md-12" id="ingredient_list">
-    {% if not recipe %}
+<div class="spacer" style="height: 60px;"></div>
+<div class="recipe-card">
     <div>
-        quantity <input type="text" id="quantity" value="" size="8">
-        unit <select id="unit">
-            {% for unit in all_units%}
-            <option value={{unit}}>{{unit}} </option>
-            {% endfor %}
-        </select>
-        name <input type="text" id="name" value="" size="60">
+        Title
+        <input type="text" id="title" value="{% if recipe %}{{ recipe.title }}{% endif %}">
     </div>
-    {% else %}
-    {% for ingredient in recipe.ingredients %}
+    <div class="col-xs-6 col-sm-12 col-md-12" id="ingredient_list">
+        {% if not recipe %}
+        <div>
+            quantity <input type="text" id="quantity" value="" size="8">
+            unit <select id="unit">
+                {% for unit in all_units%}
+                <option value={{unit}}>{{unit}} </option>
+                {% endfor %}
+            </select>
+            name <input type="text" id="name" value="" size="60">
+        </div>
+        {% else %}
+        {% for ingredient in recipe.ingredients %}
+        <div>
+            quantity <input type="text" id="quantity"
+                value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }} {% endif %}' size="8">
+            unit <select id="unit">
+                {% for unit in all_units %}
+                <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
+                {% endfor %}
+            </select>
+            name <input type="text" id="name" value="{{ ingredient.name }}" size="60">
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
     <div>
-        quantity <input type="text" id="quantity"
-            value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }} {% endif %}' size="8">
-        unit <select id="unit">
-            {% for unit in all_units %}
-            <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
-            {% endfor %}
-        </select>
-        name <input type="text" id="name" value="{{ ingredient.name }}" size="60">
+        <input type="button" id="add_ingredient" value="add_ingredient">
     </div>
-    {% endfor %}
-    {% endif %}
+    <div>
+        <textarea rows="10" cols="100" id="description">{% if recipe %}{{ recipe.description }}{% endif %}</textarea>
+    </div>
+    <div>
+        <form action="/uploader" method="POST" enctype="multipart/form-data" id="upload_form">
+            <input type="file" name="file" id="file_input" />
+            <input type="submit" id="create_recipe_submit" value="Save recipe" />
+        </form>
+    </div>
+    <input type="hidden" id="recipe_id_hidden" value="{% if recipe %}{{ recipe.recipe_id }}{% endif %}">
+    <script src="/static/js/create_recipe.js"></script>
 </div>
 
-<div>
-    <input type="button" id="add_ingredient" value="add_ingredient">
-</div>
-<div>
-    <textarea rows="10" cols="60" id="description">{% if recipe %}{{ recipe.description }}{% endif %}</textarea>
-</div>
-<div>
-    <form action="/uploader" method="POST" enctype="multipart/form-data" id="upload_form">
-        <input type="file" name="file" id="file_input" />
-        <input type="submit" id="create_recipe_submit" value="Save recipe" />
-    </form>
-</div>
-<input type="hidden" id="recipe_id_hidden" value="{% if recipe %}{{ recipe.recipe_id }}{% endif %}">
-<script src="/static/js/create_recipe.js"></script>
 {% endblock %}

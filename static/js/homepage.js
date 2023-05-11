@@ -16,7 +16,7 @@ for (const hearth_full of hearths_full) {
             });
         event.target.style = 'display:none';
         const hearth_empty = event.target.parentNode.querySelector('.empty_hearth');
-        hearth_empty.style = 'dispaly:block';
+        hearth_empty.style = 'display:block';
     })
 }
 const hearths_empty = document.querySelectorAll('.empty_hearth');
@@ -35,7 +35,7 @@ for (const hearth_empty of hearths_empty) {
             });
         event.target.style = 'display:none';
         const hearth_full = event.target.parentNode.querySelector('.full_hearth');
-        hearth_full.style = 'dispaly:block';
+        hearth_full.style = 'display:block';
     })
 }
 
