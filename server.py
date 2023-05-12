@@ -63,6 +63,7 @@ def process_login():
         return redirect("/login")
 
     session["logged_in_user_id"] = user.user_id
+    session['logged_in_email'] = user.email
     flash("Logged in")
     return redirect("/user_dashboard")
 
@@ -286,6 +287,7 @@ def process_logout():
     """Log user out."""
 
     del session["logged_in_user_id"]
+    del session['logged_in_email']
     flash("Logged out.")
     return redirect("/")
 

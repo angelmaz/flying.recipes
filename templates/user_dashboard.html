@@ -10,13 +10,17 @@
     <img src="static/img/center.png">
   </section>
 </div>
-<div class="container">
-  <a href="/create_recipe">Here you can create your best recipe!</a>
-</div>
-<div class="container">
-  If you like, copy a link to your favorite recipe from foodnetwork.com and paste here
+<div class="recipe-cards-container">
+  <div class="recipe-card-ud">
+    
+    <a href="/create_recipe">Create your best recipe!<img src="static/img/create-recipe2.jpeg" alt="create-recipe"></a>
+  </div>
+ <div class="recipe-card-ud">
+  <img src="static/img/search-recipe.jpeg" alt="Create Recipe">
+Copy link to favorite recipe from foodnetwork.com 
   <input text="text" id="link_web_scrapping" value="">
-  <input type="button" id='link_button' value="Take">
+  <input type="button" id='link_button' value="Get recipe">
+</div>
 </div>
 <div class="spacer" style="height: 50px;"></div>
 <div class="row">
@@ -51,7 +55,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ recipe.title }}</h5>
             <div class=" bg-light"></div>
-          </div>
+          </div> 
         </a>
       </div>
       {% endfor %}

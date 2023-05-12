@@ -46,10 +46,13 @@
       </form>
     </div>
     <div class="col-md-2" id="logging">
+      
       {% if 'logged_in_user_id' in session %}
+      <h1>Great to see you {{session['logged_in_email']}} !</h1>
       <a href="/user_dashboard">My account</a>
       <a href="/logout">Logout</a>
       {% else %}
+      <h1>Join us!</h1>
       <a href="/create_account">Create account</a>
       <a href="/login">Login</a>
       {% endif %}
