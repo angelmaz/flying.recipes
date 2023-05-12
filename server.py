@@ -142,7 +142,7 @@ def save():
     if create_new:
         # create a new recipe
         db_recipe = crud.create_recipe_from_author_id(
-            author_id=session['logged_in_user_id'], title=title, description=description, image_url='/static/img/photo_recipes/1.jpeg')
+            author_id=session['logged_in_user_id'], title=title, description=description, image_url='/static/img/create-recipe2.jpeg')
         db.session.add(db_recipe)
     else:
         # update existing recipe

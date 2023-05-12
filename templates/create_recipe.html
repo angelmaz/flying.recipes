@@ -9,21 +9,21 @@
         <input type="text" id="title" value="{% if recipe %}{{ recipe.title }}{% endif %}">
     </div>
     <div class="col-xs-6 col-sm-12 col-md-12" id="ingredient_list">
-
         {% if not recipe %}
         <div>
-            quantity <input type="text" id="quantity" value="" size="8">
+            quantity <input type="number" id="quantity" value="" size="8">
             unit <select id="unit">
                 {% for unit in all_units%}
                 <option value={{unit}}>{{unit}} </option>
                 {% endfor %}
             </select>
             name <input type="text" id="name" value="" size="60">
+            <button class="remove-ingredient"><i class="fas fa-times"></i></button>
         </div>
         {% else %}
         {% for ingredient in recipe.ingredients %}
         <div class="ingredient">
-            quantity <input type="text" id="quantity"
+            quantity <input type="number" id="quantity"
                 value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{% endif %}' size="8">
             unit <select id="unit">
                 {% for unit in all_units %}

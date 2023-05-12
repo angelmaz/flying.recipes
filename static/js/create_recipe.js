@@ -6,15 +6,25 @@ addIngredient.addEventListener('click', () => {
         .then((response) => response.json())
         .then((responseData) => {
             let all_units = responseData['all_units'];
-            let unitList = '<div> quantity <input type="text" id="quantity" value="" size="8"> unit <select id="unit">';
-            for (let unit of all_units) {
-                unitList += '<option value=' + unit + '>' + unit + '</option>'
-
-            }
-            unitList += '</select> name <input type="text" id="name" value="" size="60"></div>';
-            ingredientList.insertAdjacentHTML('beforeend', unitList);
+            let new_div = document.createElement("div");
+            new_div.innerHTML = `
+                quantity <input type="number" id="quantity" value="" size="8">
+                unit <select id="unit">
+                    ${all_units.map(unit => `<option value="${unit}">${unit}</option>`).join('')}
+                </select>
+                name <input type="text" id="name" value="" size="60">
+                <button class="remove-ingredient"><i class="fas fa-times"></i></button>
+            `;
+            new_div.classList.add("ingredient");
+            new_div.querySelector(".remove-ingredient").addEventListener('click', (event) => {
+                    event.target.closest('.ingredient').remove();
+                
+            });
+            ingredientList.appendChild(new_div);
         });
 });
+
+
 
 const upload_form = document.querySelector('#upload_form');
 

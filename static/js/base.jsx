@@ -32,8 +32,8 @@ function TemperatureDiv() {
     FtoC(event.target.value)
   }
   return (<React.Fragment>Temperature
-    <input type="text" id="quick_temperature_c" onChange={(event) => handleCtoF(event)} value={celsius} /> C
-    <input type="text" id="quick_temperature_f" onChange={(event) => handleFtoC(event)} value={fahrenheit} /> F
+    <input type="number" id="quick_temperature_c" onChange={(event) => handleCtoF(event)} value={celsius} /> C
+    <input type="number" id="quick_temperature_f" onChange={(event) => handleFtoC(event)} value={fahrenheit} /> F
   </React.Fragment>);
 }
 ReactDOM.render(<TemperatureDiv />, document.querySelector('#temperature'))
@@ -101,7 +101,7 @@ function QweightDiv() {
   return (<React.Fragment>Weight
     <div>
       From:
-      <input type="text" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
+      <input type="number" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
       <select value={fromUnit} onChange={(e) => { setFromUnit(e.target.value); }}>
         <UnitOptions units={weightUnits} />
       </select>
@@ -142,7 +142,7 @@ function QvolumeDiv() {
   return (<React.Fragment>Volume
     <div>
       From:
-      <input type="text" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
+      <input type="number" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
       <select value={fromUnit} onChange={(e) => { setFromUnit(e.target.value); }}>
         <UnitOptions units={volumeUnits} />
       </select>
