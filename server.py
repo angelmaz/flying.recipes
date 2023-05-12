@@ -132,7 +132,8 @@ def save():
     title = request.json.get('title')
     description = request.json.get('description')
     recipe_id = request.json.get('recipe_id')
-    
+    file_input = request.json.get('file_input')
+
     create_new = False
     if recipe_id == "":
         create_new = True
@@ -164,8 +165,12 @@ def save():
     db.session.commit()
 
     recipe_id = db_recipe.recipe_id
+
     new_file_path = f'{app.config["UPLOAD_FOLDER"]}/{recipe_id}.jpeg'
-    db_recipe.image_url = f'/{new_file_path}'
+        
+    if file_input:
+        db_recipe.image_url = f'/{new_file_path}'
+
     db.session.commit()
     return jsonify({"new_file_path": new_file_path})
 

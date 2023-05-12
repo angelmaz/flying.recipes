@@ -8,9 +8,7 @@ for (const hearth_full of hearths_full) {
             .then((response) => response.json())
             .then((responseJson) => {
                 const status = responseJson['status'];
-                if (status) {
-                    alert("succesfully removed recipe from favorites");
-                } else {
+                if (!status) {
                     alert("cannot remove recipe from favorites");
                 }
             });
@@ -39,26 +37,26 @@ for (const hearth_empty of hearths_empty) {
     })
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     var interval = 5000; // 5 seconds
     var currentIndex = 0;
     var photos = [
-      'static/img/photo_recipes/5.jpeg',
-      'static/img/photo_recipes/4.jpeg',
-      'static/img/photo_recipes/8.jpeg'
+        'static/img/photo_recipes/5.jpeg',
+        'static/img/photo_recipes/4.jpeg',
+        'static/img/photo_recipes/8.jpeg'
     ];
-    
+
     // Set initial active item
     $('.slider-item').eq(0).addClass('active');
-    
-    setInterval(function() {
-      // Fade out current active item
-      $('.slider-item.active').animate({opacity: 0}, 1000, function() {
-        $(this).removeClass('active');
-      });
-      
-      // Set next item as active
-      currentIndex = (currentIndex + 1) % photos.length;
-      $('.slider-item').eq(currentIndex).animate({opacity: 1}, 1000).addClass('active');
+
+    setInterval(function () {
+        // Fade out current active item
+        $('.slider-item.active').animate({ opacity: 0 }, 1000, function () {
+            $(this).removeClass('active');
+        });
+
+        // Set next item as active
+        currentIndex = (currentIndex + 1) % photos.length;
+        $('.slider-item').eq(currentIndex).animate({ opacity: 1 }, 1000).addClass('active');
     }, interval);
-  });
+});

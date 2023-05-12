@@ -31,16 +31,16 @@ upload_form.addEventListener('submit', (event) => {
     let title = document.querySelector('#title').value;
     let description = document.querySelector('#description').value;
     let recipe_id = document.querySelector('#recipe_id_hidden').value;
+    let file_input = document.querySelector("#file_input")
     fetch('/save', {
         method: 'POST',
-        body: JSON.stringify({ 'ingredients': formInputs, 'title': title, 'description': description, 'recipe_id': recipe_id }),
+        body: JSON.stringify({ 'ingredients': formInputs, 'title': title, 'description': description, 'recipe_id': recipe_id, 'file_input': file_input.value }),
         headers: {
             'Content-Type': 'application/json',
         },
     })
         .then((response) => response.json())
         .then((responseJson) => {
-            let file_input = document.querySelector("#file_input")
             if (!file_input.value) {
                 // keep existing image
                 window.location.href = '/user_dashboard';
