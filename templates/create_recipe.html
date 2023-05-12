@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Create recipe| Wherever you are!{% endblock %}
+
 {% block body %}
 <div class="spacer" style="height: 60px;"></div>
 <div class="recipe-card">
@@ -8,6 +9,7 @@
         <input type="text" id="title" value="{% if recipe %}{{ recipe.title }}{% endif %}">
     </div>
     <div class="col-xs-6 col-sm-12 col-md-12" id="ingredient_list">
+
         {% if not recipe %}
         <div>
             quantity <input type="text" id="quantity" value="" size="8">
@@ -20,15 +22,16 @@
         </div>
         {% else %}
         {% for ingredient in recipe.ingredients %}
-        <div>
+        <div class="ingredient">
             quantity <input type="text" id="quantity"
-                value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }} {% endif %}' size="8">
+                value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{% endif %}' size="8">
             unit <select id="unit">
                 {% for unit in all_units %}
                 <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
                 {% endfor %}
             </select>
             name <input type="text" id="name" value="{{ ingredient.name }}" size="60">
+            <button class="remove-ingredient"><i class="fas fa-times"></i></button>
         </div>
         {% endfor %}
         {% endif %}

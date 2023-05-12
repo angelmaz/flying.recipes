@@ -79,3 +79,9 @@ upload_form.addEventListener('submit', (event) => {
 
         });
 });
+const removeButtons = document.querySelectorAll('.remove-ingredient');
+removeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        button.parentElement.remove();
+    });
+});

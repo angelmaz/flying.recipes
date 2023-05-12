@@ -520,3 +520,15 @@ h3 {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
+.remove-ingredient {
+  background-color: transparent;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  outline: none;
+}
+.remove-ingredient:hover {
+  color: #c82333;
+}
