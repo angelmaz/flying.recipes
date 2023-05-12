@@ -111,9 +111,8 @@
         <ul>
             {% for ingredient in recipe.ingredients %}
             <li class="ingredient_row">
-                <span class="quantity_field">
-                    {% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{% endif %}
-                </span>
+                <span class="quantity_field">{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{%
+                    endif %}</span>
                 <span class="unit_field">
                     {% if ingredient.unit in weight_units %}
                     <select name="unit">

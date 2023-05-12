@@ -31,31 +31,33 @@ fieldHomeTin.addEventListener('click', () => {
 });
 
 removeButton = document.querySelector('#remove');
-if (removeButton){
-removeButton.addEventListener('click', () => {
-    const recipe_id = document.querySelector('#recipe_id_hidden').value;
-    const url = `/remove?recipe_id=${recipe_id}`;
+if (removeButton) {
+    removeButton.addEventListener('click', () => {
+        const recipe_id = document.querySelector('#recipe_id_hidden').value;
+        const url = `/remove?recipe_id=${recipe_id}`;
 
-    fetch(url)
-        .then((response) => response.text())
-        .then((status) => {
-            alert(status);
-            window.location.href = '/user_dashboard';
-        });
-});
+        fetch(url)
+            .then((response) => response.text())
+            .then((status) => {
+                alert(status);
+                window.location.href = '/user_dashboard';
+            });
+    });
 }
 const calculByPerson = document.querySelector('#calculation_by_person');
 const fromPerson = document.querySelector('#from_person');
 const toPerson = document.querySelector('#to_person');
 
 calculByPerson.addEventListener('click', () => {
-    let scale = parseFloat(toPerson.value) / parseFloat(fromPerson.value)
-    for (const row of document.querySelectorAll(".ingredient_row")) {
-        const quantity_span = row.querySelector(".quantity_field");
-        if (quantity_span.innerHTML != "") {
-            const old_value = parseFloat(quantity_span.innerHTML);
-            const new_value = (old_value * scale).toFixed(2);
-            quantity_span.innerHTML = new_value;
+    if (toPerson.value && fromPerson.value && !isNaN(toPerson.value) && !isNaN(fromPerson.value)) {
+        let scale = parseFloat(toPerson.value) / parseFloat(fromPerson.value)
+        for (const row of document.querySelectorAll(".ingredient_row")) {
+            const quantity_span = row.querySelector(".quantity_field");
+            if (quantity_span.innerHTML != "") {
+                const old_value = parseFloat(quantity_span.innerHTML);
+                const new_value = (old_value * scale).toFixed(2);
+                quantity_span.innerHTML = new_value;
+            }
         }
     }
 });
@@ -71,18 +73,30 @@ calculByPan.addEventListener('click', () => {
     let recipeArea, recipeHomeArea, radius, x, y, scale;
 
     if (fieldStand.checked == true) {
+        if (!size || isNaN(size)) {
+            return;
+        }
         radius = parseFloat(size) / 2;
         recipeArea = Math.PI * radius * radius;
     } else {
+        if (!size || !sizeY || isNaN(size) || isNaN(sizeY)) {
+            return;
+        }
         x = parseFloat(size);
         y = parseFloat(sizeY);
         recipeArea = x * y;
     }
 
     if (fieldHomeStand.checked == true) {
+        if (!homeSize || isNaN(homeSize)) {
+            return;
+        }
         radius = parseFloat(homeSize) / 2;
         recipeHomeArea = Math.PI * radius * radius;
     } else {
+        if (!homeSize || !homeSizeY || isNaN(homeSize) || isNaN(homeSizeY)) {
+            return;
+        }
         x = parseFloat(homeSize);
         y = parseFloat(homeSizeY);
         recipeHomeArea = x * y;
