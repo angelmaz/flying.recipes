@@ -1,29 +1,47 @@
+/* BASE HTML */
+
+.container {
+  max-width: 1000px;
+  margin: 10px auto;
+  position: relative0 15px;
+  padding: 10px;
+}
+
+.flash-msg {
+  background-color: #eccf77;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+.text-center {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
 .slider-container {
   position: relative;
   width: 100%;
   height: 200px;
-}
-
-.slider-item {
-  position: absolute;
-  top: 60;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.slider-item.active {
-  opacity: 1;
-
-}
-
-form.search-form {
-  display: flex;
-  flex-direction: row;
 }
 
 .search-field {
@@ -32,6 +50,11 @@ form.search-form {
   border: solid;
   border-radius: 100px;
   outline: none;
+}
+
+form.search-form {
+  display: flex;
+  flex-direction: row;
 }
 
 .search-button {
@@ -47,11 +70,6 @@ form.search-form {
   object-fit: cover;
 }
 
-#quick {
-  margin: 0 20px;
-
-}
-
 .card {
   flex-grow: 1;
   width: calc(33.33% - 20px);
@@ -64,101 +82,89 @@ form.search-form {
   border-radius: 5px;
   height: 100%;
   background-color: white;
+  border: 1px solid #f3b99a;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-.card:last-child {
-  margin-right: 0;
+.card:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
-h1 {
-  text-align: center;
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-#recipes .card {
-  position: relative;
-  width: 100%;
-  max-width: 300px;
-  background-color: rgb(255, 255, 255);
+.card p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+input[type="number"],
+input[type="text"],
+textarea {
+  padding: 10px;
+  font-size: 16px;
   border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-#recipes .full_hearth,
-#recipes .empty_hearth {
-
-  top: 0px;
-  right: 0px;
-  z-index: 1;
+input[type="radio"],
+input[type="number"],
+select {
+  padding: 5px;
+  margin-right: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
 }
 
-.login {
-  min-height: 100vh;
-  padding-top: 100px;
+input[type="number"]:focus,
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.bg-image {
-  background-image: url('https://source.unsplash.com/WEQbe2jBg40/600x1200');
-  background-size: cover;
-  background-position: center;
+input[type="number"]::placeholder,
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #f4cadc;
 }
 
-.login-heading {
-  font-weight: 300;
+#logging a {
+  text-decoration: none;
+  /* Remove underline */
+  font-family: "Arial", sans-serif;
+  /* Set desired font family */
+  /* font-size: 18px; */ 
+  /* Increase the font size */
+  color: rgb(179, 6, 6);
+  /* Set the font color to dark red */
+  padding: 0 10px;
+  /* Add horizontal padding to create space around the text */
 }
 
-.btn-login {
-  font-size: 0.9rem;
-  letter-spacing: 0.05rem;
-  padding: 0.75rem 1rem;
+.q-input {
+  width: 100px;
 }
 
-#login {
-  position: fixed;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  background-color: rgba(255, 255, 255, 0.9);
+.q-td {
+  height: 38px;
+}
+
+/* Create account */
+#main-container {
+  background-color: #f2f2f2;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-#login label {
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-#login input[type="text"],
-#login input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  margin-bottom: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-#login button[type="submit"] {
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  background-color: #6B8E23;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#login button[type="submit"]:hover {
-  background-color: #556B2F;
 }
 
 #register {
-  position: fixed;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 400px;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
@@ -217,8 +223,134 @@ h1 {
   text-shadow: 2px 2px 4px #000;
 }
 
-.welcome-back {
+/* HOMPAGE HTML */
+.slider-item {
+  position: absolute;
+  top: 60;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
 
+.slider-item.active {
+  opacity: 1;
+}
+
+.row.container {
+  margin-top: 30px;
+}
+
+#recipes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.col-xs-12,
+.col-sm-6,
+.col-md-6,
+.col-lg-4 {
+  padding: 15px;
+  position: relative;
+}
+
+.full_hearth,
+.empty_hearth {
+  width: 25px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.homepage-js {
+  margin-top: 20px;
+}
+
+#quick {
+  margin: 0 20px;
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+#recipes .card {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+}
+
+.login {
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.bg-image {
+  background-image: url('https://source.unsplash.com/WEQbe2jBg40/600x1200');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-heading {
+  font-weight: 300;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+#login {
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#login label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+#login input[type="text"],
+#login input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#login button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #6B8E23;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#login button[type="submit"]:hover {
+  background-color: #556B2F;
+}
+
+.welcome-back {
   padding: 20px;
   text-align: center;
 }
@@ -360,15 +492,6 @@ h1 {
   display: inline-block;
 }
 
-input[type="radio"],
-input[type="number"],
-select {
-  padding: 5px;
-  margin-right: 5px;
-  border-radius: 3px;
-  border: 1px solid #ccc;
-}
-
 input[type="button"] {
   padding: 10px 20px;
   background-color: #4CAF50;
@@ -416,11 +539,6 @@ h3 {
   clear: both;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 #own_recipes,
 #favorite_recipes {
   display: flex;
@@ -437,37 +555,24 @@ h3 {
   transition: transform 0.3s ease-in-out;
 }
 
-.card:hover {
-  transform: scale(1.05);
-}
-
 .card-img-top {
-  width: 70%;
+  width: 100%;
   height: auto;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  position: inherit;
+  border-radius: 50%;
+  object-fit: cover;
+
 }
 
 .card-title {
-  margin-top: 1rem;
-  font-size: 1.2rem;
+
   font-weight: bold;
+  margin-top: 10px;
+  font-size: 18px;
 }
 
-.card-body {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-.full_hearth {
-  position: sticky;
-  top: 0px;
-  right: 0px;
-  z-index: 1;
-}
 
 .img-circle {
   border-radius: 50%;
@@ -520,6 +625,7 @@ h3 {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
+
 .remove-ingredient {
   background-color: transparent;
   border: none;
@@ -529,6 +635,7 @@ h3 {
   margin-left: 10px;
   outline: none;
 }
+
 .remove-ingredient:hover {
   color: #c82333;
 }

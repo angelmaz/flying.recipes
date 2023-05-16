@@ -11,11 +11,11 @@
         <div class="slider-item" style="background-image: url(static/img/photo_recipes/8.jpeg)"></div>
     </div>
     <div class="spacer" style="height: 50px;"></div>
-    <div class="row">
+    <div class="row container">
         <section class="col-sx-12 col-sm-12 col-md-12">
             <div id="recipes" class="row d-flex justify-content-center">
                 {% for recipe in recipes %}
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 mt-3">
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt-3">
                     {% if 'logged_in_user_id' in session %}
                     <img class="full_hearth" id="hearth_full_{{recipe.recipe_id}}" width=25
                         src="static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}
@@ -25,16 +25,17 @@
                         style="display:none" {% endif %}>
                     {% endif %}
                     <a href="/recipe/{{ recipe.recipe_id }}">
-                        <div class="card text-center bg-light">
+                        <div>
                             <img class="card-img-top img-circle" src="{{ recipe.image_url }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ recipe.title }}</h5>
-                            </div>
+                        </div>
+                        <div class="row card-body">
+                            <h5 class="card-title">{{ recipe.title }}</h5>
                         </div>
                     </a>
                 </div>
                 {% endfor %}
             </div>
+
         </section>
     </div>
 

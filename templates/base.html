@@ -32,14 +32,14 @@
     </p>
     {% endfor %}
   </div>
-  <div class="spacer" style="height: 60px;"></div>
+  <div class="spacer"></div>
 <div class="container text-center" id="main-base">
   <div class="row align-items-center justify-content-between">
     <div class="col-md-4" id="logo">
       <a href="/">
         <img class="img-fluid" width='300' src="/static/img/logo.png"></a>
     </div>
-    <div class="col-md-6 search_container" id="search">
+    <div class="col-md-5 search_container" id="search">
       <form id="search-form" class="search-form">
         <input type="search" class="search-field" id="ingredientInput" placeholder="e.g. chicken">
         
@@ -48,26 +48,52 @@
         </button>
       </form>
     </div>
-    <div class="col-md-2" id="logging">
+    <div class="col-md-3" id="logging">
       
       {% if 'logged_in_user_id' in session %}
       <p> Great to see you {{session['logged_in_email'].split('@')[0]}} !</p>
       <a href="/user_dashboard">My account</a>
+      <span>|</span>
       <a href="/logout">Logout</a>
       {% else %}
-      <p>Join us!</p>
+      <div>Join us!</div>
       <a href="/create_account">Create account</a>
+      <span>|</span>
       <a href="/login">Login</a>
       {% endif %}
     </div>
   </div>
 </div>
-<div class="spacer" style="height: 60px;"></div>
-  <div id="quick" class="">
+<div class="spacer" style="height: 20px;"></div>
+  <div id="quick">
     <h1>Quick convert</h1>
-    <div id="Qweight" class="card"></div>
-    <div id="Qvolume" class="card"></div>
-    <div id="temperature" class="card"></div>
+    
+    <div class="card" style="padding-bottom: 25px;">
+      <div style="text-align:center; font-weight: bold; padding-bottom: 10px">
+        Weight
+      </div>
+      <div style="display: flex; justify-content: center">
+        <table id="Qweight"></table>
+      </div>
+    </div>
+
+    <div class="card" style="padding-bottom: 25px;">
+      <div style="text-align:center; font-weight: bold; padding-bottom: 10px">
+        Volume
+      </div>
+      <div style="display: flex; justify-content: center">
+        <table id="Qvolume"></table>
+      </div>
+    </div>
+
+    <div class="card" style="padding-bottom: 25px;">
+      <div style="text-align:center; font-weight: bold; padding-bottom: 10px">
+        Temperature
+      </div>
+      <div style="display: flex; justify-content: center">
+        <table id="temperature"></table>
+      </div>
+    </div>
   </div>
 
 
