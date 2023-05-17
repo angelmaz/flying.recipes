@@ -2,8 +2,9 @@
 
 .container {
   max-width: 1000px;
-  margin: 10px auto;
+  margin: 20px;
   padding: 10px;
+  justify-content: center;
 }
 
 .flash-msg {
@@ -79,9 +80,10 @@ form.search-form {
 .card-q {
   display: inline-block;
   border: 1px solid #f3b99a;
+  margin: 15px;
 }
 
-#recipes .card {
+.recipe-box {
   border: none;
   margin: 10px;
   width: 200px;
@@ -98,7 +100,7 @@ form.search-form {
 
 .card-top {
   display: flex;
-  height: 200px;
+  height: 180px;
   align-items: center;
 }
 
@@ -120,6 +122,7 @@ form.search-form {
 
 .card-title {
   font-size: 14px;
+  color: black;
 }
 
 .card:hover {
@@ -205,6 +208,8 @@ textarea::placeholder {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 #register label {
@@ -232,6 +237,9 @@ textarea::placeholder {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+#register button[type="submit"]:hover {
+  background-color: #f07849;
 }
 
 
@@ -291,7 +299,7 @@ textarea::placeholder {
   width: 25px;
   position: absolute;
   right: 10px;
-  top: 20px;
+  top: 10px;
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
   border-top-left-radius: 30px;
@@ -303,7 +311,7 @@ textarea::placeholder {
 }
 
 #quick {
-  margin: 20px;
+  text-align: center;
 }
 
 .card:last-child {
@@ -341,6 +349,8 @@ h1 {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 #login label {
@@ -385,7 +395,7 @@ h1 {
 }
 
 
-.recipe-card {
+.create-recipe-card {
   border: 1px solid #ddd;
   border-radius: 20px;
   padding: 20px;
@@ -394,20 +404,20 @@ h1 {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 
-.recipe-card div {
+.create-recipe-card div {
   margin: 10px 0;
 }
 
-.recipe-card input[type="text"],
-.recipe-card select,
-.recipe-card textarea {
+.create-recipe-card input[type="text"],
+.create-recipe-card select,
+.create-recipe-card textarea {
   border: 1px solid #dbbaba;
   border-radius: 3px;
   padding: 5px;
 }
 
-.recipe-card input[type="button"],
-.recipe-card input[type="submit"] {
+.create-recipe-card input[type="button"],
+.create-recipe-card input[type="submit"] {
   border: none;
   border-radius: 3px;
   padding: 5px 10px;
@@ -416,12 +426,12 @@ h1 {
   cursor: pointer;
 }
 
-.recipe-card input[type="button"]:hover,
-.recipe-card input[type="submit"]:hover {
+.create-recipe-card input[type="button"]:hover,
+.create-recipe-card input[type="submit"]:hover {
   background-color: #0069d9;
 }
 
-.recipe-card select {
+.create-recipe-card select {
   padding: 5px 30px 5px 5px;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns='http://www.w3.org/2000");
 }
@@ -435,7 +445,7 @@ h1 {
 }
 
 .my-recipe-card h3 {
-  margin-top: 0;
+ margin-bottom: 50px;
 }
 
 .my-recipe-card ul {
@@ -481,9 +491,7 @@ h1 {
   outline: none;
 }
 
-.my-recipe-card p {
-  margin-top: 0;
-}
+
 
 .container-ojej {
   width: 80%;
@@ -507,11 +515,17 @@ h1 {
   font-weight: bold;
 
 }
+.title-from{
+  width: 50px;
+}
 
 .content {
   display: inline-block;
 }
-
+.description-recipe{
+  width: 70%;
+  padding-top: 50px;
+}
 
 
 input[type="button"]:hover {
@@ -552,7 +566,7 @@ h3 {
   color: rgba(77, 3, 104, 0.735);
   display: flex;
   justify-content: center;
-  padding: 20px;
+  
 }
 
 /* Clear floats after the columns */
@@ -564,14 +578,9 @@ h3 {
 
 #own_recipes,
 #favorite_recipes {
-  display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  
 }
-
-
-
-
 
 
 .recipe-cards-container {
@@ -647,10 +656,12 @@ h3 {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 130px;
+  height: 110px;
   background-color: rgb(1, 0, 0);
   color: rgb(217, 213, 213);
   text-align: center;
+ 
+
 }
 
 .footer img {

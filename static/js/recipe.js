@@ -34,6 +34,11 @@ removeButton = document.querySelector('#remove');
 if (removeButton) {
     removeButton.addEventListener('click', () => {
         const recipe_id = document.querySelector('#recipe_id_hidden').value;
+        // Ask for confirmation before removing
+        const confirmed = confirm("Do you want to remove?");
+        if (!confirmed) {
+            return; // Exit if the user cancels
+        }
         const url = `/remove?recipe_id=${recipe_id}`;
 
         fetch(url)
