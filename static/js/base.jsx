@@ -33,16 +33,16 @@ function TemperatureDiv() {
   }
   return (<React.Fragment>
     <tr>
-      <td class="q-td">
-        <input type="number" class="q-input" id="quick_temperature_c" onChange={(event) => handleCtoF(event)} value={celsius} />
+      <td className="q-td">
+        <input type="number" className="q-input" id="quick_temperature_c" onChange={(event) => handleCtoF(event)} value={celsius} />
       </td>
-      <td class="q-td"> C</td>
+      <td className="q-td"> C</td>
     </tr>
     <tr>
-      <td class="q-td">
-        <input type="number" class="q-input" id="quick_temperature_f" onChange={(event) => handleFtoC(event)} value={fahrenheit} />
+      <td className="q-td">
+        <input type="number" className="q-input" id="quick_temperature_f" onChange={(event) => handleFtoC(event)} value={fahrenheit} />
       </td>
-      <td class="q-td"> F</td>
+      <td className="q-td"> F</td>
     </tr>
   </React.Fragment>);
 }
@@ -110,26 +110,26 @@ function QweightDiv() {
 
   return (<React.Fragment>
     <tr>
-      <td class="q-td">
+      <td className="q-td">
         From:
       </td>
-      <td class="q-td">
-        <input type="number" class="q-input" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
+      <td className="q-td">
+        <input type="number" className="q-input" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
       </td>
-      <td class="q-td">
+      <td className="q-td">
         <select value={fromUnit} onChange={(e) => { setFromUnit(e.target.value); }}>
           <UnitOptions units={weightUnits} />
         </select>
       </td>
     </tr>
     <tr>
-      <td class="q-td">
+      <td className="q-td">
         To:
       </td>
-      <td class="q-td">
+      <td className="q-td">
         <span>{toQuantity}</span>
       </td>
-      <td class="q-td">
+      <td className="q-td">
         <select value={toUnit} onChange={(e) => { setToUnit(e.target.value); }}>
           <UnitOptions units={weightUnits} />
         </select>
@@ -164,26 +164,26 @@ function QvolumeDiv() {
 
   return (<React.Fragment>
     <tr>
-      <td class="q-td">
+      <td className="q-td">
         From:
       </td>
-      <td class="q-td">
-        <input type="number" class="q-input" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
+      <td className="q-td">
+        <input type="number" className="q-input" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
       </td>
-      <td class="q-td">
+      <td className="q-td">
         <select value={fromUnit} onChange={(e) => { setFromUnit(e.target.value); }}>
           <UnitOptions units={volumeUnits} />
         </select>
       </td>
     </tr>
     <tr>
-      <td class="q-td">
+      <td className="q-td">
         To:
       </td>
-      <td class="q-td">
+      <td className="q-td">
         <span>{toQuantity}</span>
       </td>
-      <td class="q-td">
+      <td className="q-td">
         <select value={toUnit} onChange={(e) => { setToUnit(e.target.value); }}>
           <UnitOptions units={volumeUnits} />
         </select>

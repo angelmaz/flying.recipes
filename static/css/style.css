@@ -141,7 +141,7 @@ textarea::placeholder {
   /* Remove underline */
   font-family: "Arial", sans-serif;
   /* Set desired font family */
-  /* font-size: 18px; */ 
+  /* font-size: 18px; */
   /* Increase the font size */
   color: rgb(179, 6, 6);
   /* Set the font color to dark red */
@@ -192,24 +192,28 @@ textarea::placeholder {
   display: block;
   margin: 0 auto;
   padding: 10px 20px;
-  background-color: #6B8E23;
+  background-color: #f6ae6e;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-#register button[type="submit"]:hover {
-  background-color: #556B2F;
-}
 
 .welcome-section {
-  position: relative;
-  text-align: center;
+  padding: 5px;
 }
 
 .welcome-section img {
-  max-width: 70%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcome-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .welcome-text {
@@ -226,7 +230,7 @@ textarea::placeholder {
 /* HOMPAGE HTML */
 .slider-item {
   position: absolute;
-  top: 60;
+
   left: 0;
   width: 100%;
   height: 100%;
@@ -262,8 +266,7 @@ textarea::placeholder {
 .empty_hearth {
   width: 25px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  right: 12.5px;
 }
 
 .homepage-js {
@@ -271,7 +274,7 @@ textarea::placeholder {
 }
 
 #quick {
-  margin: 0 20px;
+  margin: 20px;
 }
 
 .card:last-child {
@@ -339,7 +342,7 @@ h1 {
   display: block;
   margin: 0 auto;
   padding: 10px 20px;
-  background-color: #6B8E23;
+  background-color: #f27180;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -347,12 +350,12 @@ h1 {
 }
 
 #login button[type="submit"]:hover {
-  background-color: #556B2F;
+  background-color: #f07849;
 }
 
 .welcome-back {
-  padding: 20px;
-  text-align: center;
+  padding: 5px;
+
 }
 
 .welcome-back h2 {
@@ -360,10 +363,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-.welcome-back img {
-  max-width: 70%;
-  object-fit: contain;
-}
 
 .recipe-card {
   border: 1px solid #ddd;
@@ -492,23 +491,17 @@ h1 {
   display: inline-block;
 }
 
-input[type="button"] {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
+
 
 input[type="button"]:hover {
-  background-color: #3e8e41;
+  background-color: #f37b53;
 }
 
 h2 {
   margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 24px;
-  color: rgb(207, 42, 42);
+  color: rgb(154, 1, 1);
 }
 
 .column {
@@ -529,7 +522,16 @@ h2 {
 }
 
 h3 {
-  color: red;
+  color: rgba(110, 6, 126, 0.735);
+  margin: 5px;
+
+}
+
+#prepare {
+  color: rgba(77, 3, 104, 0.735);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
 
 /* Clear floats after the columns */
@@ -560,8 +562,9 @@ h3 {
   height: auto;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   position: inherit;
-  border-radius: 50%;
   object-fit: cover;
 
 }
@@ -574,23 +577,20 @@ h3 {
 }
 
 
-.img-circle {
-  border-radius: 50%;
-}
+
 
 .recipe-cards-container {
   display: flex;
   justify-content: center;
-
+  padding: 40px;
 }
 
 .recipe-card-ud {
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 300px;
+  margin: 20px;
 }
 
 .recipe-card-ud a {
@@ -605,6 +605,7 @@ h3 {
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+
 }
 
 .recipe-card-ud input[type="button"] {
@@ -621,9 +622,10 @@ h3 {
 }
 
 .recipe-card-ud img {
-  width: 40%;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
 }
 
 .remove-ingredient {
@@ -638,4 +640,39 @@ h3 {
 
 .remove-ingredient:hover {
   color: #c82333;
+}
+
+.footer {
+
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 130px;
+  background-color: rgb(1, 0, 0);
+  color: rgb(217, 213, 213);
+  text-align: center;
+}
+
+.footer img {
+  width: 50px;
+  height: 50px;
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+.buttons-recipe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+input[type="button"] {
+  padding: 10px 20px;
+  background-color: peachpuff;
+  color: black;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 10px;
 }

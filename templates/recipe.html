@@ -2,9 +2,9 @@
 {% block title %}Recipe | Wherever you are!{% endblock %}
 
 {% block body %}
-<div class="spacer" style="height: 70px;"></div>
-<div style="text-align: center;">
-    <h2 class="mt-3" style="font-size: 4em">{{ recipe.title }}</h2>
+
+<div style="text-align: center; padding-top: 20px; padding-bottom: 5px;">
+    <h2 style="font-size: 4em">{{ recipe.title }}</h2>
 
     <div class="row">
         <div>
@@ -13,9 +13,18 @@
     </div>
 </div>
 
-<div>
+<div class="buttons-recipe">
     <input type="button" id="scale_button" value="Scale">
+
+    {% if "logged_in_user_id" in session and session["logged_in_user_id"] == recipe.author_id %}
+    <input type="hidden" id="recipe_id_hidden" value="{{recipe.recipe_id}}">
+    <input type="button" id="remove" value="Remove recipe">
+    <a href="/edit_recipe/{{ recipe.recipe_id }}">
+        <input type="button" id="edit_recipe" value="Edit recipe">
+    </a>
+    {% endif %}
 </div>
+
 <div class="container-ojej" id="scale_container" style="display: none">
     <div>
         <h2>By baking pan</h2>
@@ -26,8 +35,8 @@
 
             <span class="title">In recipe is:</span>
             <span class="content">
-                <input type="radio" name="field-is" id="field-is-cake-tin" value="cake_tin" checked="checked"> <label
-                    for="field-is-cake-tin">Rectangle</label>
+                <input type="radio" name="field-is" id="field-is-cake-tin" value="cake_tin" checked="checked">
+                <label for="field-is-cake-tin">Rectangle</label>
                 <input type="radio" name="field-is" id="field-is-cake-stand" value="cake_stand"> <label
                     for="field-is-cake-stand">Round</label>
             </span>
@@ -81,32 +90,22 @@
     </div>
     <div>
         <div class="item-2 clearfix"></div>
-        <h2> By person</h2>
+        <h2> By number of portions</h2>
         <span class="title">From:</span>
         <span class="content">
             <input type="number" min="1" name="from_person" id="from_person" size="2" value="">
-            to <input type="number" min="2" name="to_person" id="to_person" size="2" value="">persons
+            to <input type="number" min="2" name="to_person" id="to_person" size="2" value="">portions
         </span>
         <div id="results_by_person">
             <input type="button" id="calculation_by_person" value="Compute">
         </div>
     </div>
-
-
 </div>
-{% if "logged_in_user_id" in session and session["logged_in_user_id"] == recipe.author_id %}
-<div>
-    <input type="hidden" id="recipe_id_hidden" value="{{recipe.recipe_id}}">
-    <input type="button" id="remove" value="Remove recipe">
-    <a href="/edit_recipe/{{ recipe.recipe_id }}">
-        <input type="button" id="edit_recipe" value="Edit recipe">
-    </a>
-</div>
-{% endif %}
+
 
 <div class="my-recipe-card">
     <h3><span>Ingredients</span></h3>
-    <div>x portions</div>
+
     <div>
         <ul>
             {% for ingredient in recipe.ingredients %}
@@ -137,8 +136,8 @@
         </ul>
     </div>
 
-    <div class="col-xs-12 col-sm-8 col-md-8">
-        <h3>Prepare</h3>
+    <div>
+        <h3 id="prepare"><span>Prepare</span></h3>
         <div>
             <p>{{ recipe.description }}</p>
         </div>

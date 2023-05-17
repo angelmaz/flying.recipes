@@ -9,7 +9,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="shortcut icon" href="/static/img/favicon.png">
+  <link rel="shortcut icon" href="/static/img/LogoCzapki.jpeg">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -33,47 +33,49 @@
     {% endfor %}
   </div>
   <div class="spacer"></div>
-<div class="container text-center" id="main-base">
-  <div class="row align-items-center justify-content-between">
-    <div class="col-md-4" id="logo">
-      <a href="/">
-        <img class="img-fluid" width='300' src="/static/img/logo.png"></a>
-    </div>
-    <div class="col-md-5 search_container" id="search">
-      <form id="search-form" class="search-form">
-        <input type="search" class="search-field" id="ingredientInput" placeholder="e.g. chicken">
-        
-        <button class="search-button">
-          <img src="/static/img/search.png">
-        </button>
-      </form>
-    </div>
-    <div class="col-md-3" id="logging">
-      
-      {% if 'logged_in_user_id' in session %}
-      <p> Great to see you {{session['logged_in_email'].split('@')[0]}} !</p>
-      <a href="/user_dashboard">My account</a>
-      <span>|</span>
-      <a href="/logout">Logout</a>
-      {% else %}
-      <div>Join us!</div>
-      <a href="/create_account">Create account</a>
-      <span>|</span>
-      <a href="/login">Login</a>
-      {% endif %}
+  <div class="container text-center" id="main-base">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-4" id="logo">
+        <a href="/">
+          <img class="img-fluid" width='300' src="/static/img/logo.jpeg"></a>
+      </div>
+      <div class="col-md-5 search_container" id="search">
+        <form id="search-form" class="search-form">
+          <input type="search" class="search-field" id="ingredientInput" placeholder="e.g. chicken">
+
+          <button class="search-button">
+            <img src="/static/img/search.png">
+          </button>
+        </form>
+      </div>
+      <div class="col-md-3" id="logging">
+
+        {% if 'logged_in_user_id' in session %}
+        <p> Great to see you {{session['logged_in_email'].split('@')[0]}} !</p>
+        <a href="/user_dashboard">My account</a>
+        <span>|</span>
+        <a href="/logout">Logout</a>
+        {% else %}
+        <div>Join us!</div>
+        <a href="/create_account">Create account</a>
+        <span>|</span>
+        <a href="/login">Login</a>
+        {% endif %}
+      </div>
     </div>
   </div>
-</div>
-<div class="spacer" style="height: 20px;"></div>
+  <div class="spacer" style="height: 20px;"></div>
   <div id="quick">
     <h1>Quick convert</h1>
-    
+
     <div class="card" style="padding-bottom: 25px;">
       <div style="text-align:center; font-weight: bold; padding-bottom: 10px">
         Weight
       </div>
       <div style="display: flex; justify-content: center">
-        <table id="Qweight"></table>
+        <table>
+          <tbody id="Qweight"></tbody>
+        </table>
       </div>
     </div>
 
@@ -82,7 +84,9 @@
         Volume
       </div>
       <div style="display: flex; justify-content: center">
-        <table id="Qvolume"></table>
+        <table>
+          <tbody id="Qvolume"></tbody>
+        </table>
       </div>
     </div>
 
@@ -91,7 +95,9 @@
         Temperature
       </div>
       <div style="display: flex; justify-content: center">
-        <table id="temperature"></table>
+        <table>
+          <tbody id="temperature"></tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -104,6 +110,12 @@
 
   <script src="/static/js/base.js"></script>
   <script src="/static/js/base.jsx" type="text/jsx"></script>
+  <div class="footer">
+    <div>
+      <img src="/static/img/LogoCzapki.jpeg">
+      <div> © 2023 Angelika Mazurek. All rights reserved.</div>
+    </div>
+  </div>
 </body>
 
 </html>
