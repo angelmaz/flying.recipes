@@ -3,44 +3,44 @@
 
 {% block body %}
 
-<div class="container">
-    
-    <div class="slider-container">
-        <div class="slider-item" style="background-image: url(static/img/karuzela1.png)"></div>
-        <div class="slider-item" style="background-image: url(static/img/karuzela2.png)"></div>
-        <div class="slider-item" style="background-image: url(static/img/karuzela3.png)"></div>
-        <div class="slider-item" style="background-image: url(static/img/kanapka1.png)"></div>
-        <div class="slider-item" style="background-image: url(static/img/karuzela4.png)"></div>
-        
-    </div>
-    <div class="row container">
-        <section class="col-sx-12 col-sm-12 col-md-12">
-            <div id="recipes" class="row d-flex justify-content-center">
-                {% for recipe in recipes %}
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 mt-3">
-                    {% if 'logged_in_user_id' in session %}
-                    <img class="full_hearth" id="hearth_full_{{recipe.recipe_id}}" width=25
-                        src="static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}
-                        style="display:none" {% endif %}>
-                    <img class="empty_hearth" id="hearth_empty_{{recipe.recipe_id}}" width=25
-                        src="static/img/hearth_empty_100.png" {% if recipe.recipe_id in my_favorite_recipe_ids %}
-                        style="display:none" {% endif %}>
-                    {% endif %}
-                    <a href="/recipe/{{ recipe.recipe_id }}">
-                        <div>
-                            <img class="card-img-top " src="{{ recipe.image_url }}">
-                        </div>
-                        <div class="row card-body">
-                            <h5 class="card-title">{{ recipe.title }}</h5>
-                        </div>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
 
-        </section>
-    </div>
+<div class="container slider-container">
+    <div class="slider-item" style="background-image: url(static/img/karuzela1.png)"></div>
+    <div class="slider-item" style="background-image: url(static/img/karuzela2.png)"></div>
+    <div class="slider-item" style="background-image: url(static/img/karuzela3.png)"></div>
+    <div class="slider-item" style="background-image: url(static/img/kanapka1.png)"></div>
+    <div class="slider-item" style="background-image: url(static/img/karuzela4.png)"></div>
 
 </div>
+<div class="container">
+    <section class="col-xs-12 col-sm-12 col-md-12">
+        <div id="recipes" class="d-flex justify-content-center">
+            {% for recipe in recipes %}
+            <div class="card recipe-box col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                {% if 'logged_in_user_id' in session %}
+                <!-- <div class="heart-div"> -->
+                    <img class="full_heart" id="heart_full_{{recipe.recipe_id}}" width=25
+                        src="static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}
+                        style="display:none" {% endif %}>
+                    <img class="empty_heart" id="heart_empty_{{recipe.recipe_id}}" width=25
+                        src="static/img/hearth_empty_100.png" {% if recipe.recipe_id in my_favorite_recipe_ids %}
+                        style="display:none" {% endif %}>
+                <!-- </div> -->
+                {% endif %}
+                <a href="/recipe/{{ recipe.recipe_id }}">
+                    <div class="card-top">
+                        <img class="card-img-top" src="{{ recipe.image_url }}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+</div>
+
 <script src='/static/js/homepage.js'></script>
 {% endblock %}

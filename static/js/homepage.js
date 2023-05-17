@@ -23,12 +23,12 @@ $(document).ready(function () {
 });
 
 
-const hearths_full = document.querySelectorAll('.full_hearth');
+const hearts_full = document.querySelectorAll('.full_heart');
 
-for (const hearth_full of hearths_full) {
-    hearth_full.addEventListener("click", (event) => {
-        const hearth_id = hearth_full.getAttribute('id')
-        const recipe_id = hearth_id.split('_')[2]
+for (const heart_full of hearts_full) {
+    heart_full.addEventListener("click", (event) => {
+        const heart_id = heart_full.getAttribute('id')
+        const recipe_id = heart_id.split('_')[2]
         fetch(`/remove_favorite_recipe?recipe_id=${recipe_id}`)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -38,16 +38,16 @@ for (const hearth_full of hearths_full) {
                 }
             });
         event.target.style = 'display:none';
-        const hearth_empty = event.target.parentNode.querySelector('.empty_hearth');
-        hearth_empty.style = 'display:block';
+        const heart_empty = event.target.parentNode.querySelector('.empty_heart');
+        heart_empty.style = 'display:block';
     })
 }
-const hearths_empty = document.querySelectorAll('.empty_hearth');
+const hearts_empty = document.querySelectorAll('.empty_heart');
 
-for (const hearth_empty of hearths_empty) {
-    hearth_empty.addEventListener("click", (event) => {
-        const hearth_id = hearth_empty.getAttribute('id')
-        const recipe_id = hearth_id.split('_')[2]
+for (const heart_empty of hearts_empty) {
+    heart_empty.addEventListener("click", (event) => {
+        const heart_id = heart_empty.getAttribute('id')
+        const recipe_id = heart_id.split('_')[2]
         fetch(`/favorite_recipe?recipe_id=${recipe_id}`)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -57,8 +57,19 @@ for (const hearth_empty of hearths_empty) {
                 }
             });
         event.target.style = 'display:none';
-        const hearth_full = event.target.parentNode.querySelector('.full_hearth');
-        hearth_full.style = 'display:block';
+        const heart_full = event.target.parentNode.querySelector('.full_heart');
+        heart_full.style = 'display:block';
     })
 }
 
+// const recipe_boxes = document.querySelectorAll('.recipe-box');
+
+// for (const recipe_box of recipe_boxes) {
+//     const heart_div = recipe_box.querySelector(".heart-div");
+//     recipe_box.addEventListener("mouseover", (event) => {
+//         heart_div.style = 'display:block'
+//     });
+//     recipe_box.addEventListener("mouseout", (event) => {
+//         heart_div.style = 'display:none'
+//     });
+// }
