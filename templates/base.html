@@ -50,7 +50,7 @@
       <div class="col-md-3" id="logging">
 
         {% if 'logged_in_user_id' in session %}
-        <p> Great to see you {{session['logged_in_email'].split('@')[0]}} !</p>
+        <p> Great to see you {{session['logged_in_email'].split('@')[0]}}!</p>
         <a href="/user_dashboard">My account</a>
         <span>|</span>
         <a href="/logout">Logout</a>

@@ -109,12 +109,12 @@
 
 <div class="container my-recipe-card">
 
-    <div>
+    <div class="my-recipe-column ingredients-column">
         <h3>Ingredients</h3>
         <table>
             <tbody>
                 {% for ingredient in recipe.ingredients %}
-                <tr class="my-recipe-column ingredients-column">
+                <tr class="ingredient_row">
                     <td>
                         <span class="quantity_field">{% if ingredient.quantity %}{{ "%.2f"|format(ingredient.quantity)
                             }}{%

@@ -458,11 +458,6 @@ h1 {
  margin-bottom: 10px;
 }
 
-.my-recipe-card .ingredient_row {
-  display: flex;
-  margin-bottom: 10px;
-}
-
 .my-recipe-card .quantity_field {
   margin-right: 10px;
   min-width: 30px;
@@ -565,6 +560,7 @@ h3 {
 }
 
 .my-recipe-column {
+  margin: 10px;
   font-size: 14px;
 }
 
