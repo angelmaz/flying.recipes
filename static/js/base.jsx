@@ -110,7 +110,7 @@ function QweightDiv() {
 
   return (<React.Fragment>
     <tr>
-      <td className="q-td">
+      <td className="q-td text-end">
         From:
       </td>
       <td className="q-td">
@@ -123,7 +123,7 @@ function QweightDiv() {
       </td>
     </tr>
     <tr>
-      <td className="q-td">
+      <td className="q-td text-end">
         To:
       </td>
       <td className="q-td">
@@ -164,7 +164,7 @@ function QvolumeDiv() {
 
   return (<React.Fragment>
     <tr>
-      <td className="q-td">
+      <td className="q-td text-end">
         From:
       </td>
       <td className="q-td">
@@ -177,7 +177,7 @@ function QvolumeDiv() {
       </td>
     </tr>
     <tr>
-      <td className="q-td">
+      <td className="q-td text-end">
         To:
       </td>
       <td className="q-td">
