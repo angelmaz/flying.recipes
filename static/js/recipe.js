@@ -1,3 +1,43 @@
+const hearts_full = document.querySelectorAll('.full_heart');
+
+for (const heart_full of hearts_full) {
+    heart_full.addEventListener("click", (event) => {
+        const heart_id = heart_full.getAttribute('id')
+        const recipe_id = heart_id.split('_')[2]
+        fetch(`/remove_favorite_recipe?recipe_id=${recipe_id}`)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                const status = responseJson['status'];
+                if (!status) {
+                    alert("cannot remove recipe from favorites");
+                }
+            });
+        event.target.style = 'display:none';
+        const heart_empty = event.target.parentNode.querySelector('.empty_heart');
+        heart_empty.style = 'display:block';
+    })
+}
+const hearts_empty = document.querySelectorAll('.empty_heart');
+
+for (const heart_empty of hearts_empty) {
+    heart_empty.addEventListener("click", (event) => {
+        const heart_id = heart_empty.getAttribute('id')
+        const recipe_id = heart_id.split('_')[2]
+        fetch(`/favorite_recipe?recipe_id=${recipe_id}`)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                const status = responseJson['status'];
+                if (!status) {
+                    alert("cannot add recipe to favorites");
+                }
+            });
+        event.target.style = 'display:none';
+        const heart_full = event.target.parentNode.querySelector('.full_heart');
+        heart_full.style = 'display:block';
+    })
+}
+
+
 const scaleButton = document.querySelector('#scale_button');
 const scaleContainer = document.querySelector('#scale_container');
 

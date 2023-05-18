@@ -20,10 +20,10 @@
                 {% if 'logged_in_user_id' in session %}
                 <!-- <div class="heart-div"> -->
                 <img class="full_heart" id="heart_full_{{recipe.recipe_id}}" width=25
-                    src="static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}
+                    src="/static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}
                     style="display:none" {% endif %}>
                 <img class="empty_heart" id="heart_empty_{{recipe.recipe_id}}" width=25
-                    src="static/img/hearth_empty_100.png" {% if recipe.recipe_id in my_favorite_recipe_ids %}
+                    src="/static/img/hearth_empty_100.png" {% if recipe.recipe_id in my_favorite_recipe_ids %}
                     style="display:none" {% endif %}>
                 <!-- </div> -->
                 {% endif %}

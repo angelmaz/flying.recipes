@@ -119,7 +119,13 @@ def edit_recipe(recipe_id):
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
     recipe = crud.get_recipe_by_id(recipe_id)
-    return render_template("recipe.html", recipe=recipe)
+    my_favorite_recipe_ids = []
+    if "logged_in_user_id" in session:
+        my_favorites = crud.get_favorites_by_user_id(
+            session['logged_in_user_id'])
+        my_favorite_recipe_ids = [
+            favorite.recipe_id for favorite in my_favorites]
+    return render_template("recipe.html", recipe=recipe, my_favorite_recipe_ids=my_favorite_recipe_ids)
 
 
 @app.route('/get_all_units')

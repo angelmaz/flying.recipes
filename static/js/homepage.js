@@ -2,9 +2,11 @@ $(document).ready(function () {
     var interval = 5000; // 5 seconds
     var currentIndex = 0;
     var photos = [
-        'static/img/photo_recipes/5.jpeg',
-        'static/img/photo_recipes/4.jpeg',
-        'static/img/photo_recipes/8.jpeg'
+        'static/img/karuzela1.png',
+        'static/img/karuzela2.png',
+        'static/img/karuzela3.png',
+        'static/img/karuzela4.png',
+        'static/img/kanapka1.png',
     ];
 
     // Set initial active item
