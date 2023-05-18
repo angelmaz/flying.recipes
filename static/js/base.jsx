@@ -114,7 +114,7 @@ function QweightDiv() {
         From:
       </td>
       <td className="q-td">
-        <input type="number" className="q-input" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
+        <input type="number" min="0" className="q-input" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
       </td>
       <td className="q-td">
         <select value={fromUnit} onChange={(e) => { setFromUnit(e.target.value); }}>
@@ -168,7 +168,7 @@ function QvolumeDiv() {
         From:
       </td>
       <td className="q-td">
-        <input type="number" className="q-input" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
+        <input type="number" min="0" className="q-input" value={fromQuantity} onChange={(e) => { setFromQuantity(e.target.value); }} />
       </td>
       <td className="q-td">
         <select value={fromUnit} onChange={(e) => { setFromUnit(e.target.value); }}>
