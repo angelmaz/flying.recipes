@@ -20,14 +20,8 @@ body {
   text-align: center;
 }
 
-
 .text-center {
   text-align: center;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .align-items-center {
@@ -616,7 +610,6 @@ h3 {
   font-weight: bold;
 }
 
-
 #link_button {
   background-color: #4CAF50;
   color: white;
@@ -654,7 +647,6 @@ h3 {
 }
 
 .footer {
-
   left: 0;
   bottom: 0;
   width: 100%;
@@ -662,8 +654,6 @@ h3 {
   background-color: rgb(1, 0, 0);
   color: rgb(217, 213, 213);
   text-align: center;
- 
-
 }
 
 .footer img {
