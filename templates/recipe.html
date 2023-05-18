@@ -2,15 +2,17 @@
 {% block title %}Recipe | Wherever you are!{% endblock %}
 
 {% block body %}
-<h2 style="font-size: 4em">{{ recipe.title }}</h2>
-    
+<h2>{{ recipe.title }}</h2>
+
 <div class="recipe-container" style="text-align: center; padding-top: 20px; padding-bottom: 5px;">
     <div class="one-recipe">
         <img src="{{ recipe.image_url }}" width="500px" class="img-responsive">
-        <img class="full_heart heart-one" id="heart_full_{{recipe.recipe_id}}" width=25 src="/static/img/hearth_full_100.png" {%
-            if not recipe.recipe_id in my_favorite_recipe_ids %} style="display:none" {% endif %}>
-        <img class="empty_heart heart-one" id="heart_empty_{{recipe.recipe_id}}" width=25 src="/static/img/hearth_empty_100.png"
-            {% if recipe.recipe_id in my_favorite_recipe_ids %} style="display:none" {% endif %}>
+        <img class="full_heart heart-one" id="heart_full_{{recipe.recipe_id}}" width=25
+            src="/static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}
+            style="display:none" {% endif %}>
+        <img class="empty_heart heart-one" id="heart_empty_{{recipe.recipe_id}}" width=25
+            src="/static/img/hearth_empty_100.png" {% if recipe.recipe_id in my_favorite_recipe_ids %}
+            style="display:none" {% endif %}>
     </div>
 </div>
 
@@ -105,41 +107,52 @@
 </div>
 
 
-<div class="my-recipe-card">
-    <h3><span>Ingredients</span></h3>
+<div class="container my-recipe-card">
 
     <div>
-        <ul>
-            {% for ingredient in recipe.ingredients %}
-            <li class="ingredient_row">
-                <span class="quantity_field">{% if ingredient.quantity %}{{ "%.2f"|format(ingredient.quantity) }}{%
-                    endif %}</span>
-                <span class="unit_field">
-                    {% if ingredient.unit in weight_units %}
-                    <select name="unit">
-                        {% for unit in weight_units %}
-                        <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
-                        {% endfor %}
-                    </select>
-                    {% elif ingredient.unit in volume_units %}
-                    <select name="unit">
-                        {% for unit in volume_units %}
-                        <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
-                        {% endfor %}
-                    </select>
-                    {% else %}
-                    {{ingredient.unit}}
-                    {% endif %}
-                </span>
-                <span class="name_field">{{ ingredient.name }}</span>
-                <input type="hidden" class="ingredient_id_field" value="{{ingredient.ingredient_id}}">
-            </li>
-            {% endfor %}
-        </ul>
+        <h3>Ingredients</h3>
+        <table>
+            <tbody>
+                {% for ingredient in recipe.ingredients %}
+                <tr class="my-recipe-column ingredients-column">
+                    <td>
+                        <span class="quantity_field">{% if ingredient.quantity %}{{ "%.2f"|format(ingredient.quantity)
+                            }}{%
+                            endif %}</span>
+                    </td>
+                    <td>
+                        <span class="unit_field">
+                            {% if ingredient.unit in weight_units %}
+                            <select name="unit">
+                                {% for unit in weight_units %}
+                                <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            {% elif ingredient.unit in volume_units %}
+                            <select name="unit">
+                                {% for unit in volume_units %}
+                                <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                            {% else %}
+                            {{ingredient.unit}}
+                            {% endif %}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="name_field">{{ ingredient.name }}</span>
+                    </td>
+                    <input type="hidden" class="ingredient_id_field" value="{{ingredient.ingredient_id}}">
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
-    <div class="description-recipe">
-        <h3 id="prepare"><span>Prepare</span></h3>
+    <div class="my-recipe-column description-column">
+        <h3>Prepare</h3>
         <div>
             <p>{{ recipe.description }}</p>
         </div>
