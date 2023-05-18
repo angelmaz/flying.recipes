@@ -42,7 +42,7 @@ def index():
 def show_login():
     """Show login form."""
 
-    return render_template("login.html")
+    return render_template("login.html", hide_quick=True)
 
 
 @app.route("/login", methods=["POST"])
@@ -71,7 +71,7 @@ def process_login():
 @app.route("/create_account")
 def create_account():
 
-    return render_template("create_account.html")
+    return render_template("create_account.html", hide_quick=True)
 
 
 @app.route("/register_user", methods=["POST"])

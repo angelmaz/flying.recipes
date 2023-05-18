@@ -66,7 +66,8 @@
       </div>
     </div>
   </div>
-  <div class="container" id="quick">
+
+  <div class="container" id="quick" {% if hide_quick is defined %}style="display: none"{% endif %}>
     <h1>Quick convert</h1>
 
     <div class="card card-q" style="padding-bottom: 25px;">
@@ -102,7 +103,6 @@
       </div>
     </div>
   </div>
-
 
   {% block body %}{% endblock %}
   <div class="footer">
