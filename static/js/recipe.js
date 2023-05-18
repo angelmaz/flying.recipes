@@ -173,7 +173,7 @@ for (const row of document.querySelectorAll(".ingredient_row")) {
     if (select) {
         select.addEventListener('change', (event) => {
             const unitField = event.target.parentNode;
-            const ingredientRow = unitField.parentNode;
+            const ingredientRow = unitField.parentNode.parentNode;
             const quantityField = ingredientRow.querySelector('.quantity_field');
             const ingredientId = ingredientRow.querySelector('.ingredient_id_field').value;
             fetch('/convert', {
