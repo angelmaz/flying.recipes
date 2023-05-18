@@ -2,7 +2,7 @@
 {% block title %}Recipe | Wherever you are!{% endblock %}
 
 {% block body %}
-<h2>{{ recipe.title }}</h2>
+<h1 class="recipe-title">{{ recipe.title }}</h1>
 
 <div class="recipe-container" style="text-align: center; padding-top: 20px; padding-bottom: 5px;">
     <div class="one-recipe">
@@ -95,12 +95,12 @@
     <div>
         <div class="item-2 clearfix"></div>
         <h2> By number of portions</h2>
-        <span class="title-from">From:</span>
-        <span class="content">
-            <input type="number" min="1" name="from_person" id="from_person" size="2" value="">
-            to <input type="number" min="2" name="to_person" id="to_person" size="2" value="">portions
-        </span>
         <div id="results_by_person">
+            <span class="title-from">From:</span>
+            <span class="content">
+                <input type="number" min="1" name="from_person" id="from_person" size="2" value="">
+                to <input type="number" min="2" name="to_person" id="to_person" size="2" value=""> portions
+            </span>
             <input type="button" id="calculation_by_person" value="Compute">
         </div>
     </div>

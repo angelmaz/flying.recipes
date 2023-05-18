@@ -50,25 +50,29 @@
           </button>
         </form>
       </div>
-      <div class="col-md-3" id="logging">
+      <div class="col-md-3 text-end" id="logging">
 
         {% if 'logged_in_user_id' in session %}
-        <p> Great to see you {{session['logged_in_email'].split('@')[0]}}!</p>
-        <a href="/user_dashboard">My account</a>
-        <span>|</span>
-        <a href="/logout">Logout</a>
+        <div>Great to see you {{session['logged_in_email'].split('@')[0]}}!</div>
+        <div>
+          <a href="/user_dashboard">My account</a>
+          <span>|</span>
+          <a href="/logout">Logout</a>
+        </div>
         {% else %}
         <div>Join us!</div>
-        <a href="/create_account">Create account</a>
-        <span>|</span>
-        <a href="/login">Login</a>
+        <div>
+          <a href="/create_account">Create account</a>
+          <span>|</span>
+          <a href="/login">Login</a>
+        </div>
         {% endif %}
       </div>
     </div>
   </div>
 
-  <div class="container text-center" {% if hide_quick is defined %}style="display: none"{% endif %}>
-    <h1>Quick convert</h1>
+  <div class="container text-center quick-container" {% if hide_quick is defined %}style="display: none" {% endif %}>
+    <h2>Quick convert</h2>
 
     <div class="card card-q" style="padding-bottom: 25px;">
       <div style="text-align:center; font-weight: bold; padding-bottom: 10px">
