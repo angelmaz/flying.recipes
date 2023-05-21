@@ -45,7 +45,7 @@ Go to `localhost:5000` in your browser to see the web app
 
 ## How to use Kitchen helper
 - The quick convert function and the search box are on each page to make easy access to them.
-
+![Quick convert function](static/img/readme/README1.jpg)
 - The recipe view provides functions to scale, edit and remove the recipe. Good to know: only the author of the recipe can edit and remove the recipe.
 
 - Otherwise, the recipe has only the scale function.
