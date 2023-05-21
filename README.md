@@ -47,14 +47,19 @@ Go to `localhost:5000` in your browser to see the web app
 - The quick convert function and the search box are on each page to make easy access to them.
 ![Quick convert function](static/img/readme/README1.jpg)
 - The recipe view provides functions to scale, edit and remove the recipe. Good to know: only the author of the recipe can edit and remove the recipe.
+
 ![Recipe view](static/img/readme/README4.jpg)
 - Otherwise, the recipe has only the scale function.
+
 ![Recipe view if you are not a author](static/img/readme/README6.jpg)
 - In the create function, the author can easily add and remove an ingredient. Moreover, the user can upload a recipe image. 
+
 ![Create recipe view](static/img/readme/README2.jpg)
 - If the image is not uploaded, theb recipe will be saved with a default image.
+
 ![save recipe with default image.](static/img/readme/README7.jpg)
 - To use the web scraping function, paste the link to the recipe from foodnetwork.com and press "Get recipe".
+
 ![Web scraping card](static/img/readme/README8.jpg)
 
 
