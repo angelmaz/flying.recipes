@@ -31,9 +31,12 @@ class Recipe(db.Model):
         'users.user_id'), nullable=False)
     title = db.Column(db.String, nullable=False)
     image_url = db.Column(db.String)
+    is_copy = db.Column(db.Boolean)
+    original_recipe_id = db.Column(
+        db.Integer, db.ForeignKey('recipes.recipe_id'))
 
     def __repr__(self):
-        output = f"<Recipe recipe_id: {self.recipe_id}, author_id: {self.author_id}, title: {self.title}>"
+        output = f"<Recipe recipe_id: {self.recipe_id}, author_id: {self.author_id}, title: {self.title}, is_copy: {self.is_copy}, original_recipe_id: {self.original_recipe_id}>"
         for ingredient in self.ingredients:
             output += '\n' + ingredient.__repr__()
         for paragraph in self.paragraphs:
@@ -48,6 +51,9 @@ class Recipe(db.Model):
         "Ingredient", back_populates="recipe", passive_deletes=True)
     paragraphs = db.relationship(
         "Paragraph", back_populates="recipe", passive_deletes=True)
+
+    original_recipe = db.relationship("Recipe", back_populates="copies")
+    copies = db.relationship("Recipe")
 
 
 class Ingredient(db.Model):

@@ -26,23 +26,27 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-def create_recipe(author, title, image_url):
+def create_recipe(author, title, image_url, is_copy=False, original_recipe_id=None):
     """Create and return a new recipe."""
 
     recipe = Recipe(
         author=author,
         title=title,
         image_url=image_url,
+        is_copy=is_copy,
+        original_recipe_id=original_recipe_id
     )
     return recipe
 
 
-def create_recipe_from_author_id(author_id, title, image_url):
+def create_recipe_from_author_id(author_id, title, image_url, is_copy=False, original_recipe_id=None):
 
     recipe = Recipe(
         author_id=author_id,
         title=title,
         image_url=image_url,
+        is_copy=is_copy,
+        original_recipe_id=original_recipe_id
     )
     return recipe
 
