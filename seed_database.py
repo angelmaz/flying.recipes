@@ -24,11 +24,12 @@ with open('data/users.json') as f:
 
 users_in_db = []
 for user in user_data:
-    email, password = (
+    email, password, name = (
         user["email"],
         user["password"],
+        user["name"],
     )
-    db_user = crud.create_user(email=email, password=argon2.hash(password))
+    db_user = crud.create_user(email=email, password=argon2.hash(password), name=name)
     users_in_db.append(db_user)
 
 db.session.add_all(users_in_db) # add all users to db

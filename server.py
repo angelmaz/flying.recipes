@@ -64,6 +64,7 @@ def process_login():
 
     session["logged_in_user_id"] = user.user_id
     session['logged_in_email'] = user.email
+    session['logged_in_name'] = user.name
     flash("Logged in")
     return redirect("/user_dashboard")
 
@@ -80,12 +81,13 @@ def register_user():
 
     email = request.form.get("email")
     password = request.form.get("password")
+    name = request.form.get("name")
 
     user = crud.get_user_by_email(email)
     if user:
         flash("Cannot create an account with that email. Try again.")
     else:
-        user = crud.create_user(email, argon2.hash(password))
+        user = crud.create_user(email, argon2.hash(password), name)
         db.session.add(user)
         db.session.commit()
         flash("Account created! Please log in.")
@@ -297,8 +299,9 @@ def web_scrapping():
 def process_logout():
     """Log user out."""
 
-    del session["logged_in_user_id"]
+    del session['logged_in_user_id']
     del session['logged_in_email']
+    del session['logged_in_name']
     flash("Logged out.")
     return redirect("/")
 

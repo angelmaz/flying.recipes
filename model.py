@@ -12,9 +12,10 @@ class User(db.Model):
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String, unique=True)
     password = db.Column(db.String, nullable=False)
+    name = db.Column(db.String(30))
 
     def __repr__(self):
-        return f"<User user_id: {self.user_id}, email: {self.email}>"
+        return f"<User user_id: {self.user_id}, email: {self.email}, name: {self.name}>"
 
     recipes = db.relationship("Recipe", back_populates="author")
     favorites = db.relationship("Favorite", back_populates="user")

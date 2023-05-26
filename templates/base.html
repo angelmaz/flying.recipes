@@ -53,7 +53,7 @@
       <div class="col-md-3 text-end" id="logging">
 
         {% if 'logged_in_user_id' in session %}
-        <div>Great to see you {{session['logged_in_email'].split('@')[0]}}!</div>
+        <div>Great to see you {{session['logged_in_name']}}!</div>
         <div>
           <a href="/user_dashboard">My account</a>
           <span>|</span>
