@@ -30,19 +30,24 @@ class Recipe(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey(
         'users.user_id'), nullable=False)
     title = db.Column(db.String, nullable=False)
-    description = db.Column(db.Text)
     image_url = db.Column(db.String)
 
     def __repr__(self):
-        output = f"<Recipe recipe_id: {self.recipe_id}, author_id: {self.author_id}, title: {self.title}, description: {self.description}>"
+        output = f"<Recipe recipe_id: {self.recipe_id}, author_id: {self.author_id}, title: {self.title}>"
         for ingredient in self.ingredients:
             output += '\n' + ingredient.__repr__()
+        for paragraph in self.paragraphs:
+            output += '\n' + paragraph.__repr__()
         return output
 
     author = db.relationship("User", back_populates="recipes")
-    favorites = db.relationship("Favorite", back_populates="recipe", passive_deletes=True)
+    favorites = db.relationship(
+        "Favorite", back_populates="recipe", passive_deletes=True)
     ratings = db.relationship("Rating", back_populates="recipe")
-    ingredients = db.relationship("Ingredient", back_populates="recipe", passive_deletes=True)
+    ingredients = db.relationship(
+        "Ingredient", back_populates="recipe", passive_deletes=True)
+    paragraphs = db.relationship(
+        "Paragraph", back_populates="recipe", passive_deletes=True)
 
 
 class Ingredient(db.Model):
@@ -50,7 +55,8 @@ class Ingredient(db.Model):
     __tablename__ = "ingredients"
 
     ingredient_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.recipe_id", ondelete="CASCADE"), nullable=False)
+    recipe_id = db.Column(db.Integer, db.ForeignKey(
+        "recipes.recipe_id", ondelete="CASCADE"), nullable=False)
     name = db.Column(db.String, nullable=False)
     quantity = db.Column(db.Float, nullable=True)
     unit = db.Column(db.String, nullable=False)
@@ -63,6 +69,21 @@ class Ingredient(db.Model):
         return f"<Ingredient recipe_id: {self.recipe_id}, ingredient_id: {self.ingredient_id}, name: {self.name}, quantity: {quantity_str}, unit: {self.unit}>"
 
     recipe = db.relationship("Recipe", back_populates="ingredients")
+
+
+class Paragraph(db.Model):
+
+    __tablename__ = "paragraphs"
+
+    paragraph_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    recipe_id = db.Column(db.Integer, db.ForeignKey(
+        "recipes.recipe_id", ondelete="CASCADE"), nullable=False)
+    text = db.Column(db.Text)
+
+    def __repr__(self):
+        return f"<Paragraph recipe_id: {self.recipe_id}, paragraph_id: {self.paragraph_id}, text: {self.text}>"
+
+    recipe = db.relationship("Recipe", back_populates="paragraphs")
 
 
 class Rating(db.Model):
@@ -114,5 +135,4 @@ def connect_to_db(flask_app, db_uri="postgresql:///kitchen_helper", echo=True):
 if __name__ == "__main__":
     from server import app
 
-  
     connect_to_db(app)

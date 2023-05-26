@@ -44,14 +44,19 @@ def download_recipe(author_id, url):
 
     descriptions_list = html.select('div.o-Method__m-Body')
     descriptions = descriptions_list[0].select('li')
-    description_text_box = ''
+    description_text_list = []
     for description in descriptions:
         description_text = description.decode_contents()
-        description_text_box += ' ' + description_text
+        description_text_list.append(description_text)
     recipe = crud.create_recipe_from_author_id(
-        author_id=author_id, title=title_text, description=description_text_box, image_url=img_src)
+        author_id=author_id, title=title_text, image_url=img_src)
     db.session.add(recipe)
+
+    for text in description_text_list:
+        db_paragraph = crud.create_paragraph(recipe=recipe, text=text)
+        db.session.add(db_paragraph)
     ingredients = html.select('p.o-Ingredients__a-Ingredient')
+   
     for ingredient in ingredients[1:]:
         ingredient_text = ingredient.select(
             '.o-Ingredients__a-Ingredient--CheckboxLabel')[0].get_text()

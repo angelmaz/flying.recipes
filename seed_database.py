@@ -29,26 +29,28 @@ for user in user_data:
         user["password"],
         user["name"],
     )
-    db_user = crud.create_user(email=email, password=argon2.hash(password), name=name)
+    db_user = crud.create_user(
+        email=email, password=argon2.hash(password), name=name)
     users_in_db.append(db_user)
 
-db.session.add_all(users_in_db) # add all users to db
+db.session.add_all(users_in_db)  # add all users to db
 
 # take recipe in a loop from json and add to db
 with open('data/recipes.json') as f:
     recipe_data = json.loads(f.read())
 
 for recipe in recipe_data:
-    author_id, title, ingredients_dicts, description, image_url = (
+    author_id, title, ingredients_dicts, paragraphs, image_url = (
         recipe["author_id"],
         recipe["title"],
         recipe["ingredients"],
-        recipe["description"],
+        recipe["paragraphs"],
         recipe["image_url"],
     )
     db_recipe = crud.create_recipe_from_author_id(
-        author_id=author_id, title=title, description=description, image_url=image_url)
+        author_id=author_id, title=title, image_url=image_url)
     db.session.add(db_recipe)
+
     for ingredient_dict in ingredients_dicts:
         quantity_str, unit, name = (
             ingredient_dict["quantity"],
@@ -56,8 +58,12 @@ for recipe in recipe_data:
             ingredient_dict["name"],
         )
         quantity = str_to_float(quantity_str)
-        db_ingredient = crud.create_ingredient(recipe=db_recipe, name=name, quantity=quantity, unit=unit)
+        db_ingredient = crud.create_ingredient(
+            recipe=db_recipe, name=name, quantity=quantity, unit=unit)
         db.session.add(db_ingredient)
 
-db.session.commit()
+    for text in paragraphs:
+        db_paragraph = crud.create_paragraph(recipe=db_recipe, text=text)
+        db.session.add(db_paragraph)
 
+db.session.commit()

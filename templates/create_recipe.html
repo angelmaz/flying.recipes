@@ -10,7 +10,7 @@
     </div>
     <div class="col-xs-6 col-sm-12 col-md-12" id="ingredient_list">
         {% if not recipe %}
-        <div>
+        <div class="ingredient">
             quantity <input type="number" id="quantity" value="" size="8">
             unit <select id="unit">
                 {% for unit in all_units%}
@@ -38,11 +38,33 @@
     </div>
 
     <div>
-        <input type="button" id="add_ingredient" value="add_ingredient">
+        <input type="button" id="add_ingredient" value="Add ingredient">
     </div>
+
+
+    <div>Description:</div>
+    <div class="col-xs-6 col-sm-12 col-md-12" id="paragraph_list">
+        {% if not recipe %}
+        <div class="paragraph">
+            <textarea rows="3" cols="70" id="text"></textarea>
+            <button class="remove-paragraph"><i class="fas fa-times"></i></button>
+        </div>
+        {% else %}
+        {% for paragraph in recipe.paragraphs %}
+        <div class="paragraph">
+            <textarea rows="3" cols="70" id="text">{{ paragraph.text }}</textarea>
+            <button class="remove-paragraph"><i class="fas fa-times"></i></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
     <div>
-        <textarea rows="10" cols="100" id="description">{% if recipe %}{{ recipe.description }}{% endif %}</textarea>
+        <input type="button" id="add_paragraph" value="Add step">
     </div>
+
+
+
     <div>
         <form action="/uploader" method="POST" enctype="multipart/form-data" id="upload_form">
             <input type="file" name="file" id="file_input" />

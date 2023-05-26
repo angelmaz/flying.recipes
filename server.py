@@ -1,6 +1,6 @@
 """Kitchen-helper Flask server"""
 from flask import Flask, render_template, redirect, flash, session, request, jsonify
-from model import User, Recipe, Ingredient, Rating, Favorite, connect_to_db, db
+from model import User, Recipe, Ingredient, Rating, Favorite, Paragraph, connect_to_db, db
 import crud
 import engine
 from jinja2 import StrictUndefined
@@ -138,7 +138,7 @@ def get_all_units():
 def save():
     ingredients = request.json.get("ingredients")
     title = request.json.get('title')
-    description = request.json.get('description')
+    paragraphs = request.json.get('paragraphs')
     recipe_id = request.json.get('recipe_id')
     file_input = request.json.get('file_input')
 
@@ -150,14 +150,14 @@ def save():
     if create_new:
         # create a new recipe
         db_recipe = crud.create_recipe_from_author_id(
-            author_id=session['logged_in_user_id'], title=title, description=description, image_url='/static/img/YourDish.png')
+            author_id=session['logged_in_user_id'], title=title, image_url='/static/img/YourDish.png')
         db.session.add(db_recipe)
     else:
         # update existing recipe
         db_recipe = crud.get_recipe_by_id(recipe_id)
         db_recipe.title = title
-        db_recipe.description = description
         Ingredient.query.filter_by(recipe_id=recipe_id).delete()
+        Paragraph.query.filter_by(recipe_id=recipe_id).delete()
     
     for ingredient_dict in ingredients:
         quantity_str, unit, name = (
@@ -170,6 +170,10 @@ def save():
             recipe=db_recipe, name=name, quantity=quantity, unit=unit)
         db.session.add(db_ingredient)
 
+    for text in paragraphs:
+        db_paragraph = crud.create_paragraph(recipe=db_recipe, text=text)
+        db.session.add(db_paragraph)
+        
     db.session.commit()
 
     recipe_id = db_recipe.recipe_id

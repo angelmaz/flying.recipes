@@ -527,7 +527,8 @@ h1, h2, h3, h4, h5 {
   width: 100%;
 }
 
-.remove-ingredient {
+.remove-ingredient,
+.remove-paragraph {
   background-color: transparent;
   border: none;
   color: #dc3545;
@@ -537,7 +538,8 @@ h1, h2, h3, h4, h5 {
   outline: none;
 }
 
-.remove-ingredient:hover {
+.remove-ingredient:hover,
+.remove-paragraph:hover {
   color: #c82333;
 }
 

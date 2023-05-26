@@ -2,188 +2,634 @@
     {
         "author_id": 1,
         "title": "Salad-Stuffed Peppers",
-        "ingredients":[
-            {"quantity": "", "unit": "", "name": "Kosher salt"},
-            {"quantity": "1", "unit": "ct", "name":"lemon"},
-            {"quantity": "4", "unit": "ct", "name":"cloves garlic "},
-            {"quantity": "4", "unit": "ct", "name":"bell peppers,assorted colors"},
-            {"quantity": "2", "unit": "Tbsp", "name":"extra-virgin olive oil"}, 
-            {"quantity": "4", "unit": "oz", "name":"lSpanish cured chorizo, casings removed, small dice"}, 
-            {"quantity": "4", "unit": "slices", "name":"slices bread, torn into bite-size pieces"},
-            {"quantity": "1", "unit": "bunch", "name":"Tuscan kale, thinly sliced "},
-            {"quantity": "1", "unit": "Tbsp", "name":"sherry vinegar"},
-            {"quantity": "1/4", "unit": "cup", "name":"pitted dates, chopped "},
-            {"quantity": "1/4", "unit": "cup", "name":"pitted Castelvetrano olives, halved "},
-            {"quantity": "1/4", "unit": "cup", "name":"fresh flat-leaf parsley leaves"},
-            {"quantity": "2", "unit": "oz", "name":"manchego cheese, freshly grated"},
-            {"quantity": "1/4", "unit": "cup", "name":"Marcona almonds, finely chopped"}
+        "ingredients": [
+            {
+                "quantity": "",
+                "unit": "",
+                "name": "Kosher salt"
+            },
+            {
+                "quantity": "1",
+                "unit": "ct",
+                "name": "lemon"
+            },
+            {
+                "quantity": "4",
+                "unit": "ct",
+                "name": "cloves garlic "
+            },
+            {
+                "quantity": "4",
+                "unit": "ct",
+                "name": "bell peppers,assorted colors"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "extra-virgin olive oil"
+            },
+            {
+                "quantity": "4",
+                "unit": "oz",
+                "name": "lSpanish cured chorizo, casings removed, small dice"
+            },
+            {
+                "quantity": "4",
+                "unit": "slices",
+                "name": "slices bread, torn into bite-size pieces"
+            },
+            {
+                "quantity": "1",
+                "unit": "bunch",
+                "name": "Tuscan kale, thinly sliced "
+            },
+            {
+                "quantity": "1",
+                "unit": "Tbsp",
+                "name": "sherry vinegar"
+            },
+            {
+                "quantity": "1/4",
+                "unit": "cup",
+                "name": "pitted dates, chopped "
+            },
+            {
+                "quantity": "1/4",
+                "unit": "cup",
+                "name": "pitted Castelvetrano olives, halved "
+            },
+            {
+                "quantity": "1/4",
+                "unit": "cup",
+                "name": "fresh flat-leaf parsley leaves"
+            },
+            {
+                "quantity": "2",
+                "unit": "oz",
+                "name": "manchego cheese, freshly grated"
+            },
+            {
+                "quantity": "1/4",
+                "unit": "cup",
+                "name": "Marcona almonds, finely chopped"
+            }
         ],
-        "description": "Place a large pot filled halfway with water over high heat and season generously with salt. Halve the lemon, then juice it and set aside 1 tablespoon juice. Add the lemon halves and the remaining lemon juice to the water. Crush 3 of the garlic cloves and add to the water. Cover and bring to a boil. Fill a large bowl with ice water.<br /><br />Prepare the peppers by slicing off just enough of the tops to reveal the seeds. Remove and discard the seed pockets and stems. Trim the bottom of the peppers as needed so they stand up on their own. Finely chop the pepper tops and add to a large bowl.\n\nGently lower the pepper boats into the boiling water until fully submerged. Cook until just crisp tender, 4 to 6 minutes. The peppers should hold their shape and stand up straight. Once cooked, place the peppers in the ice bath to prevent further cooking, about 1 minute. Drain the peppers upside-down on a paper towel-lined plate to catch any water that remains inside.<br /><br />Meanwhile, place a large nonstick skillet over medium-high heat. Add the oil and chorizo and cook until the chorizo is just fragrant and the oil has a red hue, 1 to 2 minutes. Remove from the heat and use a slotted spoon to add the chorizo to the bowl with the chopped peppers. Add 2 teaspoons of the hot oil from the skillet to the bowl, reserving the rest. The chorizo will crisp as it cools.<br /><br />Place the skillet with the reserved oil over medium heat. Add the bread to the skillet in an even layer. Cook, tossing occasionally, until the bread is browned and toasted, about 5 minutes. Finely chop the remaining garlic clove. When the bread is nearly toasted, add the garlic to the skillet and toss until it is distributed through the toasted bread. Set aside.<br /><br />Add the kale, vinegar and the reserved 1 tablespoon lemon juice to the bowl. Massage until the kale is slightly softened and coated. Add the dates, olives, parsley and toasted bread and gently toss to combine.<br /><br />Place the peppers upright on a serving platter. Mound the salad into each pepper. Generously grate the cheese over the salad. Sprinkle with the chopped almonds and serve immediately.",
+        "paragraphs": [
+            "Place a large pot filled halfway with water over high heat and season generously with salt. Halve the lemon, then juice it and set aside 1 tablespoon juice. Add the lemon halves and the remaining lemon juice to the water. Crush 3 of the garlic cloves and add to the water. Cover and bring to a boil. Fill a large bowl with ice water.",
+            "Prepare the peppers by slicing off just enough of the tops to reveal the seeds. Remove and discard the seed pockets and stems. Trim the bottom of the peppers as needed so they stand up on their own. Finely chop the pepper tops and add to a large bowl.",
+            "Gently lower the pepper boats into the boiling water until fully submerged. Cook until just crisp tender, 4 to 6 minutes. The peppers should hold their shape and stand up straight. Once cooked, place the peppers in the ice bath to prevent further cooking, about 1 minute. Drain the peppers upside-down on a paper towel-lined plate to catch any water that remains inside.",
+            "Meanwhile, place a large nonstick skillet over medium-high heat. Add the oil and chorizo and cook until the chorizo is just fragrant and the oil has a red hue, 1 to 2 minutes. Remove from the heat and use a slotted spoon to add the chorizo to the bowl with the chopped peppers. Add 2 teaspoons of the hot oil from the skillet to the bowl, reserving the rest. The chorizo will crisp as it cools.",
+            "Place the skillet with the reserved oil over medium heat. Add the bread to the skillet in an even layer. Cook, tossing occasionally, until the bread is browned and toasted, about 5 minutes. Finely chop the remaining garlic clove. When the bread is nearly toasted, add the garlic to the skillet and toss until it is distributed through the toasted bread. Set aside.",
+            "Add the kale, vinegar and the reserved 1 tablespoon lemon juice to the bowl. Massage until the kale is slightly softened and coated. Add the dates, olives, parsley and toasted bread and gently toss to combine.",
+            "Place the peppers upright on a serving platter. Mound the salad into each pepper. Generously grate the cheese over the salad. Sprinkle with the chopped almonds and serve immediately."
+        ],
         "image_url": "/static/img/photo_recipes/1.jpeg"
     },
     {
         "author_id": 2,
         "title": "Blueberry Pancakes",
         "ingredients": [
-            {"quantity": "1 3/4", "unit": "cup", "name": "all-purpose flour"},
-            {"quantity": "2", "unit": "Tbsp", "name": "sugar"},
-            {"quantity": "1", "unit": "tsp", "name": "baking powder"},
-            {"quantity": "1/2", "unit": "tsp", "name": "vanilla extract"},
-            {"quantity": "1 1/2", "unit": "cup", "name": "fresh or frozen blueberries"},
-            {"quantity": "1/2", "unit": "tsp", "name": "baking soda"},
-            {"quantity": "1/2", "unit": "tsp", "name": "salt"},
-            {"quantity": "2", "unit": "", "name": "large eggs"},
-            {"quantity": "1", "unit": "cup", "name": "milk"},
-            {"quantity": "1", "unit": "cup", "name": "source cream"},
-            {"quantity": "1", "unit": "stick", "name": "butter, melted"},
-            {"quantity": "1/2", "unit": "tsp", "name": "lemon zest"}
+            {
+                "quantity": "1 3/4",
+                "unit": "cup",
+                "name": "all-purpose flour"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "sugar"
+            },
+            {
+                "quantity": "1",
+                "unit": "tsp",
+                "name": "baking powder"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "vanilla extract"
+            },
+            {
+                "quantity": "1 1/2",
+                "unit": "cup",
+                "name": "fresh or frozen blueberries"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "baking soda"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "salt"
+            },
+            {
+                "quantity": "2",
+                "unit": "",
+                "name": "large eggs"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "milk"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "source cream"
+            },
+            {
+                "quantity": "1",
+                "unit": "stick",
+                "name": "butter, melted"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "lemon zest"
+            }
         ],
-        "description": "Sift the flour, sugar, baking powder, baking soda and salt into a large mixing bowl. In a separate large bowl, lightly whisk the eggs. Add the milk, sour cream, half the melted butter and the vanilla, whisking to blend. Make a well in the dry ingredients and pour the egg mixture into it. Whisk the ingredients together just until blended. Fold the blueberries and lemon zest into the batter. Heat a large skillet or griddle over medium heat and coat with some of the remaining melted butter. For each pancake, pour about 1/4 cup of the batter into the hot skillet. Cook 3 or 4 pancakes at a time, depending on the size of the skillet. If the batter seems too thick, thin it with 1 to 2 tablespoons milk. When bubbles begin to form and 'pop' on the pancake's surface, after about 1 minute, and the outer edge looks done, flip it over and cook briefly for about 30 seconds on the other side.",
+        "paragraphs": [
+            "Sift the flour, sugar, baking powder, baking soda and salt into a large mixing bowl. In a separate large bowl, lightly whisk the eggs. Add the milk, sour cream, half the melted butter and the vanilla, whisking to blend. Make a well in the dry ingredients and pour the egg mixture into it. Whisk the ingredients together just until blended. Fold the blueberries and lemon zest into the batter. Heat a large skillet or griddle over medium heat and coat with some of the remaining melted butter. For each pancake, pour about 1/4 cup of the batter into the hot skillet. Cook 3 or 4 pancakes at a time, depending on the size of the skillet. If the batter seems too thick, thin it with 1 to 2 tablespoons milk. When bubbles begin to form and 'pop' on the pancake's surface, after about 1 minute, and the outer edge looks done, flip it over and cook briefly for about 30 seconds on the other side."
+        ],
         "image_url": "/static/img/photo_recipes/2.jpeg"
     },
     {
         "author_id": 3,
         "title": "Easy Overnight Oats",
         "ingredients": [
-            {"quantity": "1", "unit": "cup", "name": "old-fashioned oats"},
-            {"quantity": "1", "unit": "tsp", "name": "chia seeds"},
-            {"quantity": "1/4", "unit": "tsp", "name": "ground cinnamon"},
-            {"quantity": "", "unit": "pinch", "name": "kosher salt"},
-            {"quantity": "1", "unit": "cup", "name": "dairy or non-dairy milk"},
-            {"quantity": "1/2", "unit": "cup", "name": "plain Greek yogurt"},
-            {"quantity": "1", "unit": "tbsp", "name": "honey"}
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "old-fashioned oats"
+            },
+            {
+                "quantity": "1",
+                "unit": "tsp",
+                "name": "chia seeds"
+            },
+            {
+                "quantity": "1/4",
+                "unit": "tsp",
+                "name": "ground cinnamon"
+            },
+            {
+                "quantity": "",
+                "unit": "pinch",
+                "name": "kosher salt"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "dairy or non-dairy milk"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "plain Greek yogurt"
+            },
+            {
+                "quantity": "1",
+                "unit": "tbsp",
+                "name": "honey"
+            }
         ],
-        "description": "Step 1: In a medium bowl or large glass container, combine oats, chia seeds, cinnamon, and salt. Add milk, yogurt, and honey and stir to combine. Cover and refrigerate overnight. Step 2: When ready to serve, stir oats and top with desired toppings. Step 3: Make Ahead: Oats (without toppings) can be made 5 days ahead. Keep refrigerated.",
-        "image_url":"/static/img/photo_recipes/3.jpeg"
+        "paragraphs": [
+            "Step 1: In a medium bowl or large glass container, combine oats, chia seeds, cinnamon, and salt. Add milk, yogurt, and honey and stir to combine. Cover and refrigerate overnight.",
+            "Step 2: When ready to serve, stir oats and top with desired toppings.",
+            "Step 3: Make Ahead: Oats (without toppings) can be made 5 days ahead. Keep refrigerated."
+        ],
+        "image_url": "/static/img/photo_recipes/3.jpeg"
     },
     {
         "author_id": 4,
         "title": "Fresh Strawberry Cake",
         "ingredients": [
-            {"quantity": "2", "unit": "cup", "name": "all-purpose flour"},
-            {"quantity": "2", "unit": "tsp", "name": "baking powder"},
-            {"quantity": "1/2", "unit": "tsp", "name": "Diamond Crystal"},
-            {"quantity": "1/2", "unit": "cup", "name": "cup whole milk, at room temperature"},
-            {"quantity": "1/4", "unit": "cup", "name": "cup sour cream, at room temperature"},
-            {"quantity": "3/4", "unit": "cup", "name": "granulated sugar"},
-            {"quantity": "1/2", "unit": "cup", "name": "unsalted butter, at room temperature"},
-            {"quantity": "2", "unit": "", "name": "large eggs, at room temperature"},
-            {"quantity": "2", "unit": "tsp", "name": "vanilla extract"},
-            {"quantity": "1/2", "unit": "tsp", "name": "almond extract"},
-            {"quantity": "10", "unit": "oz", "name": "fresh strawberries"},
-            {"quantity": "2", "unit": "Tbsp", "name": "strawberry jam"},
-            {"quantity": "", "unit": "", "name": "whipped cream for serving"}
+            {
+                "quantity": "2",
+                "unit": "cup",
+                "name": "all-purpose flour"
+            },
+            {
+                "quantity": "2",
+                "unit": "tsp",
+                "name": "baking powder"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "Diamond Crystal"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "cup whole milk, at room temperature"
+            },
+            {
+                "quantity": "1/4",
+                "unit": "cup",
+                "name": "cup sour cream, at room temperature"
+            },
+            {
+                "quantity": "3/4",
+                "unit": "cup",
+                "name": "granulated sugar"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "unsalted butter, at room temperature"
+            },
+            {
+                "quantity": "2",
+                "unit": "",
+                "name": "large eggs, at room temperature"
+            },
+            {
+                "quantity": "2",
+                "unit": "tsp",
+                "name": "vanilla extract"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "almond extract"
+            },
+            {
+                "quantity": "10",
+                "unit": "oz",
+                "name": "fresh strawberries"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "strawberry jam"
+            },
+            {
+                "quantity": "",
+                "unit": "",
+                "name": "whipped cream for serving"
+            }
         ],
-        "description": "Special equipment: 9”-diameter springform pan. Step 1: Place a rack in middle of oven; preheat to 350°. Grease springform pan generously with nonstick cooking oil spray. Step 2: Whisk together 2 cups (250 g) all-purpose flour, 2 tsp. baking powder, and ½ tsp. Diamond Crystal or ¼ tsp. Morton kosher salt in a medium bowl; set aside. Whisk together ½ cup whole milk, at room temperature and ¼ cup sour cream, at room temperature in a small bowl until smooth; set aside. Step 3: Cream together ¾ cup (150 g) granulated sugar and ½ cup (1 stick) unsalted butter, at room temperature in the bowl of a stand mixer fitted with a paddle attachment at medium-high speed until light and fluffy, 5–7 minutes. Scrape down sides of bowl with a spatula. Reduce mixer speed to medium and add 2 large eggs, at room temperature one at a time, allowing each egg to fully incorporate and scraping down bowl after each addition, about 1 minute each. Mix in 2 tsp. vanilla extract and ½ tsp. almond extract. Step 4: Reduce mixer speed to low and add half of reserved flour mixture; mix until just combined. Scrape down sides of bowl, add reserved milk mixture, and mix until just combined. Scrape down sides of bowl and mixing paddle, then add remaining flour mixture. Mix until smooth. Step 5: Scrape batter into prepared pan, smoothing surface with spatula. Leaving ¼” cake border between first row and edge of pan, arrange 10 oz. fresh strawberries (preferably small ones), hulled, halved or quartered if large on top of cake, cut side down, in a circular pattern. Place pan on a baking sheet to catch any drips. Bake until a cake tester or toothpick inserted into center of cake comes out mostly clean with a few moist crumbs clinging to it, 50–60 minutes (top of cake will still be quite pale). Transfer pan to a wire rack to cool for about 10 minutes. Step 6: Meanwhile, microwave 2 Tbsp. strawberry jam in a small, microwave-safe bowl on high until softened, about 30 seconds. Stir jam, then use a pastry brush to brush jam on top of cake. Run a paring knife around edges of cake to loosen it, then release cake from pan and transfer to a wire rack to cool completely, about 1 hour 30 minutes. Serve topped with whipped cream, if using.",
+        "paragraphs": [
+            "Step 1: Place a rack in middle of oven; preheat to 350°. Grease springform pan generously with nonstick cooking oil spray.",
+            "Step 2: Whisk together 2 cups (250 g) all-purpose flour, 2 tsp. baking powder, and ½ tsp. Diamond Crystal or ¼ tsp. Morton kosher salt in a medium bowl; set aside. Whisk together ½ cup whole milk, at room temperature and ¼ cup sour cream, at room temperature in a small bowl until smooth; set aside.",
+            "Step 3: Cream together ¾ cup (150 g) granulated sugar and ½ cup (1 stick) unsalted butter, at room temperature in the bowl of a stand mixer fitted with a paddle attachment at medium-high speed until light and fluffy, 5–7 minutes. Scrape down sides of bowl with a spatula. Reduce mixer speed to medium and add 2 large eggs, at room temperature one at a time, allowing each egg to fully incorporate and scraping down bowl after each addition, about 1 minute each. Mix in 2 tsp. vanilla extract and ½ tsp. almond extract.",
+            "Step 4: Reduce mixer speed to low and add half of reserved flour mixture; mix until just combined. Scrape down sides of bowl, add reserved milk mixture, and mix until just combined. Scrape down sides of bowl and mixing paddle, then add remaining flour mixture. Mix until smooth.",
+            "Step 5: Scrape batter into prepared pan, smoothing surface with spatula. Leaving ¼” cake border between first row and edge of pan, arrange 10 oz. fresh strawberries (preferably small ones), hulled, halved or quartered if large on top of cake, cut side down, in a circular pattern. Place pan on a baking sheet to catch any drips. Bake until a cake tester or toothpick inserted into center of cake comes out mostly clean with a few moist crumbs clinging to it, 50–60 minutes (top of cake will still be quite pale). Transfer pan to a wire rack to cool for about 10 minutes.",
+            "Step 6: Meanwhile, microwave 2 Tbsp. strawberry jam in a small, microwave-safe bowl on high until softened, about 30 seconds. Stir jam, then use a pastry brush to brush jam on top of cake. Run a paring knife around edges of cake to loosen it, then release cake from pan and transfer to a wire rack to cool completely, about 1 hour 30 minutes. Serve topped with whipped cream, if using."
+        ],
         "image_url": "/static/img/photo_recipes/4.jpeg"
     },
     {
         "author_id": 5,
         "title": "Bean Burritos",
         "ingredients": [
-            {"quantity": "1", "unit": "can", "name": "vegetarian refried beans"},
-            {"quantity": "1", "unit": "cup", "name": "salsa"},
-            {"quantity": "1", "unit": "cup", "name": "cooked long grain rice"},
-            {"quantity": "2", "unit": "cup", "name": "shredded cheddar cheese, divided"},
-            {"quantity": "12", "unit": "ct", "name": "flour tortillas"},
-            {"quantity": "", "unit": "", "name": "Shredded lettuce"}
-            
+            {
+                "quantity": "1",
+                "unit": "can",
+                "name": "vegetarian refried beans"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "salsa"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "cooked long grain rice"
+            },
+            {
+                "quantity": "2",
+                "unit": "cup",
+                "name": "shredded cheddar cheese, divided"
+            },
+            {
+                "quantity": "12",
+                "unit": "ct",
+                "name": "flour tortillas"
+            },
+            {
+                "quantity": "",
+                "unit": "",
+                "name": "Shredded lettuce"
+            }
         ],
-        "description": "Preheat oven to 375°. In a large bowl, combine beans, salsa, rice and 1 cup cheese. Spoon about 1/3 cup mixture off-center on each tortilla. Fold the sides and ends over filling and roll up. Arrange burritos in a greased 13x9-in. baking dish. Sprinkle with remaining 1 cup cheese. Cover and bake until heated through, 20-25 minutes. If desired, top with lettuce.",
+        "paragraphs": [
+            "Preheat oven to 375°. In a large bowl, combine beans, salsa, rice and 1 cup cheese. Spoon about 1/3 cup mixture off-center on each tortilla. Fold the sides and ends over filling and roll up. Arrange burritos in a greased 13x9-in. baking dish. Sprinkle with remaining 1 cup cheese. Cover and bake until heated through, 20-25 minutes. If desired, top with lettuce."
+        ],
         "image_url": "/static/img/photo_recipes/5.jpeg"
     },
     {
         "author_id": 6,
         "title": "Prosciutto Dutch Baby",
         "ingredients": [
-            {"quantity": "5", "unit": "slices", "name": "thin slices prosciutto, sliced"},
-            {"quantity": "4", "unit": "ct", "name": "large eggs"},
-            {"quantity": "1/2", "unit": "cup", "name": "all-purpose flour"},
-            {"quantity": "1/2", "unit": "cup", "name": "cup cornmeal"},
-            {"quantity": "1/2", "unit": "tsp", "name": "salt"},
-            {"quantity": "3/4", "unit": "cup", "name": "whole milk"},
-            {"quantity": "1/3", "unit": "cup", "name": "shredded Asiago cheese"},
-            {"quantity": "4", "unit": "Tbsp", "name": "butter"},
-            {"quantity": "1 1/2", "unit": "cup", "name": "fresh arugula"},
-            {"quantity": "1", "unit": "cup", "name": "grape tomatoes, halved"},
-            {"quantity": "2", "unit": "Tbsp", "name": "creamy garlic salad dressing"},
-            {"quantity": "1", "unit": "cup", "name": "garbanzo beans, rinsed and drained"},
-            {"quantity": "2", "unit": "Tbsp", "name": "olive oil"}
-            
+            {
+                "quantity": "5",
+                "unit": "slices",
+                "name": "thin slices prosciutto, sliced"
+            },
+            {
+                "quantity": "4",
+                "unit": "ct",
+                "name": "large eggs"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "all-purpose flour"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "cup cornmeal"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "salt"
+            },
+            {
+                "quantity": "3/4",
+                "unit": "cup",
+                "name": "whole milk"
+            },
+            {
+                "quantity": "1/3",
+                "unit": "cup",
+                "name": "shredded Asiago cheese"
+            },
+            {
+                "quantity": "4",
+                "unit": "Tbsp",
+                "name": "butter"
+            },
+            {
+                "quantity": "1 1/2",
+                "unit": "cup",
+                "name": "fresh arugula"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "grape tomatoes, halved"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "creamy garlic salad dressing"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "garbanzo beans, rinsed and drained"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "olive oil"
+            }
         ],
-        "description": "Preheat oven to 425º. In a 10-in. cast iron skillet over medium heat, cook prosciutto until crisp, 2-3 minutes. Remove and set aside. Place skillet into oven while making batter. In a large bowl, whisk together eggs, flour, cornmeal and salt. Add milk and cheese; stir to combine. Add butter to skillet, swirling until melted. Pour batter into skillet; sprinkle prosciutto over batter. Bake until puffed and golden brown, 20-25. Meanwhile, toss arugula, tomatoes, garbanzo beans and oil. Remove pancake from oven. Serve with arugula mixture and dressing.",
+        "paragraphs": [
+            "Preheat oven to 425º. In a 10-in. cast iron skillet over medium heat, cook prosciutto until crisp, 2-3 minutes. Remove and set aside. Place skillet into oven while making batter. In a large bowl, whisk together eggs, flour, cornmeal and salt. Add milk and cheese; stir to combine. Add butter to skillet, swirling until melted. Pour batter into skillet; sprinkle prosciutto over batter. Bake until puffed and golden brown, 20-25. Meanwhile, toss arugula, tomatoes, garbanzo beans and oil. Remove pancake from oven. Serve with arugula mixture and dressing."
+        ],
         "image_url": "/static/img/photo_recipes/6.jpeg"
     },
     {
         "author_id": 7,
         "title": "Spring Pea Soup",
         "ingredients": [
-            {"quantity": "2", "unit": "cup", "name": "cubed peeled potatoes"},
-            {"quantity": "2", "unit": "Tbsp", "name": "butter"},
-            {"quantity": "6", "unit": "cup", "name": "chicken broth"},
-            {"quantity": "2", "unit": "cup", "name": "fresh or frozen peas, thawed"},
-            {"quantity": "2", "unit": "Tbsp", "name": "minced chives"}
+            {
+                "quantity": "2",
+                "unit": "cup",
+                "name": "cubed peeled potatoes"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "butter"
+            },
+            {
+                "quantity": "6",
+                "unit": "cup",
+                "name": "chicken broth"
+            },
+            {
+                "quantity": "2",
+                "unit": "cup",
+                "name": "fresh or frozen peas, thawed"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "minced chives"
+            }
         ],
-        "description": "In a large saucepan, saute potatoes in butter until lightly browned. Stir in broth; bring to a boil. Reduce heat; cover and simmer until potatoes are tender, 10-15 minutes. Add peas; cook until peas are tender, 5-8 minutes. Cool slightly. In a blender, process soup in batches until smooth. Return all to the pan; heat through. Sprinkle with chives and, if desired, microgreens.",
+        "paragraphs": [
+            "In a large saucepan, saute potatoes in butter until lightly browned. Stir in broth; bring to a boil. Reduce heat; cover and simmer until potatoes are tender, 10-15 minutes. Add peas; cook until peas are tender, 5-8 minutes. Cool slightly. In a blender, process soup in batches until smooth. Return all to the pan; heat through. Sprinkle with chives and, if desired, microgreens."
+        ],
         "image_url": "/static/img/photo_recipes/7.jpeg"
     },
     {
         "author_id": 5,
         "title": "Grandma’s Strawberry Shortcake",
         "ingredients": [
-            {"quantity": "2", "unit": "cup", "name": "all-purpose flour"},
-            {"quantity": "2", "unit": "Tbsp", "name": "sugar"},
-            {"quantity": "3", "unit": "tsp", "name": "baking powder"},
-            {"quantity": "1/2", "unit": "tsp", "name": "salt"},
-            {"quantity": "1/2", "unit": "cup", "name": "cold butter, cubed"},
-            {"quantity": "1", "unit": "ct", "name": "large egg"},
-            {"quantity": "2/3", "unit": "cup", "name": "half-and-half cream"},
-            {"quantity": "1", "unit": "cup", "name": "heavy whipping cream"},
-            {"quantity": "2", "unit": "Tbsp", "name": "confectioners' sugar"},
-            {"quantity": "1/8", "unit": "tsp", "name": "vanilla extract"},
-            {"quantity": "", "unit": "", "name": "Additional butter"},
-            {"quantity": "1 1/2", "unit": "cup", "name": "fresh strawberries, sliced"}
+            {
+                "quantity": "2",
+                "unit": "cup",
+                "name": "all-purpose flour"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "sugar"
+            },
+            {
+                "quantity": "3",
+                "unit": "tsp",
+                "name": "baking powder"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "salt"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "cold butter, cubed"
+            },
+            {
+                "quantity": "1",
+                "unit": "ct",
+                "name": "large egg"
+            },
+            {
+                "quantity": "2/3",
+                "unit": "cup",
+                "name": "half-and-half cream"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "heavy whipping cream"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "confectioners' sugar"
+            },
+            {
+                "quantity": "1/8",
+                "unit": "tsp",
+                "name": "vanilla extract"
+            },
+            {
+                "quantity": "",
+                "unit": "",
+                "name": "Additional butter"
+            },
+            {
+                "quantity": "1 1/2",
+                "unit": "cup",
+                "name": "fresh strawberries, sliced"
+            }
         ],
-        "description": "Preheat oven to 450°. In a large bowl, combine flour, sugar, baking powder and salt. Cut in butter until mixture resembles coarse crumbs. In another bowl, whisk egg and half-and-half. Add all at once to crumb mixture; stir just until moistened. Spread batter into a greased 8-in. round baking pan, slightly building up the edges. Bake until golden brown, 16-18 minutes. Remove from pan; cool on a wire rack. Beat heavy cream until it begins to thicken. Add confectioners' sugar and vanilla; beat until stiff peaks form. Split cake in half crosswise; butter bottom layer. Spoon half the strawberries over bottom layer. Spread with some whipped cream. Cover with top cake layer. Top with remaining berries and whipped cream. Cut into wedges.",
+        "paragraphs": [
+            "Preheat oven to 450°. In a large bowl, combine flour, sugar, baking powder and salt. Cut in butter until mixture resembles coarse crumbs. In another bowl, whisk egg and half-and-half. Add all at once to crumb mixture; stir just until moistened. Spread batter into a greased 8-in. round baking pan, slightly building up the edges. Bake until golden brown, 16-18 minutes. Remove from pan; cool on a wire rack. Beat heavy cream until it begins to thicken. Add confectioners' sugar and vanilla; beat until stiff peaks form. Split cake in half crosswise; butter bottom layer. Spoon half the strawberries over bottom layer. Spread with some whipped cream. Cover with top cake layer. Top with remaining berries and whipped cream. Cut into wedges."
+        ],
         "image_url": "/static/img/photo_recipes/8.jpeg"
     },
     {
         "author_id": 5,
         "title": "Spinach and Feta Bourekas",
         "ingredients": [
-            {"quantity": "1", "unit": "lb", "name": "fresh spinach, trimmed"},
-            {"quantity": "1/2", "unit": "cup", "name": "chopped shallots"},
-            {"quantity": "1", "unit": "Tbsp", "name": "minced garlic"},
-            {"quantity": "1/2", "unit": "tsp", "name": "salt"},
-            {"quantity": "1/4", "unit": "tsp", "name": "pepper"},
-            {"quantity": "17.3", "unit": "oz", "name": "frozen puff pastry, thawed"},
-            {"quantity": "1/2", "unit": "cup", "name": "crumbled feta cheese"},
-            {"quantity": "1/2", "unit": "cup", "name": "whole-milk ricotta cheese"},
-            {"quantity": "1", "unit": "ct", "name": "large egg, beaten"},
-            {"quantity": "1", "unit": "Tbsp", "name": "everything seasoning blend"}
+            {
+                "quantity": "1",
+                "unit": "lb",
+                "name": "fresh spinach, trimmed"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "chopped shallots"
+            },
+            {
+                "quantity": "1",
+                "unit": "Tbsp",
+                "name": "minced garlic"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "salt"
+            },
+            {
+                "quantity": "1/4",
+                "unit": "tsp",
+                "name": "pepper"
+            },
+            {
+                "quantity": "17.3",
+                "unit": "oz",
+                "name": "frozen puff pastry, thawed"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "crumbled feta cheese"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "whole-milk ricotta cheese"
+            },
+            {
+                "quantity": "1",
+                "unit": "ct",
+                "name": "large egg, beaten"
+            },
+            {
+                "quantity": "1",
+                "unit": "Tbsp",
+                "name": "everything seasoning blend"
+            }
         ],
-        "description": "Preheat oven to 400°. In a large skillet, heat oil over medium-high heat. Add spinach, shallots and garlic; cook and stir until wilted, 2-3 minutes. Remove from the heat; strain off any excess water. Stir in salt and pepper; set aside to cool to room temperature. On a lightly floured surface, unfold puff pastry. Cut each sheet into 4 squares. In a small bowl, combine feta and ricotta; stir in spinach mixture. Spoon cheese mixture diagonally over half of each square to within 1/2 in. of edges. Brush pastry edges with egg. Fold 1 corner over filling to the opposite corner, forming a triangle; press edges with a fork to seal. Place on parchment-lined baking sheets. Brush remaining egg over pastries; sprinkle with seasoning blend. Bake until golden brown, 25-30 minutes.",
+        "paragraphs": [
+            "Preheat oven to 400°. In a large skillet, heat oil over medium-high heat. Add spinach, shallots and garlic; cook and stir until wilted, 2-3 minutes. Remove from the heat; strain off any excess water. Stir in salt and pepper; set aside to cool to room temperature. On a lightly floured surface, unfold puff pastry. Cut each sheet into 4 squares. In a small bowl, combine feta and ricotta; stir in spinach mixture. Spoon cheese mixture diagonally over half of each square to within 1/2 in. of edges. Brush pastry edges with egg. Fold 1 corner over filling to the opposite corner, forming a triangle; press edges with a fork to seal. Place on parchment-lined baking sheets. Brush remaining egg over pastries; sprinkle with seasoning blend. Bake until golden brown, 25-30 minutes."
+        ],
         "image_url": "/static/img/photo_recipes/9.jpeg"
-        },
-        {
-            "author_id": 3,
-            "title": "Cherry Tomato Pasta with Avocado Sauce",
-            "ingredients": [
-                {"quantity": "14 1/2", "unit": "oz", "name": " protein-enriched rotini (about 3-1/2 cups uncooked)"},
-                {"quantity": "2", "unit": "ct", "name": "medium ripe avocados, peeled and pitted"},
-                {"quantity": "1", "unit": "cup", "name": "fresh spinach"},
-                {"quantity": "1/4", "unit": "cup", "name": "loosely packed basil leaves"},
-                {"quantity": "2", "unit": "ct", "name": "garlic cloves, halved"},
-                {"quantity": "2", "unit": "Tbsp", "name": "lime juice"},
-                {"quantity": "1/2", "unit": "tsp", "name": "kosher salt"},
-                {"quantity": "1/4", "unit": "tsp", "name": "coarsely ground pepper"},
-                {"quantity": "1/3", "unit": "cup", "name": "olive oil"},
-                {"quantity": "1", "unit": "cup", "name": "assorted cherry tomatoes, halved"},
-                {"quantity": "1/2", "unit": "cup", "name": "pine nuts"},
-                {"quantity": "", "unit": "", "name": "Optional: Shredded Parmesan cheese, shredded mozzarella cheese and grated lime zest"}
-            ],
-            "description": "Cook rotini according to package directions for al dente. Meanwhile, place avocados, spinach, basil, garlic, lime juice, salt and pepper in a food processor; pulse until chopped. Continue processing while gradually adding oil in a steady stream. Drain rotini; transfer to a large bowl. Add avocado mixture and tomatoes; toss to coat. Sprinkle with pine nuts, and add toppings as desired.",
-            "image_url": "/static/img/photo_recipes/10.jpeg"
-        }
-
+    },
+    {
+        "author_id": 3,
+        "title": "Cherry Tomato Pasta with Avocado Sauce",
+        "ingredients": [
+            {
+                "quantity": "14 1/2",
+                "unit": "oz",
+                "name": " protein-enriched rotini (about 3-1/2 cups uncooked)"
+            },
+            {
+                "quantity": "2",
+                "unit": "ct",
+                "name": "medium ripe avocados, peeled and pitted"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "fresh spinach"
+            },
+            {
+                "quantity": "1/4",
+                "unit": "cup",
+                "name": "loosely packed basil leaves"
+            },
+            {
+                "quantity": "2",
+                "unit": "ct",
+                "name": "garlic cloves, halved"
+            },
+            {
+                "quantity": "2",
+                "unit": "Tbsp",
+                "name": "lime juice"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "tsp",
+                "name": "kosher salt"
+            },
+            {
+                "quantity": "1/4",
+                "unit": "tsp",
+                "name": "coarsely ground pepper"
+            },
+            {
+                "quantity": "1/3",
+                "unit": "cup",
+                "name": "olive oil"
+            },
+            {
+                "quantity": "1",
+                "unit": "cup",
+                "name": "assorted cherry tomatoes, halved"
+            },
+            {
+                "quantity": "1/2",
+                "unit": "cup",
+                "name": "pine nuts"
+            },
+            {
+                "quantity": "",
+                "unit": "",
+                "name": "Optional: Shredded Parmesan cheese, shredded mozzarella cheese and grated lime zest"
+            }
+        ],
+        "paragraphs": [
+            "Cook rotini according to package directions for al dente. Meanwhile, place avocados, spinach, basil, garlic, lime juice, salt and pepper in a food processor; pulse until chopped. Continue processing while gradually adding oil in a steady stream. Drain rotini; transfer to a large bowl. Add avocado mixture and tomatoes; toss to coat. Sprinkle with pine nuts, and add toppings as desired."
+        ],
+        "image_url": "/static/img/photo_recipes/10.jpeg"
+    }
 ]

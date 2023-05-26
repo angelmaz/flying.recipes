@@ -154,7 +154,9 @@
     <div class="my-recipe-column description-column">
         <h3>Prepare</h3>
         <div>
-            <p>{{ recipe.description }}</p>
+            {% for paragraph in recipe.paragraphs %}
+            <p>{{ paragraph.text }}</p>
+            {% endfor %}
         </div>
     </div>
 
