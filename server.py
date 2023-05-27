@@ -258,9 +258,7 @@ def favorite_recipe():
         flash('You have to be logged in')
         return jsonify({'status': False})
     else:
-        favorite = crud.create_favorite(logged_in_user_id, recipe_id)
-        db.session.add(favorite)
-        db.session.commit()
+        crud.add_copy_from_recipe_id(recipe_id=recipe_id, author_id=logged_in_user_id)
         return jsonify({'status': True})
 
 
