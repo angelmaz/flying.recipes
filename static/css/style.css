@@ -264,7 +264,8 @@ form.search-form {
 /* heart */
 
 .full_heart,
-.empty_heart {
+.empty_heart,
+.hat {
   width: 25px;
   position: absolute;
   right: 10px;
@@ -273,11 +274,6 @@ form.search-form {
   border-bottom-right-radius: 50px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-}
-
-.one-recipe .full_heart,
-.one-recipe .empty_heart {
-  width: 50px;
 }
 
 
@@ -338,7 +334,8 @@ form.search-form {
   position: relative;
 }
 
-.heart-one {
+.icon-one {
+  width: 50px;
   top: 0px;
   right: 0px;
 }

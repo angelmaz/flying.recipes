@@ -28,14 +28,12 @@ def inject_global_vars():
 @app.route("/")
 def index():
     """Return homepage."""
-    recipes = crud.get_recipes()
-    my_favorite_recipe_ids = []
+    liked_recipe_ids = []
+    recipes_to_show = crud.get_original_recipes()
     if "logged_in_user_id" in session:
-        my_favorites = crud.get_favorites_by_user_id(
-            session['logged_in_user_id'])
-        my_favorite_recipe_ids = [
-            favorite.recipe_id for favorite in my_favorites]
-    return render_template("homepage.html", recipes=recipes, my_favorite_recipe_ids=my_favorite_recipe_ids)
+        liked_recipe_ids = crud.original_recipe_ids_liked_by(session['logged_in_user_id'])
+        authored_recipe_ids = crud.authored_recipe_ids(session['logged_in_user_id'])
+    return render_template("homepage.html", recipes_to_show=recipes_to_show, liked_recipe_ids=liked_recipe_ids, authored_recipe_ids=authored_recipe_ids)
 
 
 @app.route("/login", methods=["GET"])
@@ -112,6 +110,7 @@ def create_recipe():
 
     return render_template("create_recipe.html", recipe=None)
 
+
 @app.route("/edit_recipe/<recipe_id>")
 def edit_recipe(recipe_id):
     recipe = crud.get_recipe_by_id(recipe_id)
@@ -120,19 +119,20 @@ def edit_recipe(recipe_id):
 
 @app.route("/recipe/<recipe_id>")
 def recipe(recipe_id):
+    recipe_id = int(recipe_id)
     recipe = crud.get_recipe_by_id(recipe_id)
-    my_favorite_recipe_ids = []
     if "logged_in_user_id" in session:
-        my_favorites = crud.get_favorites_by_user_id(
-            session['logged_in_user_id'])
-        my_favorite_recipe_ids = [
-            favorite.recipe_id for favorite in my_favorites]
-    return render_template("recipe.html", recipe=recipe, my_favorite_recipe_ids=my_favorite_recipe_ids)
+        copies = crud.get_copies_of_author_id(session['logged_in_user_id'])
+        for r in copies:
+            if r.original_recipe_id == recipe_id:
+                recipe = r
+    return render_template("recipe.html", recipe=recipe)
 
 
 @app.route('/get_all_units')
 def get_all_units():
     return jsonify({'all_units': engine.all_units, 'weight_units': engine.weight_units, 'volume_units': engine.volume_units})
+
 
 @app.route('/save', methods=["POST"])
 def save():
@@ -149,16 +149,15 @@ def save():
     db_recipe = None
     if create_new:
         # create a new recipe
-        db_recipe = crud.create_recipe_from_author_id(
+        db_recipe = crud.add_recipe_from_author_id(
             author_id=session['logged_in_user_id'], title=title, image_url='/static/img/YourDish.png')
-        db.session.add(db_recipe)
     else:
         # update existing recipe
         db_recipe = crud.get_recipe_by_id(recipe_id)
         db_recipe.title = title
         Ingredient.query.filter_by(recipe_id=recipe_id).delete()
         Paragraph.query.filter_by(recipe_id=recipe_id).delete()
-    
+
     for ingredient_dict in ingredients:
         quantity_str, unit, name = (
             ingredient_dict["quantity"],
@@ -173,13 +172,13 @@ def save():
     for text in paragraphs:
         db_paragraph = crud.create_paragraph(recipe=db_recipe, text=text)
         db.session.add(db_paragraph)
-        
+
     db.session.commit()
 
     recipe_id = db_recipe.recipe_id
 
     new_file_path = f'{app.config["UPLOAD_FOLDER"]}/{recipe_id}.jpeg'
-        
+
     if file_input:
         db_recipe.image_url = f'/{new_file_path}'
 
@@ -252,27 +251,41 @@ def rename_file():
 def favorite_recipe():
     """Add recipe to favorites"""
 
-    recipe_id = request.args.get('recipe_id')
     logged_in_user_id = session.get('logged_in_user_id')
     if logged_in_user_id is None:
         flash('You have to be logged in')
         return jsonify({'status': False})
     else:
-        crud.add_copy_from_recipe_id(recipe_id=recipe_id, author_id=logged_in_user_id)
+        copy_recipe_id = request.args.get('copy_recipe_id')
+        original_recipe_id = None
+        if not copy_recipe_id:
+            original_recipe_id = int(request.args.get('original_recipe_id'))
+        else:
+            original_recipe_id = crud.get_recipe_by_id(int(copy_recipe_id)).original_recipe_id
+
+        crud.add_copy_from_recipe_id(
+            recipe_id=original_recipe_id, author_id=logged_in_user_id)
         return jsonify({'status': True})
 
 
 @app.route('/remove_favorite_recipe')
 def remove_favorite_recipe():
-    recipe_id = request.args.get('recipe_id')
-    logged_in_user_id = session.get('logged_in_user_id')
-    if logged_in_user_id is None:
+    if 'logged_in_user_id' not in session:
         flash('You have to be logged in')
         return jsonify({'status': False})
     else:
-        favorites_to_delete = crud.get_favorite_by_user_id_and_recipe_id(
-            logged_in_user_id, recipe_id)
-        db.session.delete(favorites_to_delete.first())
+        logged_in_user_id = session.get('logged_in_user_id')
+        copy_recipe_id = request.args.get('copy_recipe_id')
+
+        copy_to_delete = None
+        if not copy_recipe_id:    
+            original_recipe_id = request.args.get('original_recipe_id')
+            copy_to_delete = crud.get_copy_from_original_id(
+                original_recipe_id=original_recipe_id, author_id=logged_in_user_id)
+        else:
+            copy_to_delete = crud.get_recipe_by_id(copy_recipe_id)
+
+        db.session.delete(copy_to_delete)
         db.session.commit()
         return jsonify({'status': True})
 

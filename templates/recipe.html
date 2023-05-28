@@ -7,21 +7,27 @@
 <div class="recipe-container" style="text-align: center; padding-top: 20px; padding-bottom: 5px;">
     <div class="one-recipe">
         <img src="{{ recipe.image_url }}" width="500px" class="img-responsive">
-        <img class="full_heart heart-one" id="heart_full_{{recipe.recipe_id}}" width=25
-            src="/static/img/hearth_full_100.png" {% if not recipe.recipe_id in my_favorite_recipe_ids %}
-            style="display:none" {% endif %}>
-        <img class="empty_heart heart-one" id="heart_empty_{{recipe.recipe_id}}" width=25
-            src="/static/img/hearth_empty_100.png" {% if recipe.recipe_id in my_favorite_recipe_ids %}
-            style="display:none" {% endif %}>
+        {% if 'logged_in_user_id' in session %}
+        <img class="hat icon-one" id="hat_{{recipe.recipe_id}}" width=25 src="/static/img/logo_100.png" {% if not
+            (recipe.author_id==session['logged_in_user_id'] and not recipe.is_copy) %} style="display:none" {% endif %}>
+        <img class="full_heart icon-one" id="heart_full_{{recipe.recipe_id}}" width=25
+            src="/static/img/hearth_full_100.png" {% if not (recipe.is_copy and
+            recipe.author_id==session['logged_in_user_id']) %} style="display:none" {% endif %}>
+        <img class="empty_heart icon-one" id="heart_empty_{{recipe.recipe_id}}" width=25
+            src="/static/img/hearth_empty_100.png" {% if not (not recipe.is_copy and recipe.author_id
+            !=session['logged_in_user_id']) %} style="display:none" {% endif %}>
+        {% endif %}
     </div>
 </div>
 
 <div class="buttons-recipe">
     <input type="button" id="scale_button" value="Scale">
+    <input type="hidden" id="original_recipe_id_hidden" value="{{recipe.original_recipe_id}}">
 
     {% if "logged_in_user_id" in session and session["logged_in_user_id"] == recipe.author_id %}
     <input type="hidden" id="recipe_id_hidden" value="{{recipe.recipe_id}}">
-    <input type="button" id="remove" value="Remove recipe">
+    {% if not recipe.is_copy %}<input type="button" id="remove" value="Remove recipe">
+    {% endif %}
     <a href="/edit_recipe/{{ recipe.recipe_id }}">
         <input type="button" id="edit_recipe" value="Edit recipe">
     </a>

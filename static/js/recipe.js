@@ -4,12 +4,16 @@ for (const heart_full of hearts_full) {
     heart_full.addEventListener("click", (event) => {
         const heart_id = heart_full.getAttribute('id')
         const recipe_id = heart_id.split('_')[2]
-        fetch(`/remove_favorite_recipe?recipe_id=${recipe_id}`)
+        const original_recipe_id = document.querySelector('#original_recipe_id_hidden').value
+        fetch(`/remove_favorite_recipe?copy_recipe_id=${recipe_id}`)
             .then((response) => response.json())
             .then((responseJson) => {
                 const status = responseJson['status'];
                 if (!status) {
                     alert("cannot remove recipe from favorites");
+                }
+                else {
+                    window.location.href =  '/recipe/' + original_recipe_id;
                 }
             });
         event.target.style = 'display:none';
@@ -23,12 +27,15 @@ for (const heart_empty of hearts_empty) {
     heart_empty.addEventListener("click", (event) => {
         const heart_id = heart_empty.getAttribute('id')
         const recipe_id = heart_id.split('_')[2]
-        fetch(`/favorite_recipe?recipe_id=${recipe_id}`)
+        fetch(`/favorite_recipe?copy_recipe_id=${recipe_id}`)
             .then((response) => response.json())
             .then((responseJson) => {
                 const status = responseJson['status'];
                 if (!status) {
                     alert("cannot add recipe to favorites");
+                }
+                else {
+                    window.location.href = '/recipe/' + recipe_id
                 }
             });
         event.target.style = 'display:none';

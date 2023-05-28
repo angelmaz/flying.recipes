@@ -47,9 +47,8 @@ for recipe in recipe_data:
         recipe["paragraphs"],
         recipe["image_url"],
     )
-    db_recipe = crud.create_recipe_from_author_id(
+    db_recipe = crud.add_recipe_from_author_id(
         author_id=author_id, title=title, image_url=image_url)
-    db.session.add(db_recipe)
 
     for ingredient_dict in ingredients_dicts:
         quantity_str, unit, name = (

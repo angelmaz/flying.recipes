@@ -1,5 +1,7 @@
 from model import db, User, Recipe, Rating, Ingredient, Favorite, Paragraph, connect_to_db
 
+# users
+
 
 def create_user(email, password, name):
     """Create and return a new user."""
@@ -26,7 +28,9 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-def create_recipe(author, title, image_url, is_copy=False, original_recipe_id=None):
+# recipes
+
+def add_recipe(author, title, image_url, is_copy=False, original_recipe_id=None):
     """Create and return a new recipe."""
 
     recipe = Recipe(
@@ -36,10 +40,18 @@ def create_recipe(author, title, image_url, is_copy=False, original_recipe_id=No
         is_copy=is_copy,
         original_recipe_id=original_recipe_id
     )
+
+    db.session.add(recipe)
+    db.session.commit()
+
+    if is_copy == False:
+        recipe.original_recipe_id = recipe.recipe_id
+    db.session.commit()
+
     return recipe
 
 
-def create_recipe_from_author_id(author_id, title, image_url, is_copy=False, original_recipe_id=None):
+def add_recipe_from_author_id(author_id, title, image_url, is_copy=False, original_recipe_id=None):
 
     recipe = Recipe(
         author_id=author_id,
@@ -48,6 +60,14 @@ def create_recipe_from_author_id(author_id, title, image_url, is_copy=False, ori
         is_copy=is_copy,
         original_recipe_id=original_recipe_id
     )
+
+    db.session.add(recipe)
+    db.session.commit()
+
+    if is_copy == False:
+        recipe.original_recipe_id = recipe.recipe_id
+    db.session.commit()
+
     return recipe
 
 
@@ -63,17 +83,48 @@ def get_recipe_by_id(recipe_id):
     return Recipe.query.get(recipe_id)
 
 
+def get_original_recipes():
+    return Recipe.query.filter(Recipe.is_copy == False)
+
+
+def get_copies_of_author_id(author_id):
+    return Recipe.query.filter(Recipe.is_copy == True, Recipe.author_id == author_id)
+
+
+def get_recipes_to_show(author_id):
+    favorite_recipes = get_copies_of_author_id(author_id)
+    originals_to_skip = [r.original_recipe_id for r in favorite_recipes]
+    filtered_originals = Recipe.query.filter(
+        Recipe.is_copy == False, Recipe.recipe_id not in originals_to_skip)
+
+    return filtered_originals + favorite_recipes
+
+
+def original_recipe_ids_liked_by(author_id):
+    copies = get_copies_of_author_id(author_id)
+    liked_original_ids = [r.original_recipe_id for r in copies]
+    return liked_original_ids
+
+def authored_recipe_ids(author_id):
+    authored_recipes = Recipe.query.filter(Recipe.author_id == author_id, Recipe.is_copy == False)
+    return [r.recipe_id for r in authored_recipes]
+
 def get_recipes_by_author_id(author_id):
     return Recipe.query.filter(Recipe.author_id == author_id)
 
 
+def get_copy_from_original_id(original_recipe_id, author_id):
+    copies = Recipe.query.filter(
+        Recipe.author_id == author_id, Recipe.original_recipe_id == original_recipe_id)
+    return get_recipe_by_id(copies.first().recipe_id)
+
+
 def add_copy_from_recipe_id(recipe_id, author_id):
     original_recipe = get_recipe_by_id(recipe_id)
-    copy = create_recipe_from_author_id(
+    copy = add_recipe_from_author_id(
         author_id=author_id, title=original_recipe.title,
         image_url=original_recipe.image_url, is_copy=True,
         original_recipe_id=recipe_id)
-    db.session.add(copy)
 
     original_paragraphs = Paragraph.query.filter(
         Paragraph.recipe_id == recipe_id)
@@ -85,8 +136,8 @@ def add_copy_from_recipe_id(recipe_id, author_id):
         Ingredient.recipe_id == recipe_id)
     for ingredient in original_ingredients:
         new_ingredient = create_ingredient(
-            recipe=copy, name=original_recipe.name, quantity=original_recipe.quantity, 
-            unit=original_recipe.unit)
+            recipe=copy, name=ingredient.name, quantity=ingredient.quantity,
+            unit=ingredient.unit)
         db.session.add(new_ingredient)
 
     db.session.commit()

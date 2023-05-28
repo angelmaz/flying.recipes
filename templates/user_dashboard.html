@@ -31,34 +31,11 @@
     <div id="own_recipes" class="d-flex justify-content-center">
       {% for recipe in own_recipes %}
       <div class="card recipe-box col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <a href="/recipe/{{ recipe.recipe_id }}">
-          <div class="card-top">
-            <img class="card-img-top" src="{{ recipe.image_url }}">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">{{ recipe.title }}</h5>
-          </div>
-        </a>
-      </div>
-      {% endfor %}
-    </div>
-  </section>
-</div>
-
-<div class="container" id="favorite-container">
-  {% if favorite_recipes %}
-  <h1>My favorite recipes:</h1>
-  {% endif %}
-</div>
-
-<div class="container">
-  <section class="col-xs-12 col-sm-12 col-md-12">
-    <div id="favorite_recipes" class="d-flex justify-content-center">
-      {% for recipe in favorite_recipes %}
-      <div class="card recipe-box col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <img class="full_heart" id="heart_full_{{recipe.recipe_id}}" width=25 src="static/img/hearth_full_100.png" {% if
-          not recipe.recipe_id in my_favorite_recipe_ids %} style="display:none" {% endif %}>
-        <a href="/recipe/{{ recipe.recipe_id }}">
+        <img class="hat" id="hat_{{recipe.recipe_id}}" width=25 src="/static/img/logo_100.png" {% if not (
+          not recipe.is_copy and recipe.author_id == session['logged_in_user_id']) %} style="display:none" {% endif %}>
+        <img class="full_heart" id="heart_full_{{recipe.original_recipe_id}}" width=25
+          src="static/img/hearth_full_100.png" {% if not recipe.is_copy %} style="display:none" {% endif %}>
+        <a href="/recipe/{{ recipe.original_recipe_id }}">
           <div class="card-top">
             <img class="card-img-top" src="{{ recipe.image_url }}">
           </div>
