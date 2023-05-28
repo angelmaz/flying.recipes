@@ -52,8 +52,8 @@ class Recipe(db.Model):
     paragraphs = db.relationship(
         "Paragraph", back_populates="recipe", passive_deletes=True)
 
-    original_recipe = db.relationship("Recipe", back_populates="copies")
-    copies = db.relationship("Recipe")
+    original_recipe = db.relationship("Recipe", back_populates="copies", passive_deletes=True)
+    copies = db.relationship("Recipe", foreign_keys="Recipe.original_recipe_id", passive_deletes=True)
 
 
 class Ingredient(db.Model):

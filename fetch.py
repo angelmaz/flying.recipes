@@ -48,9 +48,8 @@ def download_recipe(author_id, url):
     for description in descriptions:
         description_text = description.decode_contents()
         description_text_list.append(description_text)
-    recipe = crud.create_recipe_from_author_id(
+    recipe = crud.add_recipe_from_author_id(
         author_id=author_id, title=title_text, image_url=img_src)
-    db.session.add(recipe)
 
     for text in description_text_list:
         db_paragraph = crud.create_paragraph(recipe=recipe, text=text)

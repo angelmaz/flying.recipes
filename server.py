@@ -28,8 +28,10 @@ def inject_global_vars():
 @app.route("/")
 def index():
     """Return homepage."""
-    liked_recipe_ids = []
     recipes_to_show = crud.get_original_recipes()
+    
+    liked_recipe_ids = []
+    authored_recipe_ids = []
     if "logged_in_user_id" in session:
         liked_recipe_ids = crud.original_recipe_ids_liked_by(session['logged_in_user_id'])
         authored_recipe_ids = crud.authored_recipe_ids(session['logged_in_user_id'])
