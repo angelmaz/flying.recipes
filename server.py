@@ -98,13 +98,10 @@ def register_user():
 @app.route("/user_dashboard")
 def user_dashboard():
     """Return page showing all the created and favorites recipes"""
-    favorites = crud.get_favorites_by_user_id(
-        user_id=session["logged_in_user_id"])
-    favorite_recipes = [favorite.recipe for favorite in favorites]
+    
     own_recipes = crud.get_recipes_by_author_id(session["logged_in_user_id"])
-    my_favorite_recipe_ids = [favorite.recipe_id for favorite in favorites]
-
-    return render_template("user_dashboard.html", favorite_recipes=favorite_recipes, own_recipes=own_recipes, my_favorite_recipe_ids=my_favorite_recipe_ids)
+   
+    return render_template("user_dashboard.html", own_recipes=own_recipes)
 
 
 @app.route("/create_recipe")
@@ -325,4 +322,4 @@ def process_logout():
 
 if __name__ == "__main__":
     connect_to_db(app)
-    app.run(host="0.0.0.0", debug=False)
+    app.run(host="0.0.0.0", debug=True)
