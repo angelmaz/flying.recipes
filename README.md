@@ -1,10 +1,10 @@
-# Kitchen helper
-Kitchen helper was created for people traveling around the world and dealing with different unit systems. 
+# Flying recipies
+Flying recipies was created for people traveling around the world and dealing with different unit systems. 
 The application provides the functionality of converting weight, volume and temperature units between imperial and metric systems and scaling recipes. 
 It allows the user to convert one ingredient or the whole recipe. The user has access to recipes stored in the database or can create their own recipes. 
 Moreover the user can create a list of favorite recipes.
 
-## Run the Kitchen helper Flask App
+## Run the Flying recipes Flask App
 Set up and activate a python virtualenv, and install all dependencies:
 ```sh
 virtualenv env
@@ -43,7 +43,7 @@ Go to `localhost:5000` in your browser to see the web app
 - Bootstrap
 - BeautifulSoup
 
-## How to use Kitchen helper
+## How to use Flying recipes
 
 The quick convert function and the search box are on each page to make easy access to them.
 ![Quick convert function](static/img/readme/README1.jpg)
