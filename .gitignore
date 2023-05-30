@@ -3,3 +3,4 @@ __pycache__
 *.DS_Store
 other_img/
 flask.log
+secrets.sh

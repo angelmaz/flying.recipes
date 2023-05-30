@@ -19,6 +19,13 @@ app.config['UPLOAD_FOLDER'] = 'static/img/photo_recipes'
 TEMP_IMG_NAME = 'temp.jpeg'
 app.config['MAX_CONTENT_PATH'] = 10000000
 
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = os.environ['MAIL_USERNAME']
+app.config['MAIL_PASSWORD'] = os.environ['MAIL_PASSWORD']
+mail = Mail(app)
+
 
 @app.context_processor
 def inject_global_vars():
