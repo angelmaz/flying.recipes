@@ -60,7 +60,7 @@ In the create function, the author can easily add and remove an ingredient. More
 
 ![Create recipe view](static/img/readme/README2.jpg)
 
-If the image is not uploaded, theb recipe will be saved with a default image.
+If the image is not uploaded, the recipe will be saved with a default image.
 
 ![save recipe with default image.](static/img/readme/README7.jpg)
 
