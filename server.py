@@ -294,7 +294,7 @@ def search():
     ingredient_name = request.args.get('ingredient_name')
     if ingredient_name:
         filtered_recipes = Recipe.query.join(Recipe.ingredients).filter(
-            Ingredient.name.like(f'%{ingredient_name}%')).all()
+            Ingredient.name.ilike(f'%{ingredient_name}%')).all()
         return render_template('search.html', recipes=filtered_recipes)
     else:
         all_recipes = Recipe.query.all()
