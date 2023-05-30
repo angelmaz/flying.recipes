@@ -1,4 +1,4 @@
-# Flying recipies
+# Flying recipes
 Flying recipies was created for people traveling around the world and dealing with different unit systems. 
 The application provides the functionality of converting weight, volume and temperature units between imperial and metric systems and scaling recipes. 
 It allows the user to convert one ingredient or the whole recipe. The user has access to recipes stored in the database or can create their own recipes. 
