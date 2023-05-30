@@ -51,6 +51,9 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'Cormorant', serif;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 88px;
 }
 
 .flash-msg {
@@ -281,6 +284,10 @@ form.search-form {
 
 /* recipe */
 
+.checkbox {
+  vertical-align: top;
+  padding-right: 10px;
+}
 #scale_container input {
   margin: 1px;
 }
@@ -322,8 +329,12 @@ form.search-form {
 
 .create-recipe-card input[type="button"]:hover,
 .create-recipe-card input[type="submit"]:hover {
-  background-color: #0069d9;
+  background-color: #f07849;
 }
+input[type="button"]:hover {
+  background-color: #f37b53; 
+}
+
 
 .create-recipe-card select {
   padding: 5px 30px 5px 5px;
@@ -418,9 +429,6 @@ form.search-form {
 }
 
 
-input[type="button"]:hover {
-  background-color: #f37b53;
-}
 
 h1,
 h2,
@@ -544,14 +552,17 @@ h5 {
   color: #c82333;
 }
 
-.footer {
-  padding: 20px;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+footer {
   background-color: rgb(1, 0, 0);
   color: rgb(217, 213, 213);
   text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  
+  
+  
 }
 
 .footer img {
@@ -582,7 +593,7 @@ input[type="button"] {
   padding: 20px
 }
 
-.footer a {
+footer a {
   text-decoration: none;
   color: rgb(217, 213, 213);
 }
