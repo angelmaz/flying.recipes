@@ -337,39 +337,56 @@ def send_email():
     def get_reset_token(email, expires=500):
         return jwt.encode(
                 {'reset_password': email, 'exp': time.time() + expires},
-                key=os.getenv('SECRET_KEY_FLASK'))
+                key=os.getenv('SECRET_KEY_FLASK'),
+                algorithm='HS256')
 
     email = request.form.get('email')
     token = get_reset_token(email)
 
     mail = mt.Mail(
         sender=mt.Address(email="no-reply@flying.recipes", name="Mailtrap Test"),
-        to=[mt.Address(email="lpmazurek@gmail.com")],
+        to=[mt.Address(email=email)],
         subject="You are awesome!",
         text=(f"Congrats for sending test email. Your token is:\n" 
             + f"http://flying.recipes/reset_password?email={email}&token={token}"))
 
-    client = mt.MailtrapClient(token="caeb8d49480cdd7fd42d6a0ac3440e27")
+    client = mt.MailtrapClient(token=os.getenv('MT_TOKEN'))
     client.send(mail)
     flash("Password recovery email has been sent.")
     return redirect("/login")
 
 @app.route("/reset_password")
 def reset_password():
-    email = request.form.get('email')
-    token = request.form.get('token')
+    email = request.args.get('email')
+    token = request.args.get('token')
+    print(f"email: '{email}', token: '{token}'")
+
+    # print(f"token decoded: '{token.decode('utf-8')}'")
+
     try:
-        decoded_email = jwt.decode(token, key=os.getenv('SECRET_KEY_FLASK'))['reset_password']
+        decoded_email = jwt.decode(token, key=os.getenv('SECRET_KEY_FLASK'), 
+                algorithms=['HS256'])['reset_password']
         if decoded_email == email:
             flash("email and token matches")
-            return render_template("reset_passwor.htmld", email=email)
+            return render_template("reset_password.html", email=email)
         else:
-            flash("email and token does not match!")
+            flash("email and token do not match!")
             return redirect("/login")
     except Exception as e:
         flash(f"Exception during token decoding: {e}")
         return redirect("/login")
 
+@app.route("/set_password", methods=['POST'])
+def set_password():
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+    user.password = argon2.hash(password)
+    db.session.add(user)
+    db.session.commit()
+
+    return render_template("login.html", hide_quick=True)
 
 if __name__ == "__main__":
     connect_to_db(app)
