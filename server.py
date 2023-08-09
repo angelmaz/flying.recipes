@@ -344,11 +344,13 @@ def send_email():
     token = get_reset_token(email)
 
     mail = mt.Mail(
-        sender=mt.Address(email="no-reply@flying.recipes", name="Mailtrap Test"),
+        sender=mt.Address(email="no-reply@flying.recipes", name="Flying Recipes"),
         to=[mt.Address(email=email)],
-        subject="You are awesome!",
-        text=(f"Congrats for sending test email. Your token is:\n" 
-            + f"http://flying.recipes/reset_password?email={email}&token={token}"))
+        subject="[Flying Recipes] Password recovery",
+        text=(f"Please click the following link to reset your password for {email}:\n" 
+            + f"http://flying.recipes/reset_password?email={email}&token={token}\n"
+            + f"\n"
+            + f"Flying Recipes"))
 
     client = mt.MailtrapClient(token=os.getenv('MT_TOKEN'))
     client.send(mail)
