@@ -330,7 +330,7 @@ def privacy():
 
 @app.route("/forgot_password")
 def forgot_password():
-    return render_template("forgot_password.html")
+    return render_template("forgot_password.html", hide_quick=True)
 
 @app.route("/send_email", methods=["POST"])
 def send_email():
@@ -369,8 +369,7 @@ def reset_password():
         decoded_email = jwt.decode(token, key=os.getenv('SECRET_KEY_FLASK'), 
                 algorithms=['HS256'])['reset_password']
         if decoded_email == email:
-            flash("email and token matches")
-            return render_template("reset_password.html", email=email)
+            return render_template("reset_password.html", email=email, hide_quick=True)
         else:
             flash("email and token do not match!")
             return redirect("/login")
