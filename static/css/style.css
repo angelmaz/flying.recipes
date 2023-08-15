@@ -323,6 +323,20 @@ h5 {
   background-color: #f07849;
 }
 
+.remove-ingredient,
+.remove-paragraph {
+  background-color: transparent;
+  border: none;
+  color: #dc3545;
+  font-size: 1.2rem;
+  margin-left: 10px;
+}
+
+.remove-ingredient:hover,
+.remove-paragraph:hover {
+  color: #c82333;
+}
+
 
 /* recipe */
 
@@ -370,19 +384,15 @@ h5 {
   border-collapse: separate;
 }
 
-/* TODO */
 
-#own_recipes,
-#favorite_recipes {
+/* user dashboard */
+
+#own_recipes {
   flex-wrap: wrap;
-
 }
-
 
 .recipe-cards-container {
   display: flex;
-  justify-content: center;
-  padding: 40px;
 }
 
 .recipe-card-ud {
@@ -394,60 +404,22 @@ h5 {
   margin: 20px;
 }
 
-.import-div {
-  display: flex;
-}
-
 #link_web_scrapping {
-  height: 30px;
   width: 160px;
   margin: 10px;
-  border: 1px solid #afb5bbfa;
-}
-
-.recipe-card-ud a {
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 #link_button {
   background-color: #f07849;
   color: white;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-right: 10px;
-  padding-left: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  height: 30px;
-  margin: 10px;
-}
-
-.recipe-card-ud input[type="button"]:hover {
-  background-color: #45a049;
 }
 
 .recipe-card-ud img {
   width: 100%;
 }
 
-.remove-ingredient,
-.remove-paragraph {
-  background-color: transparent;
-  border: none;
-  color: #dc3545;
-  cursor: pointer;
-  font-size: 1.2rem;
-  margin-left: 10px;
-  outline: none;
-}
 
-.remove-ingredient:hover,
-.remove-paragraph:hover {
-  color: #c82333;
-}
+/* footer */
 
 footer {
   background-color: rgb(1, 0, 0);
@@ -457,29 +429,14 @@ footer {
   bottom: 0;
   width: 100%;
   padding: 20px;
-  
-  
-  
-}
-
-.footer img {
-  width: 50px;
-  height: 50px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-
-.buttons-recipe {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-}
-.terms {
-  padding: 20px
 }
 
 footer a {
   text-decoration: none;
   color: rgb(217, 213, 213);
 }
+
+.terms {
+  padding: 20px
+}
+
