@@ -21,6 +21,15 @@
 
 /* inputs */
 
+input {
+  -webkit-appearance: none;
+  margin: 1px;
+}
+
+input[type="number"] {
+  width: 4em;
+}
+
 input[type="number"],
 input[type="text"],
 select,
@@ -345,6 +354,10 @@ h5 {
 .create-recipe-title-text {
   margin-bottom: 5px;
   font-weight: bold;
+}
+
+.ingredient input[type="text"] {
+  min-width: 15em;
 }
 
 /* recipe */

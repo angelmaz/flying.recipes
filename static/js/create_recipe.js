@@ -10,7 +10,7 @@ addIngredient.addEventListener('click', () => {
             let all_units = responseData['all_units'];
             let new_div = document.createElement("div");
             new_div.innerHTML = `
-                quantity <input type="number" id="quantity" value="">
+                qty <input type="number" id="quantity" value="">
                 unit <select id="unit">
                     ${all_units.map(unit => `<option value="${unit}">${unit}</option>`).join('')}
                 </select>

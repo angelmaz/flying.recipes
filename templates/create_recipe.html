@@ -14,7 +14,7 @@
         <div class="create-recipe-title-text">Ingredients:</div>
         {% if not recipe %}
         <div class="ingredient">
-            quantity <input type="number" id="quantity" value="">
+            qty <input type="number" id="quantity" value="">
             unit <select id="unit">
                 {% for unit in all_units%}
                 <option value={{unit}}>{{unit}} </option>
@@ -26,7 +26,7 @@
         {% else %}
         {% for ingredient in recipe.ingredients %}
         <div class="ingredient">
-            quantity <input type="number" id="quantity"
+            qty <input type="number" id="quantity"
                 value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{% endif %}'>
             unit <select id="unit">
                 {% for unit in all_units %}
