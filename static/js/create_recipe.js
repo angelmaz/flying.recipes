@@ -10,11 +10,11 @@ addIngredient.addEventListener('click', () => {
             let all_units = responseData['all_units'];
             let new_div = document.createElement("div");
             new_div.innerHTML = `
-                quantity <input type="number" id="quantity" value="" size="8">
+                quantity <input type="number" id="quantity" value="">
                 unit <select id="unit">
                     ${all_units.map(unit => `<option value="${unit}">${unit}</option>`).join('')}
                 </select>
-                name <input type="text" id="name" value="" size="60">
+                name <input type="text" id="name" value="">
                 <button class="remove-ingredient"><i class="fas fa-times"></i></button>
             `;
             new_div.classList.add("ingredient");
@@ -29,7 +29,7 @@ addIngredient.addEventListener('click', () => {
 addParagraph.addEventListener('click', () => {
     let new_div = document.createElement("div");
     new_div.innerHTML = `
-                <textarea rows="3" cols="70" id="text"></textarea>
+                <textarea rows="3" id="text"></textarea>
                 <button class="remove-paragraph"><i class="fas fa-times"></i></button>
             `;
     new_div.classList.add("paragraph");

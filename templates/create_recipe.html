@@ -4,33 +4,36 @@
 {% block body %}
 <div class="spacer" style="height: 60px;"></div>
 <div class="create-recipe-card">
-    <div>
-        Title
-        <input type="text" id="title" value="{% if recipe %}{{ recipe.title }}{% endif %}">
+    <div class="create-recipe-title">
+        <div class="create-recipe-title-text">Recipe title:</div>
+        <div>
+            <input type="text" id="title" value="{% if recipe %}{{ recipe.title }}{% endif %}">
+        </div>
     </div>
     <div class="col-xs-6 col-sm-12 col-md-12" id="ingredient_list">
+        <div class="create-recipe-title-text">Ingredients:</div>
         {% if not recipe %}
         <div class="ingredient">
-            quantity <input type="number" id="quantity" value="" size="8">
+            quantity <input type="number" id="quantity" value="">
             unit <select id="unit">
                 {% for unit in all_units%}
                 <option value={{unit}}>{{unit}} </option>
                 {% endfor %}
             </select>
-            name <input type="text" id="name" value="" size="60">
+            name <input type="text" id="name" value="">
             <button class="remove-ingredient"><i class="fas fa-times"></i></button>
         </div>
         {% else %}
         {% for ingredient in recipe.ingredients %}
         <div class="ingredient">
             quantity <input type="number" id="quantity"
-                value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{% endif %}' size="8">
+                value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{% endif %}'>
             unit <select id="unit">
                 {% for unit in all_units %}
                 <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
                 {% endfor %}
             </select>
-            name <input type="text" id="name" value="{{ ingredient.name }}" size="60">
+            name <input type="text" id="name" value="{{ ingredient.name }}">
             <button class="remove-ingredient"><i class="fas fa-times"></i></button>
         </div>
         {% endfor %}
@@ -42,17 +45,17 @@
     </div>
 
 
-    <div>Description:</div>
+    <div class="create-recipe-title-text">Description:</div>
     <div class="col-xs-6 col-sm-12 col-md-12" id="paragraph_list">
         {% if not recipe %}
         <div class="paragraph">
-            <textarea rows="3" cols="70" id="text"></textarea>
+            <textarea rows="3" id="text"></textarea>
             <button class="remove-paragraph"><i class="fas fa-times"></i></button>
         </div>
         {% else %}
         {% for paragraph in recipe.paragraphs %}
         <div class="paragraph">
-            <textarea rows="3" cols="70" id="text">{{ paragraph.text }}</textarea>
+            <textarea rows="3" id="text">{{ paragraph.text }}</textarea>
             <button class="remove-paragraph"><i class="fas fa-times"></i></button>
         </div>
         {% endfor %}
