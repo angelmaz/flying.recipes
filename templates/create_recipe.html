@@ -10,34 +10,36 @@
             <input type="text" id="title" value="{% if recipe %}{{ recipe.title }}{% endif %}">
         </div>
     </div>
-    <div class="col-xs-6 col-sm-12 col-md-12" id="ingredient_list">
+    <div class="col-xs-6 col-sm-12 col-md-12">
         <div class="create-recipe-title-text">Ingredients:</div>
-        {% if not recipe %}
-        <div class="ingredient">
-            qty <input type="number" id="quantity" value="">
-            unit <select id="unit">
-                {% for unit in all_units%}
-                <option value={{unit}}>{{unit}} </option>
-                {% endfor %}
-            </select>
-            name <input type="text" id="name" value="">
-            <button class="remove-ingredient"><i class="fas fa-times"></i></button>
+        <div id="ingredient_list">
+            {% if not recipe %}
+            <div class="ingredient">
+                qty <input type="number" id="quantity" value="">
+                unit <select id="unit">
+                    {% for unit in all_units%}
+                    <option value={{unit}}>{{unit}} </option>
+                    {% endfor %}
+                </select>
+                name <input type="text" id="name" value="">
+                <button class="remove-ingredient"><i class="fas fa-times"></i></button>
+            </div>
+            {% else %}
+            {% for ingredient in recipe.ingredients %}
+            <div class="ingredient">
+                qty <input type="number" id="quantity"
+                    value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{% endif %}'>
+                unit <select id="unit">
+                    {% for unit in all_units %}
+                    <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
+                    {% endfor %}
+                </select>
+                name <input type="text" id="name" value="{{ ingredient.name }}">
+                <button class="remove-ingredient"><i class="fas fa-times"></i></button>
+            </div>
+            {% endfor %}
+            {% endif %}
         </div>
-        {% else %}
-        {% for ingredient in recipe.ingredients %}
-        <div class="ingredient">
-            qty <input type="number" id="quantity"
-                value='{% if ingredient.quantity %}{{ "%.1f"|format(ingredient.quantity) }}{% endif %}'>
-            unit <select id="unit">
-                {% for unit in all_units %}
-                <option value="{{unit}}" {% if unit==ingredient.unit %} selected {% endif %}>{{unit}}</option>
-                {% endfor %}
-            </select>
-            name <input type="text" id="name" value="{{ ingredient.name }}">
-            <button class="remove-ingredient"><i class="fas fa-times"></i></button>
-        </div>
-        {% endfor %}
-        {% endif %}
     </div>
 
     <div>
